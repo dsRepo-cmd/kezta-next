@@ -1,13 +1,21 @@
 interface Navigation {
-  name: string;
+  name: NavigationName;
   path: string;
   id: string;
 }
 
+export enum NavigationName {
+  Home = "Home",
+  About = "About",
+  Portfolio = "Portfolio",
+  Stories = "Stories",
+  Contact = "Contact",
+}
+
 export const navigation: Navigation[] = [
-  { name: "Home", path: "/", id: "1" },
-  { name: "About", path: "/about", id: "2" },
-  { name: "Portfolio", path: "/portfolio", id: "3" },
-  { name: "Stories", path: "/stories", id: "4" },
-  { name: "Contact", path: "/contact", id: "5" },
+  { name: NavigationName.Home, path: "/", id: "1" },
+  { name: NavigationName.About, path: "/about", id: "2" },
+  { name: NavigationName.Portfolio, path: "/portfolio", id: "3" },
+  { name: NavigationName.Stories, path: "/stories", id: "4" },
+  { name: NavigationName.Contact, path: "/contact", id: "5" },
 ];

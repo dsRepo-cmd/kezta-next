@@ -1,17 +1,24 @@
-import { navigation } from "@/data/navigation";
+import { NavigationName, navigation } from "@/data/navigation";
 import Link from "next/link";
-import { memo } from "react";
 
-const Navigation = () => {
+interface NavigationProps {
+  path?: NavigationName;
+}
+
+export default function Navigation({ path }: NavigationProps) {
   return (
     <nav className=" flex justify-center items-center gap-10">
       {navigation.map((link) => (
-        <Link className=" text-lg" key={link.id} href={link.path}>
+        <Link
+          className={` text-lg hover:text-orange duration-300 ${
+            path === link.name ? "text-orange" : ""
+          }`}
+          key={link.id}
+          href={link.path}
+        >
           {link.name}
         </Link>
       ))}
     </nav>
   );
-};
-
-export default memo(Navigation);
+}

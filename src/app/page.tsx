@@ -1,7 +1,8 @@
 import Card from "@/components/Card/Card";
-import { navigation } from "@/data/navigation";
+import Navigation from "@/containers/Navigation/Navigation";
+import { NavigationName } from "@/data/navigation";
+
 import { socialLinks } from "@/data/socialLinks";
-import { link } from "fs";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -27,17 +28,7 @@ export default function Home() {
       {/* hero */}
       <div className="relative w-full mt-5">
         <div className="  flex flex-col items-end  w-full  h-[90%] p-10 bg-hero-pattern  bg-no-repeat bg-cover ">
-          <nav className=" flex justify-center items-center gap-10">
-            {navigation.map((link) => (
-              <Link
-                className=" text-lg hover:text-orange duration-300"
-                key={link.id}
-                href={link.path}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+          <Navigation path={NavigationName.Home} />
 
           <div className=" absolute bottom-[150px] right-[-50px] w-[450px] h-[250px] z-10 ">
             <Card>

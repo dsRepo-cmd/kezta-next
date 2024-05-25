@@ -11,7 +11,3 @@ body {
   color: #fff;
   background-color: black;
 }
-
-.title {
-  transform: rotate(270deg);
-}
