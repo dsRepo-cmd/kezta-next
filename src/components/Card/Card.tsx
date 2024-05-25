@@ -4,7 +4,9 @@ interface CardProps {
   children: ReactNode;
 }
 const Card = ({ children }: CardProps) => {
-  return <div className=" bg-orange p-10">{children}</div>;
+  return (
+    <div className=" bg-orange p-10 h-full flex flex-col gap-2">{children}</div>
+  );
 };
 
 export default memo(Card);
