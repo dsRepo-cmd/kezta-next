@@ -1,4 +1,5 @@
 import Divider from "@/components/Divider/Divider";
+import FollowLink from "@/components/FollowLink/FollowLink";
 import Label from "@/components/Label/Label";
 import Text from "@/components/Text/Text";
 import Header from "@/containers/Header/Header";
@@ -19,16 +20,7 @@ export default function About() {
 
       <Label />
 
-      <div className=" absolute top-[450px] left-[80px] rotate-[270deg] flex  gap-2  justify-center items-center ">
-        <span className="">Follow Us</span>
-        <Image
-          className="rotate-90"
-          src={"/follow-us.svg"}
-          alt="follow-us"
-          width={12}
-          height={12}
-        />
-      </div>
+      <FollowLink />
 
       <main className=" mx-auto w-[70%] flex gap-5 pr-40  ">
         <Divider />
@@ -68,13 +60,16 @@ export default function About() {
                     text={text.paragraph}
                   />
                 ))}
-                <Link href={aboutContent.section1.link.href}>
-                  <Text
-                    color="text-orange"
-                    className=" underline"
-                    text={aboutContent.section1.link.text}
-                  />
-                </Link>
+                <div className=" flex items-center gap-4">
+                  <span className=" border-solid border-b-2 border-divider w-[100px]"></span>
+                  <Link href={aboutContent.section1.link.href}>
+                    <Text
+                      color="text-orange"
+                      className=" underline"
+                      text={aboutContent.section1.link.text}
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -95,7 +90,7 @@ export default function About() {
                       color="text-white"
                       subtitle={card.value}
                     />
-                    <span className=" border-solid border-b-2 border-divider w-[90%]"></span>
+                    <span className=" border-solid border-b-2 border-divider w-[80%]"></span>
                     <Text
                       className=" min-w-36 text-nowrap"
                       color="text-grayPrimary"
