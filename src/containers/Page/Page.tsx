@@ -22,7 +22,7 @@ export default function Page({ children, naigation }: PageProps) {
       <FollowLink />
       <main className=" mx-auto w-[70%] flex gap-5 pr-40  ">
         <Divider />
-        {children}
+        <div className=" flex flex-col gap-40">{children}</div>
       </main>
 
       <div className=" absolute bottom-[150px] right-[50px] rotate-[270deg] flex justify-center items-center ">
