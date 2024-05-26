@@ -1,8 +1,13 @@
 import Divider from "@/components/Divider/Divider";
+import Label from "@/components/Label/Label";
+import Text from "@/components/Text/Text";
 import Header from "@/containers/Header/Header";
 import Navigation from "@/containers/Navigation/Navigation";
+import TitleBox from "@/containers/TitleBox/TitleBox";
+import { aboutContent } from "@/data/aboutContent";
 import { NavigationName } from "@/data/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function About() {
   return (
@@ -12,12 +17,10 @@ export default function About() {
         <Navigation path={NavigationName.About} />
       </Header>
 
-      <div className=" absolute top-[300px] left-[-300px] rotate-[270deg] flex justify-center items-center ">
-        <span className=" text-[250px] text-gray font-bold">kezto</span>
-      </div>
+      <Label />
 
       <div className=" absolute top-[450px] left-[80px] rotate-[270deg] flex  gap-2  justify-center items-center ">
-        <span className=" ">Follow Us</span>
+        <span className="">Follow Us</span>
         <Image
           className="rotate-90"
           src={"/follow-us.svg"}
@@ -32,14 +35,17 @@ export default function About() {
 
         <div className=" flex flex-col">
           <section className=" flex flex-col gap-10 ">
-            <div className=" flex h-full relative">
-              <div className=" absolute left-[-102px] bottom-0 top-0  border-solid border-l-2 border-grayPrimary "></div>
-              <h2 className="  text-xl text-grayPrimary">Our Story</h2>
-            </div>
-            <h3 className="  text-lg">
-              A world-class agency with defined excellence & passionate approach
-              towards creative and digital services for all platforms.
-            </h3>
+            <TitleBox>
+              <Text
+                color="text-grayPrimary"
+                title={aboutContent.section1.title}
+              />
+            </TitleBox>
+
+            <Text
+              color="text-white"
+              subtitle={aboutContent.section1.subtitle}
+            />
 
             <div className="flex gap-20">
               <div className="relative w-1/2 min-h-20 flex flex-col  ">
@@ -51,23 +57,54 @@ export default function About() {
                   className=" absolute left-1/2 top-5 translate-x-[-50%]"
                 />
                 <div className=" w-full h-40 "></div>
-                <div className=" w-full h-40 bg-orange"></div>
+                <div className=" w-full h-48 bg-orange"></div>
               </div>
 
               <div className=" flex flex-col gap-6  w-1/2">
-                <p className="  text-grayPrimary">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Eleifend morbi ornare metus, lobortis. Adipiscing ridiculus
-                  praesent rhoncus amet. Hendrerit pulvinar viverra arcu nunc.
-                </p>
-                <p className=" text-grayPrimary">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Eleifend morbi ornare metus, lobortis. Adipiscing ridiculus
-                  praesent rhoncus amet. Hendrerit pulvinar viverra arcu nunc.
-                </p>
+                {aboutContent.section1.text.map((text) => (
+                  <Text
+                    color="text-grayPrimary"
+                    key={text.id}
+                    text={text.paragraph}
+                  />
+                ))}
+                <Link href={aboutContent.section1.link.href}>
+                  <Text
+                    color="text-orange"
+                    className=" underline"
+                    text={aboutContent.section1.link.text}
+                  />
+                </Link>
               </div>
             </div>
-            <div className=""></div>
+
+            <div className=" m-auto">
+              <ul className=" flex gap-10 w-full  mt-20">
+                {aboutContent.section1.cards.map((card) => (
+                  <li
+                    className=" flex flex-col gap-4 self-center   "
+                    key={card.id}
+                  >
+                    <Text
+                      color="text-orange"
+                      className=" text-[1rem]"
+                      text={card.number}
+                    />
+                    <Text
+                      className="text-[1.75rem]"
+                      color="text-white"
+                      subtitle={card.value}
+                    />
+                    <span className=" border-solid border-b-2 border-divider w-[90%]"></span>
+                    <Text
+                      className=" min-w-36 text-nowrap"
+                      color="text-grayPrimary"
+                      text={card.text}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
         </div>
       </main>

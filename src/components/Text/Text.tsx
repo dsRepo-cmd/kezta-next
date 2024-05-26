@@ -4,17 +4,24 @@ interface TextProps {
   title?: string;
   subtitle?: string;
   text?: string;
-  color: TextColor;
+  className?: string;
+  color?: TextColor;
 }
 
-export default function Text({ title, subtitle, text, color }: TextProps) {
+export default function Text({
+  title,
+  subtitle,
+  text,
+  color,
+  className,
+}: TextProps) {
   return (
     <>
-      {title && (
-        <h2 className={`text-xl  text-grayPrimary ${color}`}>{title}</h2>
+      {title && <h2 className={`text-xl  ${color} ${className}`}>{title}</h2>}
+      {subtitle && (
+        <h3 className={` text-lg ${color} ${className}`}>{subtitle}</h3>
       )}
-      {subtitle && <h3 className={`text-xl ${color}`}>{subtitle}</h3>}
-      {text && <p className={`text-grayPrimary ${color}`}>{text}</p>}
+      {text && <p className={` ${color} ${className}`}>{text}</p>}
     </>
   );
 }
