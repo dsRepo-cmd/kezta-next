@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KAZTA contact",
-  description: "KAZTA app",
+
+  description: "KEZTA app",
 };
 
 export default function ContactLayout({

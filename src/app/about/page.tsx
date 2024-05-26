@@ -1,3 +1,4 @@
+import Divider from "@/components/Divider/Divider";
 import Header from "@/containers/Header/Header";
 import Navigation from "@/containers/Navigation/Navigation";
 import { NavigationName } from "@/data/navigation";
@@ -27,45 +28,48 @@ export default function About() {
       </div>
 
       <main className=" mx-auto w-[70%] flex gap-5 pr-40  ">
-        <div className=" border-solid border-l-2 border-divider mr-20"></div>
+        <Divider />
 
-        <section className=" flex flex-col gap-10 ">
-          <div className=" flex h-full relative">
-            <div className="  border-solid border-l-2 border-divider "></div>
-            <h2 className="  text-xl text-grayPrimary">Our Story</h2>
-          </div>
-          <h3 className="  text-lg">
-            A world-class agency with defined excellence & passionate approach
-            towards creative and digital services for all platforms.
-          </h3>
-
-          <div className="flex gap-20">
-            <div className="relative w-1/2 min-h-20 flex flex-col  ">
-              <Image
-                src={"/k-letter.svg"}
-                alt="k-letter"
-                width={220}
-                height={220}
-                className=" absolute left-1/2 top-5 translate-x-[-50%]"
-              />
-              <div className=" w-full h-40 "></div>
-              <div className=" w-full h-40 bg-orange"></div>
+        <div className=" flex flex-col">
+          <section className=" flex flex-col gap-10 ">
+            <div className=" flex h-full relative">
+              <div className=" absolute left-[-102px] bottom-0 top-0  border-solid border-l-2 border-grayPrimary "></div>
+              <h2 className="  text-xl text-grayPrimary">Our Story</h2>
             </div>
+            <h3 className="  text-lg">
+              A world-class agency with defined excellence & passionate approach
+              towards creative and digital services for all platforms.
+            </h3>
 
-            <div className=" flex flex-col gap-6  w-1/2">
-              <p className="  text-grayPrimary">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Eleifend morbi ornare metus, lobortis. Adipiscing ridiculus
-                praesent rhoncus amet. Hendrerit pulvinar viverra arcu nunc.
-              </p>
-              <p className=" text-grayPrimary">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Eleifend morbi ornare metus, lobortis. Adipiscing ridiculus
-                praesent rhoncus amet. Hendrerit pulvinar viverra arcu nunc.
-              </p>
+            <div className="flex gap-20">
+              <div className="relative w-1/2 min-h-20 flex flex-col  ">
+                <Image
+                  src={"/k-letter.svg"}
+                  alt="k-letter"
+                  width={220}
+                  height={220}
+                  className=" absolute left-1/2 top-5 translate-x-[-50%]"
+                />
+                <div className=" w-full h-40 "></div>
+                <div className=" w-full h-40 bg-orange"></div>
+              </div>
+
+              <div className=" flex flex-col gap-6  w-1/2">
+                <p className="  text-grayPrimary">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Eleifend morbi ornare metus, lobortis. Adipiscing ridiculus
+                  praesent rhoncus amet. Hendrerit pulvinar viverra arcu nunc.
+                </p>
+                <p className=" text-grayPrimary">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Eleifend morbi ornare metus, lobortis. Adipiscing ridiculus
+                  praesent rhoncus amet. Hendrerit pulvinar viverra arcu nunc.
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+            <div className=""></div>
+          </section>
+        </div>
       </main>
 
       <div className=" absolute bottom-[150px] right-[50px] rotate-[270deg] flex justify-center items-center ">

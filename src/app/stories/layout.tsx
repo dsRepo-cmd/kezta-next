@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KAZTA stories",
-  description: "KAZTA app",
+  description: "KEZTA app",
 };
 
 export default function StoriesLayout({
