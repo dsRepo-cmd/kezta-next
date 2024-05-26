@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KAZTA about",
+  title: "KAZTA portfolio",
   description: "KAZTA app",
 };
 
-export default function AboutLayout({
+export default function PortfolioLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

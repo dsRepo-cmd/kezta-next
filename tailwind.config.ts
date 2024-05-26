@@ -21,11 +21,19 @@ const config: Config = {
       gray: "#161616",
       grayLight: "#3E3E3E",
       white: "#fff",
+      divider: "#c4c4c44f",
+      grayPrimary: "#6c6c6c",
     },
 
     extend: {
       backgroundImage: {
         "hero-pattern": "url('/main-hero.png')",
+      },
+
+      fontSize: {
+        xl: "4.5rem",
+        lg: "2rem",
+        xs: "1.15rem",
       },
     },
   },
