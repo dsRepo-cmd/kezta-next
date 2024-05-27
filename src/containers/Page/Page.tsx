@@ -25,7 +25,7 @@ export default function Page({ children, naigation }: PageProps) {
         <div className=" flex flex-col gap-40">{children}</div>
       </main>
 
-      <div className=" absolute bottom-[150px] right-[50px] rotate-[270deg] flex justify-center items-center ">
+      <div className=" absolute bottom-[20px] right-[50px] rotate-[270deg] flex justify-center items-center ">
         <span className=" text-grayLight">©2024</span>
       </div>
     </div>
