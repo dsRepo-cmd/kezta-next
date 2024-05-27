@@ -12,7 +12,7 @@ export default function About() {
       {/* section1 */}
 
       <section className=" flex flex-col gap-10 ">
-        <TitleBox text={aboutContent.section1.title}></TitleBox>
+        <TitleBox title={aboutContent.section1.title}></TitleBox>
 
         <Text color="text-white" subtitle={aboutContent.section1.subtitle} />
 
@@ -42,7 +42,7 @@ export default function About() {
               <Link href={aboutContent.section1.link.href}>
                 <Text
                   color="text-orange"
-                  className=" underline"
+                  className=" duration-300 underline hover:text-white"
                   text={aboutContent.section1.link.text}
                 />
               </Link>
@@ -78,7 +78,7 @@ export default function About() {
       {/* section2 */}
 
       <section className="flex flex-col gap-10">
-        <TitleBox text={aboutContent.section2.title}></TitleBox>
+        <TitleBox title={aboutContent.section2.title}></TitleBox>
         <ul className=" flex flex-wrap gap-20">
           {aboutContent.section2.cards.map((card) => (
             <li className=" flex flex-col gap-4  w-1/4   " key={card.id}>
@@ -96,7 +96,7 @@ export default function About() {
       {/* section3 */}
 
       <section className="flex flex-col gap-10">
-        <TitleBox text={aboutContent.section3.title}></TitleBox>
+        <TitleBox title={aboutContent.section3.title}></TitleBox>
         <div className=" flex  gap-20">
           <div className=" flex flex-col gap-10 w-1/2">
             <Text color="text-grayPrimary" text={aboutContent.section3.text} />
@@ -131,7 +131,7 @@ export default function About() {
       {/* section4 */}
 
       <section className="flex flex-col gap-10">
-        <TitleBox text={aboutContent.section4.title}></TitleBox>
+        <TitleBox title={aboutContent.section4.title}></TitleBox>
         <ul className=" flex flex-wrap w-[700px] gap-20">
           {aboutContent.section4.cards.map((card) => (
             <li className=" flex  gap-4   " key={card.id}>

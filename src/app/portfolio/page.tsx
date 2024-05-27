@@ -32,7 +32,7 @@ export default function Portfolio() {
 
   return (
     <Page navigation={NavigationName.Portfolio}>
-      <TitleBox text={portfolioContent.title} />
+      <TitleBox title={portfolioContent.title} />
       <div className="flex gap-32">
         <div className="flex gap-10">
           {portfolioContent.typeTabs.map((tab) => (
