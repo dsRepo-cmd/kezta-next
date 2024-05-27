@@ -8,6 +8,29 @@ export enum PortfolioType {
 
 export const portfolioContent = {
   title: "Portfolio",
+  typeTabs: [
+    {
+      id: "1",
+      value: PortfolioType.ALL_WORKS,
+    },
+    {
+      id: "2",
+      value: PortfolioType.BRANDING,
+    },
+    {
+      id: "3",
+      value: PortfolioType.WEB_DESIGN,
+    },
+    {
+      id: "4",
+      value: PortfolioType.ILLUSTRATION,
+    },
+    {
+      id: "5",
+      value: PortfolioType.PHOTOGRAPHY,
+    },
+  ],
+  
   content: [
     {
       id: "1",
