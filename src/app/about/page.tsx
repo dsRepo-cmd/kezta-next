@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <Page naigation={NavigationName.About}>
+    <Page navigation={NavigationName.About}>
       {/* section1 */}
 
       <section className=" flex flex-col gap-10 ">
@@ -132,10 +132,12 @@ export default function About() {
 
       <section className="flex flex-col gap-10">
         <TitleBox text={aboutContent.section4.title}></TitleBox>
-        <ul className=" flex flex-wrap w-[500px] gap-20">
+        <ul className=" flex flex-wrap w-[700px] gap-20">
           {aboutContent.section4.cards.map((card) => (
             <li className=" flex  gap-4   " key={card.id}>
-              <Image src={card.image} alt={card.image} width={65} height={65} />
+              <button className=" duration-300 text-grayLight hover:text-orange">
+                {card.image}
+              </button>
             </li>
           ))}
         </ul>

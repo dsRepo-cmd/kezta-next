@@ -6,7 +6,7 @@ import { NavigationName } from "@/data/navigation";
 
 export default function Contact() {
   return (
-    <Page naigation={NavigationName.Contact}>
+    <Page navigation={NavigationName.Contact}>
       <div>
         <TitleBox text={contactContent.title} />
         <Text color="text-grayPrimary" text={contactContent.text} />

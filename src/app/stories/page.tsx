@@ -5,7 +5,7 @@ import { storiesContent } from "@/data/storiesContent";
 
 export default function Stories() {
   return (
-    <Page naigation={NavigationName.Stories}>
+    <Page navigation={NavigationName.Stories}>
       <TitleBox text={storiesContent.title} />
     </Page>
   );

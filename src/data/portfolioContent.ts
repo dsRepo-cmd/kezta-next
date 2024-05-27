@@ -6,8 +6,16 @@ export enum PortfolioType {
   ALL_WORKS = "ALL WORKS",
 }
 
+export enum PortfolioView {
+  LIST = "list",
+  GRID = "grid",
+}
+
 export const portfolioContent = {
   title: "Portfolio",
+
+
+
   typeTabs: [
     {
       id: "1",
@@ -30,7 +38,7 @@ export const portfolioContent = {
       value: PortfolioType.PHOTOGRAPHY,
     },
   ],
-  
+
   content: [
     {
       id: "1",

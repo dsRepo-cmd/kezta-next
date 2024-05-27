@@ -9,14 +9,14 @@ import Divider from "@/components/Divider/Divider";
 
 interface PageProps {
   children: ReactNode;
-  naigation?: NavigationName;
+  navigation?: NavigationName;
 }
-export default function Page({ children, naigation }: PageProps) {
+export default function Page({ children, navigation }: PageProps) {
   return (
     <div className=" relative flex flex-col min-h-screen  bg-black overflow-hidden mb-40">
       <Header>
         <Image src={"/logo.svg"} alt="logo" width={100} height={50} />
-        <Navigation path={naigation} />
+        <Navigation path={navigation} />
       </Header>
       <Label />
       <FollowLink />
