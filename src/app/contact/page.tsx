@@ -8,9 +8,13 @@ import { NavigationName } from "@/data/navigation";
 export default function Contact() {
   return (
     <Page navigation={NavigationName.Contact}>
-      <div>
+      <div className=" flex flex-col gap-5">
         <TitleBox title={contactContent.title} />
-        <Text color="text-grayPrimary" text={contactContent.text} />
+        <Text
+          className="text-[1.25rem]"
+          color="text-grayPrimary"
+          text={contactContent.text}
+        />
       </div>
 
       {/* map */}

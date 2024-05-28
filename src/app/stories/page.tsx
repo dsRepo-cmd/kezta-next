@@ -41,7 +41,7 @@ export default function Stories() {
 
   return (
     <Page navigation={NavigationName.Stories}>
-      <div>
+      <div className=" flex flex-col gap-5">
         <TitleBox title={storiesContent.title} />
         <Text
           className="text-[1.25rem]"
@@ -49,6 +49,7 @@ export default function Stories() {
           text={storiesContent.subtitle}
         />
       </div>
+
       <div className=" flex flex-col gap-20">
         {currentCards.map((card) => (
           <div className="flex flex-col gap-3" key={card.id}>

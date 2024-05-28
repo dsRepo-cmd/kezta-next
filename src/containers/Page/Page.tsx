@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import Header from "../Header/Header";
-import Image from "next/image";
 import Navigation from "../Navigation/Navigation";
 import { NavigationName } from "@/data/navigation";
 import Label from "@/components/Label/Label";
@@ -23,7 +22,7 @@ export default function Page({ children, navigation }: PageProps) {
       <FollowLink />
       <main className=" mx-auto w-[70%] flex gap-5 pr-40  ">
         <Divider vertical />
-        <div className=" flex flex-col gap-40">{children}</div>
+        <div className=" flex flex-col gap-10">{children}</div>
       </main>
 
       <div className=" absolute bottom-[20px] right-[50px] rotate-[270deg] flex justify-center items-center ">

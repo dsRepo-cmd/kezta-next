@@ -47,6 +47,7 @@ export default function Portfolio() {
             </button>
           ))}
         </div>
+
         <div className="flex gap-2">
           <button
             className={`duration-300 text-grayPrimary hover:text-white ${
