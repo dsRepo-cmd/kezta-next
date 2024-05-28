@@ -63,7 +63,8 @@ export default function Stories() {
                   src={card.image}
                   alt={card.image}
                   fill
-                  objectFit="cover"
+                  style={{ objectFit: "contain" }}
+                  priority
                 />
               </Link>
             </div>

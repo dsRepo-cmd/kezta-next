@@ -6,7 +6,6 @@ import { SroriesBlockType, stories } from "@/data/stories";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
-import Icon from "@/components/Icon/Icon";
 import SosialLinks from "@/containers/SosialLinks/SosialLinks";
 
 interface StoryProps {
@@ -29,6 +28,24 @@ export default function Story({ params }: StoryProps) {
       </Page>
     );
 
+  const currentIndex = stories.findIndex((block) => block.id === params.id);
+
+  const prevStory =
+    currentIndex > 0
+      ? {
+          id: stories[currentIndex - 1].id,
+          title: stories[currentIndex - 1].title,
+        }
+      : null;
+
+  const nextStory =
+    currentIndex < stories.length - 1
+      ? {
+          id: stories[currentIndex + 1].id,
+          title: stories[currentIndex + 1].title,
+        }
+      : null;
+
   return (
     <Page>
       <Link
@@ -40,7 +57,13 @@ export default function Story({ params }: StoryProps) {
       </Link>
 
       <div className=" relative flex w-[900px] h-[456px]">
-        <Image src={story.image} alt={story.image} fill objectFit="contain" />
+        <Image
+          src={story.image}
+          alt={story.image}
+          fill
+          style={{ objectFit: "contain" }}
+          priority
+        />
       </div>
 
       {/* title  */}
@@ -88,7 +111,8 @@ export default function Story({ params }: StoryProps) {
                       src={block.image}
                       alt={block.image}
                       fill
-                      objectFit="contain"
+                      sizes="50vw"
+                      style={{ objectFit: "contain" }}
                     />
                   </div>
                 )}
@@ -107,8 +131,40 @@ export default function Story({ params }: StoryProps) {
         ))}
 
         <div className=" flex w-full justify-end items-center gap-5 ">
-          <Divider style={{ width: "5rem", paddingTop: "1px" }} />
+          <Divider style={{ width: "2rem", paddingTop: "1px" }} />
           <SosialLinks horisontal links={story.socialLinks} />
+        </div>
+
+        {/* Next - Prev navigation links */}
+        <div className=" flex flex-col gap-4">
+          <div className=" flex gap-4">
+            {nextStory && (
+              <>
+                <Text color="text-grayPrimary" text="Next:" />
+                <Link href={`/stories/${nextStory.id}`}>
+                  <Text
+                    color="text-grayPrimary"
+                    className=" duration-300 underline hover:text-white"
+                    text={nextStory.title}
+                  />
+                </Link>
+              </>
+            )}
+          </div>
+          <div className=" flex gap-4">
+            {prevStory && (
+              <>
+                <Text color="text-grayPrimary" text="Prev:" />
+                <Link href={`/stories/${prevStory.id}`}>
+                  <Text
+                    color="text-grayPrimary"
+                    className=" duration-300 underline hover:text-white"
+                    text={prevStory.title}
+                  />
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </Page>
