@@ -1,3 +1,12 @@
+import ClientLogoIcon1 from "@/assets/client-logo1.svg";
+import ClientLogoIcon2 from "@/assets/client-logo2.svg";
+import ClientLogoIcon3 from "@/assets/client-logo3.svg";
+import ClientLogoIcon4 from "@/assets/client-logo4.svg";
+import ClientLogoIcon5 from "@/assets/client-logo5.svg";
+import ClientLogoIcon6 from "@/assets/client-logo6.svg";
+import ClientLogoIcon7 from "@/assets/client-logo7.svg";
+import ClientLogoIcon8 from "@/assets/client-logo8.svg";
+
 export const aboutContent = {
   section1: {
     title: "Our Story",
@@ -82,14 +91,14 @@ export const aboutContent = {
   section4: {
     title: "Clients",
     cards: [
-      { id: "1", image: "/assets/client-logo1.svg" },
-      { id: "2", image: "/assets/client-logo2.svg" },
-      { id: "3", image: "/assets/client-logo3.svg" },
-      { id: "4", image: "/assets/client-logo4.svg" },
-      { id: "5", image: "/assets/client-logo5.svg" },
-      { id: "6", image: "/assets/client-logo6.svg" },
-      { id: "7", image: "/assets/client-logo7.svg" },
-      { id: "8", image: "/assets/client-logo8.svg" },
+      { id: "1", image: <ClientLogoIcon1 /> },
+      { id: "2", image: <ClientLogoIcon2 /> },
+      { id: "3", image: <ClientLogoIcon3 /> },
+      { id: "4", image: <ClientLogoIcon4 /> },
+      { id: "5", image: <ClientLogoIcon5 /> },
+      { id: "6", image: <ClientLogoIcon6 /> },
+      { id: "7", image: <ClientLogoIcon7 /> },
+      { id: "8", image: <ClientLogoIcon8 /> },
     ],
   },
 };
