@@ -1,24 +1,26 @@
 import Card from "@/components/Card/Card";
 import Navigation from "@/containers/Navigation/Navigation";
 import { NavigationName } from "@/data/navigation";
-
 import { socialLinks } from "@/data/socialLinks";
-
-import Image from "next/image";
 import Link from "next/link";
+import LogoIcon from "@/assets/logo.svg";
 
 export default function Home() {
   return (
     <main className="flex flex-row  min-h-screen  justify-between  bg-black overflow-hidden">
       {/* left side */}
       <div className=" flex flex-col items-center  p-10 w-[212px]">
-        <Image src={"/logo.svg"} alt="logo" width={100} height={50} />
+        <LogoIcon />
 
         <div className=" flex h-full">
           <div className=" flex flex-col gap-5 self-center ">
             {socialLinks.map((link) => (
-              <Link key={link.id} href={"#"}>
-                <Image src={link.path} alt={link.name} width={15} height={15} />
+              <Link
+                className=" duration-300 hover:text-orange "
+                key={link.id}
+                href={"#"}
+              >
+                {link.icon}
               </Link>
             ))}
           </div>

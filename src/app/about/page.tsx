@@ -39,7 +39,7 @@ export default function About() {
               />
             ))}
             <div className=" flex items-center gap-4">
-              <Divider className="pt-1 w-20" />
+              <Divider style={{ width: "5rem", paddingTop: "1px" }} />
               <Link href={aboutContent.section1.link.href}>
                 <Text
                   color="text-orange"
@@ -65,7 +65,7 @@ export default function About() {
                   color="text-white"
                   subtitle={card.value}
                 />
-                <Divider className=" w-[80%]" />
+                <Divider style={{ width: "80%" }} />
 
                 <Text
                   className=" min-w-36 text-nowrap"

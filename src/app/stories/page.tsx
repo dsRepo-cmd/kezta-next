@@ -67,7 +67,7 @@ export default function Stories() {
               </Link>
             </div>
             <Text className="text-[1.8rem] mt-2" text={card.title} />
-            <Divider className=" w-40" />
+            <Divider style={{ width: "10rem" }} />
             <div className=" flex  flex-col gap-1">
               <Text className="text-[1rem]" text={card.date} />
               <Text
@@ -80,7 +80,7 @@ export default function Stories() {
         ))}
       </div>
       <div className="flex m justify-end mt-5 items-center gap-2">
-        <Divider className=" pt-[2px] w-7" />
+        <Divider style={{ width: "1.75rem", paddingTop: "1px" }} />
         {renderPagination()}
       </div>
     </Page>

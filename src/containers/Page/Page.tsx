@@ -6,6 +6,7 @@ import { NavigationName } from "@/data/navigation";
 import Label from "@/components/Label/Label";
 import FollowLink from "@/components/FollowLink/FollowLink";
 import Divider from "@/components/Divider/Divider";
+import LogoIcon from "@/assets/logo.svg";
 
 interface PageProps {
   children: ReactNode;
@@ -15,7 +16,7 @@ export default function Page({ children, navigation }: PageProps) {
   return (
     <div className=" relative flex flex-col min-h-screen  bg-black overflow-hidden mb-40">
       <Header>
-        <Image src={"/logo.svg"} alt="logo" width={100} height={50} />
+        <LogoIcon />
         <Navigation path={navigation} />
       </Header>
       <Label />
