@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
-import TwitterIcon from "@/assets/sosial-twitter.svg";
-import BeIcon from "@/assets/sosial-be.svg";
-import FacebookIcon from "@/assets/sosial-f.svg";
-import LinkedInIcon from "@/assets/sosial-linkedin.svg";
-import DribbbleIcon from "@/assets/sosial-dribbble.svg";
+import { FC, ReactNode } from "react";
+import TwitterIcon from "@/assets/social-twitter.svg";
+import BeIcon from "@/assets/social-be.svg";
+import FacebookIcon from "@/assets/social-f.svg";
+import LinkedInIcon from "@/assets/social-linkedin.svg";
+import DribbbleIcon from "@/assets/social-dribbble.svg";
 
-interface SocialLinks {
+export interface SocialLinks {
   id: string;
   name: string;
   icon: ReactNode;
