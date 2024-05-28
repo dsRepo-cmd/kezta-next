@@ -1,3 +1,4 @@
+import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Page from "@/containers/Page/Page";
@@ -8,7 +9,7 @@ export default function Contact() {
   return (
     <Page navigation={NavigationName.Contact}>
       <div>
-        <TitleBox text={contactContent.title} />
+        <TitleBox title={contactContent.title} />
         <Text color="text-grayPrimary" text={contactContent.text} />
       </div>
 
@@ -39,7 +40,7 @@ export default function Contact() {
                 type="text"
               />
             </div>
-            <span className=" border-solid border-b-[1px] border-divider  w-full"></span>
+            <Divider />
           </div>
 
           <div className=" flex flex-col gap-2 w-full">
@@ -53,7 +54,7 @@ export default function Contact() {
                 type="text"
               />
             </div>
-            <span className=" border-solid border-b-[1px] border-divider  w-full"></span>
+            <Divider />
           </div>
 
           <div className=" flex flex-col gap-2 w-full">
@@ -68,7 +69,7 @@ export default function Contact() {
                 name="message"
               />
             </div>
-            <span className=" border-solid border-b-[1px] border-divider w-full"></span>
+            <Divider />
           </div>
 
           <button className=" text-[1.1rem] px-12 py-3 bg-orange uppercase ">

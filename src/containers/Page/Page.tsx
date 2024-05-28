@@ -21,7 +21,7 @@ export default function Page({ children, navigation }: PageProps) {
       <Label />
       <FollowLink />
       <main className=" mx-auto w-[70%] flex gap-5 pr-40  ">
-        <Divider />
+        <Divider vertical />
         <div className=" flex flex-col gap-40">{children}</div>
       </main>
 

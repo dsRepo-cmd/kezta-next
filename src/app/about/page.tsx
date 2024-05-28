@@ -5,6 +5,7 @@ import { aboutContent } from "@/data/aboutContent";
 import { NavigationName } from "@/data/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import Divider from "@/components/Divider/Divider";
 
 export default function About() {
   return (
@@ -38,7 +39,7 @@ export default function About() {
               />
             ))}
             <div className=" flex items-center gap-4">
-              <span className=" border-solid border-b-2 border-divider w-[100px]"></span>
+              <Divider className="pt-1 w-20" />
               <Link href={aboutContent.section1.link.href}>
                 <Text
                   color="text-orange"
@@ -64,7 +65,8 @@ export default function About() {
                   color="text-white"
                   subtitle={card.value}
                 />
-                <span className=" border-solid border-b-2 border-divider w-[80%]"></span>
+                <Divider className=" w-[80%]" />
+
                 <Text
                   className=" min-w-36 text-nowrap"
                   color="text-grayPrimary"
