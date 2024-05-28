@@ -1,39 +1,39 @@
-import { FC, ReactNode } from "react";
-import TwitterIcon from "@/assets/social-twitter.svg";
-import BeIcon from "@/assets/social-be.svg";
-import FacebookIcon from "@/assets/social-f.svg";
-import LinkedInIcon from "@/assets/social-linkedin.svg";
-import DribbbleIcon from "@/assets/social-dribbble.svg";
+export type SocialLinkName =
+  | "twitter"
+  | "be"
+  | "facebook"
+  | "linkedIn"
+  | "dribbble";
 
-export interface SocialLinks {
+export interface SocialLink {
   id: string;
-  name: string;
-  icon: ReactNode;
+  name: SocialLinkName;
+  link: string;
 }
-export const socialLinks: SocialLinks[] = [
+export const socialLinks: SocialLink[] = [
   {
     id: "1",
-    name: "Twitter",
-    icon: <TwitterIcon />,
+    name: "twitter",
+    link: "#",
   },
   {
     id: "2",
-    name: "Be",
-    icon: <BeIcon />,
+    name: "be",
+    link: "#",
   },
   {
     id: "3",
-    name: "f",
-    icon: <FacebookIcon />,
+    name: "facebook",
+    link: "#",
   },
   {
     id: "4",
-    name: "li",
-    icon: <LinkedInIcon />,
+    name: "linkedIn",
+    link: "#",
   },
   {
     id: "5",
     name: "dribbble",
-    icon: <DribbbleIcon />,
+    link: "#",
   },
 ];

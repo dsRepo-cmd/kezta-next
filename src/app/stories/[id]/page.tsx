@@ -6,6 +6,8 @@ import { SroriesBlockType, stories } from "@/data/stories";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
+import Icon from "@/components/Icon/Icon";
+import SosialLinks from "@/containers/SosialLinks/SosialLinks";
 
 interface StoryProps {
   params: { id: string };
@@ -37,8 +39,8 @@ export default function Story({ params }: StoryProps) {
         <Text text="Back to main" />
       </Link>
 
-      <div className=" relative flex w-[900px] h-[450px]">
-        <Image src={story.image} alt={story.image} fill />
+      <div className=" relative flex w-[900px] h-[456px]">
+        <Image src={story.image} alt={story.image} fill objectFit="contain" />
       </div>
 
       {/* title  */}
@@ -82,7 +84,12 @@ export default function Story({ params }: StoryProps) {
               <span>
                 {block.image && (
                   <div className="relative w-[500px] h-[230px] flex-shrink-0 float-right">
-                    <Image src={block.image} alt={block.image} fill />
+                    <Image
+                      src={block.image}
+                      alt={block.image}
+                      fill
+                      objectFit="contain"
+                    />
                   </div>
                 )}
 
@@ -99,16 +106,9 @@ export default function Story({ params }: StoryProps) {
           </div>
         ))}
 
-        <div className=" flex w-full justify-end">
-          {story.socialLinks && (
-            <div className=" flex items-stretch gap-2 h-full ">
-              {story.socialLinks.map((link) => (
-                <Link className=" " href={"#"} key={link?.id}>
-                  {link?.icon}
-                </Link>
-              ))}
-            </div>
-          )}
+        <div className=" flex w-full justify-end items-center gap-5 ">
+          <Divider style={{ width: "5rem", paddingTop: "1px" }} />
+          <SosialLinks horisontal links={story.socialLinks} />
         </div>
       </div>
     </Page>

@@ -1,9 +1,9 @@
 import Card from "@/components/Card/Card";
 import Navigation from "@/containers/Navigation/Navigation";
 import { NavigationName } from "@/data/navigation";
-import { socialLinks } from "@/data/socialLinks";
-import Link from "next/link";
 import LogoIcon from "@/assets/logo.svg";
+import SosialLinks from "@/containers/SosialLinks/SosialLinks";
+import { socialLinks } from "@/data/socialLinks";
 
 export default function Home() {
   return (
@@ -13,17 +13,7 @@ export default function Home() {
         <LogoIcon />
 
         <div className=" flex h-full">
-          <div className=" flex flex-col gap-5 self-center ">
-            {socialLinks.map((link) => (
-              <Link
-                className=" duration-300 hover:text-orange "
-                key={link.id}
-                href={"#"}
-              >
-                {link.icon}
-              </Link>
-            ))}
-          </div>
+          <SosialLinks links={socialLinks} />
         </div>
       </div>
 

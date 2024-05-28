@@ -1,8 +1,4 @@
-import { SocialLinks } from "./socialLinks";
-import TwitterIcon from "@/assets/social-twitter.svg";
-import BeIcon from "@/assets/social-be.svg";
-import LinkedInIcon from "@/assets/social-linkedin.svg";
-import DribbbleIcon from "@/assets/social-dribbble.svg";
+import { SocialLink } from "./socialLinks";
 
 export enum SroriesBlockType {
   TEXT = "text",
@@ -29,7 +25,7 @@ interface Story {
   type: string;
   image: string;
   userName: string;
-  socialLinks?: Partial<SocialLinks[]>;
+  socialLinks: SocialLink[];
   blocks: StoriesBlock[];
 }
 
@@ -44,23 +40,23 @@ export const stories: Story[] = [
     socialLinks: [
       {
         id: "1",
-        name: "Twitter",
-        icon: <TwitterIcon />,
+        name: "twitter",
+        link: "#",
       },
       {
         id: "2",
-        name: "Be",
-        icon: <BeIcon />,
+        name: "be",
+        link: "#",
       },
       {
         id: "4",
-        name: "li",
-        icon: <LinkedInIcon />,
+        name: "linkedIn",
+        link: "#",
       },
       {
         id: "5",
         name: "dribbble",
-        icon: <DribbbleIcon />,
+        link: "#",
       },
     ],
     blocks: [
@@ -159,6 +155,19 @@ export const stories: Story[] = [
     type: "PHOTOGRAPHY",
     image: "https://picsum.photos/920/446?random=2",
     userName: "Tomas",
+    socialLinks: [
+      {
+        id: "1",
+        name: "twitter",
+        link: "#",
+      },
+
+      {
+        id: "5",
+        name: "dribbble",
+        link: "#",
+      },
+    ],
     blocks: [
       {
         id: "1",
