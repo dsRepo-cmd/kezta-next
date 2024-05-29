@@ -1,8 +1,7 @@
-import Card from "@/components/Card/Card";
-import Navigation from "@/containers/Navigation/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import { NavigationName } from "@/data/navigation";
 import LogoIcon from "@/assets/logo.svg";
-import SosialLinks from "@/containers/SosialLinks/SosialLinks";
+import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import { socialLinks } from "@/data/socialLinks";
 import Text from "@/components/Text/Text";
 
@@ -24,12 +23,12 @@ export default function Home() {
           <Navigation path={NavigationName.Home} />
 
           <div className=" absolute bottom-[150px] right-[-50px] w-[450px] h-[250px] z-10 ">
-            <Card>
+            <div className=" bg-orange p-10 h-full flex flex-col gap-2">
               <Text fontSize="text-7xl" title="Structure" />
               <Text fontSize="text-2xl" text="The freeware for community" />
               <div className=" border-solid border-x-white  border-b-[2px] w-1/3" />
               <Text fontSize="text-lg" text="LIFESTYLE" />
-            </Card>
+            </div>
           </div>
         </div>
         <div> </div>

@@ -6,7 +6,7 @@ import { SroriesBlockType, stories } from "@/data/stories";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
-import SosialLinks from "@/containers/SosialLinks/SosialLinks";
+import SosialLinks from "@/components/SosialLinks/SosialLinks";
 
 interface StoryProps {
   params: { id: string };

@@ -1,4 +1,4 @@
-import Page from "@/containers/Page/Page";
+import Page from "@/components/Page/Page";
 import { NavigationName } from "@/data/navigation";
 import type { Metadata } from "next";
 
