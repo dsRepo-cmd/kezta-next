@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Page from "@/containers/Page/Page";
-import { NavigationName } from "@/data/navigation";
-import { storiesContent } from "@/data/storiesContent";
 import Image from "next/image";
 import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
+import { NavigationName } from "@/data/navigation";
+import { storiesContent } from "@/data/storiesContent";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -16,20 +16,25 @@ export default function Stories() {
 
   const totalPages = Math.ceil(storiesContent.cards.length / ITEMS_PER_PAGE);
 
-  const currentCards = storiesContent.cards.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  const currentCards = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = currentPage * ITEMS_PER_PAGE;
+    return storiesContent.cards.slice(startIndex, endIndex);
+  }, [currentPage]);
 
-  const renderPagination = () => {
+  const handlePageClick = useCallback((page: number) => {
+    setCurrentPage(page);
+  }, []);
+
+  const renderPagination = useMemo(() => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <button
           key={i}
-          onClick={() => setCurrentPage(i)}
-          className={` duration-300 p-2 hover:text-white ${
-            i === currentPage ? " text-orange underline " : " text-grayLight"
+          onClick={() => handlePageClick(i)}
+          className={`duration-300 p-2 hover:text-white ${
+            i === currentPage ? "text-orange underline" : "text-grayLight"
           }`}
         >
           {i}
@@ -37,7 +42,7 @@ export default function Stories() {
       );
     }
     return pages;
-  };
+  }, [currentPage, handlePageClick, totalPages]);
 
   return (
     <Page navigation={NavigationName.Stories}>
@@ -83,7 +88,7 @@ export default function Stories() {
       </div>
       <div className="flex m justify-end mt-5 items-center gap-2">
         <Divider style={{ width: "1.75rem", paddingTop: "1px" }} />
-        {renderPagination()}
+        {renderPagination}
       </div>
     </Page>
   );

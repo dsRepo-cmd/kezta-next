@@ -1,5 +1,6 @@
 "use client";
-import { useCallback, useState } from "react";
+
+import { useCallback, useState, useMemo } from "react";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Page from "@/containers/Page/Page";
 import { NavigationName } from "@/data/navigation";
@@ -25,10 +26,13 @@ export default function Portfolio() {
     []
   );
 
-  const filteredContent =
-    tabValue === PortfolioType.ALL_WORKS
-      ? portfolioContent.content
-      : portfolioContent.content.filter((item) => item.type === tabValue);
+  const filteredContent = useMemo(
+    () =>
+      tabValue === PortfolioType.ALL_WORKS
+        ? portfolioContent.content
+        : portfolioContent.content.filter((item) => item.type === tabValue),
+    [tabValue]
+  );
 
   return (
     <Page navigation={NavigationName.Portfolio}>
@@ -37,11 +41,11 @@ export default function Portfolio() {
         <div className="flex gap-10">
           {portfolioContent.typeTabs.map((tab) => (
             <button
+              key={tab.id}
               onClick={() => handleTabClick(tab.value)}
               className={`text-grayLight duration-300 hover:text-white ${
                 tab.value === tabValue ? "underline text-orange" : ""
               }`}
-              key={tab.id}
             >
               {tab.value}
             </button>
@@ -50,18 +54,18 @@ export default function Portfolio() {
 
         <div className="flex gap-2">
           <button
+            onClick={() => handleViewChange(PortfolioView.LIST)}
             className={`duration-300 text-grayPrimary hover:text-white ${
               view === PortfolioView.LIST ? "text-orange" : ""
             }`}
-            onClick={() => handleViewChange(PortfolioView.LIST)}
           >
             <ListIcon />
           </button>
           <button
+            onClick={() => handleViewChange(PortfolioView.GRID)}
             className={`duration-300 text-grayPrimary hover:text-white ${
               view === PortfolioView.GRID ? "text-orange" : ""
             }`}
-            onClick={() => handleViewChange(PortfolioView.GRID)}
           >
             <GridIcon />
           </button>
@@ -76,14 +80,20 @@ export default function Portfolio() {
       >
         {filteredContent.map((item) => (
           <div
+            key={item.id}
             className={`relative ${
               view === PortfolioView.GRID
                 ? "w-[300px] h-[300px]"
                 : "w-[950px] h-[350px]"
             }`}
-            key={item.id}
           >
-            <Image src={item.image} alt={item.image} fill objectFit="cover" />
+            <Image
+              src={item.image}
+              alt={item.image}
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+            />
           </div>
         ))}
       </div>
