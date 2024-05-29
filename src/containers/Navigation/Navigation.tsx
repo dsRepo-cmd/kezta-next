@@ -10,7 +10,7 @@ export default function Navigation({ path }: NavigationProps) {
     <nav className=" flex justify-center items-center gap-10">
       {navigation.map((link) => (
         <Link
-          className={` text-xs hover:text-orange duration-300 ${
+          className={` text-lg hover:text-orange duration-300 ${
             path === link.name ? "text-orange" : ""
           }`}
           key={link.id}

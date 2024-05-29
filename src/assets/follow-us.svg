@@ -1,0 +1,6 @@
+<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="2" cy="1.5" r="1.5" transform="rotate(90 2 1.5)" fill="currentColor"/>
+<circle cx="10" cy="1.5" r="1.5" transform="rotate(90 10 1.5)" fill="currentColor"/>
+<path d="M10 2L6 7.5L2 1.5" stroke="currentColor"/>
+<circle cx="6" cy="7.5" r="1.5" transform="rotate(90 6 7.5)" fill="currentColor"/>
+</svg>

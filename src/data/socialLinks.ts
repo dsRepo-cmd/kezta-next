@@ -1,32 +1,39 @@
-interface SocialLinks {
+export type SocialLinkName =
+  | "twitter"
+  | "be"
+  | "facebook"
+  | "linkedIn"
+  | "dribbble";
+
+export interface SocialLink {
   id: string;
-  name: string;
-  path: string;
+  name: SocialLinkName;
+  link: string;
 }
-export const socialLinks: SocialLinks[] = [
+export const socialLinks: SocialLink[] = [
   {
     id: "1",
-    name: "Twitter",
-    path: "/sosial-twitter.svg",
+    name: "twitter",
+    link: "#",
   },
   {
     id: "2",
-    name: "Be",
-    path: "/sosial-be.svg",
+    name: "be",
+    link: "#",
   },
   {
     id: "3",
-    name: "f",
-    path: "/sosial-f.svg",
+    name: "facebook",
+    link: "#",
   },
   {
     id: "4",
-    name: "li",
-    path: "/sosial-linkedin.svg",
+    name: "linkedIn",
+    link: "#",
   },
   {
     id: "5",
     name: "dribbble",
-    path: "/sosial-dribbble.svg",
+    link: "#",
   },
 ];

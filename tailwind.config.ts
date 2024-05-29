@@ -29,12 +29,6 @@ const config: Config = {
       backgroundImage: {
         "hero-pattern": "url('/main-hero.png')",
       },
-
-      fontSize: {
-        xl: "4.5rem",
-        lg: "2rem",
-        xs: "1.15rem",
-      },
     },
   },
   plugins: [],
