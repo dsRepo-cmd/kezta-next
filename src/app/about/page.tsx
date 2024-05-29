@@ -16,7 +16,11 @@ export default function About() {
         {/* section1 */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section1.title} />
-          <Text color="text-white" subtitle={aboutContent.section1.subtitle} />
+          <Text
+            fontSize="text-[32px]"
+            color="text-white"
+            subtitle={aboutContent.section1.subtitle}
+          />
           <div className="flex gap-20">
             <div className="relative w-1/2 max-w-[400px] min-h-20 flex flex-col">
               <Image
@@ -32,6 +36,7 @@ export default function About() {
             <div className="flex flex-col gap-6 w-1/2">
               {aboutContent.section1.text.map((text) => (
                 <Text
+                  fontSize="text-lg"
                   color="text-grayPrimary"
                   key={text.id}
                   text={text.paragraph}
@@ -41,6 +46,7 @@ export default function About() {
                 <Divider style={{ width: "5rem", paddingTop: "1px" }} />
                 <Link href={aboutContent.section1.link.href}>
                   <Text
+                    fontSize="text-lg"
                     color="text-orange"
                     className="duration-300 underline hover:text-white"
                     text={aboutContent.section1.link.text}
@@ -54,17 +60,20 @@ export default function About() {
               {aboutContent.section1.cards.map((card) => (
                 <li className="flex flex-col gap-4 self-center" key={card.id}>
                   <Text
+                    fontSize="text-lg"
                     color="text-orange"
                     className="text-[1rem]"
                     text={card.number}
                   />
                   <Text
                     className="text-[1.75rem]"
+                    fontSize="text-[28px]"
                     color="text-white"
                     subtitle={card.value}
                   />
                   <Divider style={{ width: "80%" }} />
                   <Text
+                    fontSize="text-lg"
                     className="min-w-36 text-nowrap"
                     color="text-grayPrimary"
                     text={card.text}
@@ -74,7 +83,7 @@ export default function About() {
             </ul>
           </div>
         </section>
-        {/* section2 */}
+        {/* What We Do */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section2.title} />
           <ul className="flex flex-wrap gap-20">
@@ -87,8 +96,8 @@ export default function About() {
                   height={50}
                 />
                 <Text
+                  fontSize="text-2xl"
                   color="text-white"
-                  className="text-[1rem]"
                   text={card.title}
                 />
                 <Text color="text-grayPrimary" text={card.text} />
@@ -96,12 +105,13 @@ export default function About() {
             ))}
           </ul>
         </section>
-        {/* section3 */}
+        {/* Our Expertise */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section3.title} />
           <div className="flex gap-20">
             <div className="flex flex-col gap-10 w-1/2">
               <Text
+                fontSize="text-xl"
                 color="text-grayPrimary"
                 text={aboutContent.section3.text}
               />
@@ -109,8 +119,8 @@ export default function About() {
                 {aboutContent.section3.statistics.map((item) => (
                   <div key={item.id}>
                     <div className="flex justify-between">
-                      <Text className="text-sm" text={item.title} />
-                      <Text className="text-sm" text={`${item.value}%`} />
+                      <Text fontSize="text-sm" text={item.title} />
+                      <Text fontSize="text-sm" text={`${item.value}%`} />
                     </div>
                     <progress
                       className="progress-bar w-full h-[10px] bg-grayPrimary"
@@ -134,7 +144,7 @@ export default function About() {
             </div>
           </div>
         </section>
-        {/* section4 */}
+        {/* Clients */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section4.title} />
           <ul className="flex flex-wrap w-[700px] gap-20">

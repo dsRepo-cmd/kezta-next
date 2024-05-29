@@ -46,10 +46,10 @@ export default function Stories() {
 
   return (
     <Page navigation={NavigationName.Stories}>
-      <div className=" flex flex-col gap-5">
+      <div className=" flex flex-col gap-8">
         <TitleBox title={storiesContent.title} />
         <Text
-          className="text-[1.25rem]"
+          fontSize="text-xl"
           color="text-grayPrimary"
           text={storiesContent.subtitle}
         />
@@ -73,15 +73,11 @@ export default function Stories() {
                 />
               </Link>
             </div>
-            <Text className="text-[1.8rem] mt-2" text={card.title} />
+            <Text fontSize="text-[32px]" className=" mt-2" text={card.title} />
             <Divider style={{ width: "10rem" }} />
             <div className=" flex  flex-col gap-1">
-              <Text className="text-[1rem]" text={card.date} />
-              <Text
-                color="text-orange"
-                className="text-[1rem]"
-                text={card.type}
-              />
+              <Text fontSize="text-lg" text={card.date} />
+              <Text color="text-orange" fontSize="text-lg" text={card.type} />
             </div>
           </div>
         ))}

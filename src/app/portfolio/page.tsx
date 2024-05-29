@@ -43,7 +43,7 @@ export default function Portfolio() {
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.value)}
-              className={`text-grayLight duration-300 hover:text-white ${
+              className={`text-grayLight duration-300  text-nowrap hover:text-white ${
                 tab.value === tabValue ? "underline text-orange" : ""
               }`}
             >

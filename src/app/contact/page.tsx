@@ -14,7 +14,7 @@ const Contact = () => {
   ) => (
     <div className="flex flex-col gap-2 w-full">
       <div className="flex gap-4">
-        <label className="text-grayPrimary" htmlFor={name}>
+        <label className="text-grayPrimary text-lg" htmlFor={name}>
           {label}
         </label>
         {isTextArea ? (
@@ -38,7 +38,7 @@ const Contact = () => {
 
   const renderInfoBlock = (title: string, text: string | string[]) => (
     <div className="flex flex-col w-full gap-2">
-      <Text className="text-[1.12rem]" color="text-orange" text={title} />
+      <Text className="text-lg" color="text-orange" text={title} />
       {Array.isArray(text) ? (
         <div>
           {text.map((line, index) => (
@@ -53,10 +53,10 @@ const Contact = () => {
 
   return (
     <Page navigation={NavigationName.Contact}>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-8">
         <TitleBox title={contactContent.title} />
         <Text
-          className="text-[1.25rem]"
+          fontSize="text-xl"
           color="text-grayPrimary"
           text={contactContent.text}
         />
@@ -85,7 +85,7 @@ const Contact = () => {
             "text",
             true
           )}
-          <button className="text-[1.1rem] px-12 py-3 bg-orange uppercase">
+          <button className="text-lg px-12 py-3 bg-orange uppercase">
             {contactContent.form.button}
           </button>
         </form>

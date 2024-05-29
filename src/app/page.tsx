@@ -4,6 +4,7 @@ import { NavigationName } from "@/data/navigation";
 import LogoIcon from "@/assets/logo.svg";
 import SosialLinks from "@/containers/SosialLinks/SosialLinks";
 import { socialLinks } from "@/data/socialLinks";
+import Text from "@/components/Text/Text";
 
 export default function Home() {
   return (
@@ -24,10 +25,10 @@ export default function Home() {
 
           <div className=" absolute bottom-[150px] right-[-50px] w-[450px] h-[250px] z-10 ">
             <Card>
-              <h2 className="  text-[3.5rem]">Structure</h2>
-              <p className=" text-[1.4rem]">The freeware for community</p>
+              <Text fontSize="text-7xl" title="Structure" />
+              <Text fontSize="text-2xl" text="The freeware for community" />
               <div className=" border-solid border-x-white  border-b-[2px] w-1/3" />
-              <p>LIFESTYLE</p>
+              <Text fontSize="text-lg" text="LIFESTYLE" />
             </Card>
           </div>
         </div>
