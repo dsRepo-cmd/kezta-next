@@ -1,3 +1,5 @@
+import Page from "@/containers/Page/Page";
+import { NavigationName } from "@/data/navigation";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,5 +11,5 @@ export default function StoriesLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return <Page navigation={NavigationName.Stories}>{children}</Page>;
 }

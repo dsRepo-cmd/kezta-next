@@ -35,7 +35,7 @@ export const stories: Story[] = [
     title: "Finest Get - Together",
     date: "April 7, 2020",
     type: "TRAVEL",
-    image: "https://picsum.photos/920/325?random=1",
+    image: "https://picsum.photos/920/446?random=1",
     userName: "Jery",
     socialLinks: [
       {
@@ -270,7 +270,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=2",
+        image: "https://picsum.photos/920/446?random=2",
       },
       {
         id: "4",
@@ -345,7 +345,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=3",
+        image: "https://picsum.photos/920/446?random=3",
       },
       {
         id: "4",
@@ -415,7 +415,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=4",
+        image: "https://picsum.photos/920/446?random=4",
       },
       {
         id: "4",
@@ -491,7 +491,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=5",
+        image: "https://picsum.photos/920/446?random=5",
       },
       {
         id: "4",
@@ -567,7 +567,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=6",
+        image: "https://picsum.photos/920/446?random=6",
       },
       {
         id: "4",
@@ -642,7 +642,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=7",
+        image: "https://picsum.photos/920/446?random=7",
       },
       {
         id: "4",
@@ -718,7 +718,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=8",
+        image: "https://picsum.photos/920/446?random=8",
       },
       {
         id: "4",
@@ -789,7 +789,7 @@ export const stories: Story[] = [
       {
         id: "3",
         type: SroriesBlockType.IMAGE,
-        image: "https://picsum.photos/920/325?random=9",
+        image: "https://picsum.photos/920/446?random=9",
       },
       {
         id: "4",
