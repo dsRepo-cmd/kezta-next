@@ -6,10 +6,34 @@ import Image from "next/image";
 import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 import { storiesContent } from "@/data/storiesContent";
+import { GetServerSideProps } from "next";
+import dbConnect from "@/lib/dbConnect";
+import Story, { StoryI } from "@/models/Story";
+
+export const getServerSideProps: GetServerSideProps<
+  StoriesProps
+> = async () => {
+  await dbConnect();
+
+  /* find all the data in our database */
+  const result = await Story.find({});
+
+  /* Ensures all objectIds and nested objectIds are serialized as JSON data */
+  const stories = result.map((doc) => {
+    const story = JSON.parse(JSON.stringify(doc));
+    return story;
+  });
+
+  return { props: { stories: stories } };
+};
 
 const ITEMS_PER_PAGE = 4;
 
-export default function Stories() {
+interface StoriesProps {
+  stories: StoryI[];
+}
+
+export default function Stories({ stories }: StoriesProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(storiesContent.cards.length / ITEMS_PER_PAGE);
