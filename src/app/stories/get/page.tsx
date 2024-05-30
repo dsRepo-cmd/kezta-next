@@ -1,21 +1,6 @@
+"use client";
 import Link from "next/link";
-
-const getStoryes = async (): Promise<SroryProps[] | undefined> => {
-  try {
-    const res = await fetch("http://localhost:3000/api/stories", {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch topics");
-    }
-
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log("Error loading topics: ", error);
-  }
-};
+import { useEffect, useState } from "react";
 
 interface SroryProps {
   _id: string;
@@ -24,8 +9,20 @@ interface SroryProps {
   image: string;
 }
 
-export default async function NewStory() {
-  const stories = await getStoryes();
+export default function NewStory() {
+  const [stories, setStories] = useState<SroryProps[]>([]);
+
+  const fetchStories = async () => {
+    const res = await fetch("/api/stories");
+    const stories = res.json();
+    return stories;
+  };
+
+  useEffect(() => {
+    fetchStories().then((stories) => {
+      setStories(stories);
+    });
+  }, []);
 
   return (
     <>

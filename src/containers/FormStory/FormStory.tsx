@@ -1,7 +1,5 @@
 "use client";
-
 import { useState } from "react";
-
 export interface StoryFormData {
   title: string;
   type: string;
@@ -60,7 +58,7 @@ export default function FormStory() {
   };
 
   const postData = (form: StoryFormData) => {
-    fetch("http://localhost:3000//api/stories", {
+    fetch("/api/stories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
