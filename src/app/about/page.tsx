@@ -1,17 +1,14 @@
 "use client";
-
 import Text from "@/components/Text/Text";
-import Page from "@/containers/Page/Page";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import { aboutContent } from "@/data/aboutContent";
-import { NavigationName } from "@/data/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 
 export default function About() {
   return (
-    <Page navigation={NavigationName.About}>
+    <>
       <div className="flex flex-col gap-24">
         {/* section1 */}
         <section className="flex flex-col gap-10">
@@ -158,6 +155,6 @@ export default function About() {
           </ul>
         </section>
       </div>
-    </Page>
+    </>
   );
 }

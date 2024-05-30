@@ -1,9 +1,6 @@
 "use client";
-
 import { useCallback, useState, useMemo } from "react";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import Page from "@/containers/Page/Page";
-import { NavigationName } from "@/data/navigation";
 import {
   PortfolioType,
   PortfolioView,
@@ -35,7 +32,7 @@ export default function Portfolio() {
   );
 
   return (
-    <Page navigation={NavigationName.Portfolio}>
+    <>
       <TitleBox title={portfolioContent.title} />
       <div className="flex gap-32">
         <div className="flex gap-10">
@@ -97,6 +94,6 @@ export default function Portfolio() {
           </div>
         ))}
       </div>
-    </Page>
+    </>
   );
 }

@@ -2,16 +2,34 @@ import React, { useMemo } from "react";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import Page from "@/containers/Page/Page";
 import { SroriesBlockType, stories } from "@/data/stories";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
-import SosialLinks from "@/containers/SosialLinks/SosialLinks";
+import SosialLinks from "@/components/SosialLinks/SosialLinks";
 
 interface StoryProps {
   params: { id: string };
 }
+
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === "undefined"
+    ? Buffer.from(str).toString("base64")
+    : window.btoa(str);
 
 export default function Story({ params }: StoryProps) {
   const story = stories.find((block) => block.id === params.id);
@@ -33,7 +51,7 @@ export default function Story({ params }: StoryProps) {
 
   if (!story) {
     return (
-      <Page>
+      <>
         <Link
           className="flex gap-4 items-center duration-300 text-orange hover:text-white"
           href="/stories"
@@ -42,12 +60,12 @@ export default function Story({ params }: StoryProps) {
           <Text text="Back to main" />
         </Link>
         <TitleBox title="Story not found" />
-      </Page>
+      </>
     );
   }
 
   return (
-    <Page>
+    <>
       <Link
         className="flex gap-4 items-center duration-300 text-orange hover:text-white"
         href="/stories"
@@ -56,13 +74,21 @@ export default function Story({ params }: StoryProps) {
         <Text fontSize="text-xl" text="Back to main" />
       </Link>
 
-      <div className="relative flex w-[900px] h-[456px]">
+      <div className=" flex ">
         <Image
           src={story.image}
           alt={story.image}
-          fill
-          style={{ objectFit: "contain" }}
+          width={912}
+          height={446}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
           priority
+          placeholder={`data:image/svg+xml;base64,${toBase64(
+            shimmer(912, 446)
+          )}`}
         />
       </div>
 
@@ -179,6 +205,6 @@ export default function Story({ params }: StoryProps) {
           </div>
         </div>
       </div>
-    </Page>
+    </>
   );
 }

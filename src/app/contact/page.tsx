@@ -1,9 +1,7 @@
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import Page from "@/containers/Page/Page";
 import { contactContent } from "@/data/contactContent";
-import { NavigationName } from "@/data/navigation";
 
 const Contact = () => {
   const renderFormInput = (
@@ -52,7 +50,7 @@ const Contact = () => {
   );
 
   return (
-    <Page navigation={NavigationName.Contact}>
+    <>
       <div className="flex flex-col gap-8">
         <TitleBox title={contactContent.title} />
         <Text
@@ -110,7 +108,7 @@ const Contact = () => {
           )}
         </div>
       </div>
-    </Page>
+    </>
   );
 };
 

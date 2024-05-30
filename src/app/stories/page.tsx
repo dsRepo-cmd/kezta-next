@@ -2,11 +2,9 @@
 import React, { useCallback, useMemo, useState } from "react";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import Page from "@/containers/Page/Page";
 import Image from "next/image";
 import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
-import { NavigationName } from "@/data/navigation";
 import { storiesContent } from "@/data/storiesContent";
 
 const ITEMS_PER_PAGE = 4;
@@ -45,7 +43,7 @@ export default function Stories() {
   }, [currentPage, handlePageClick, totalPages]);
 
   return (
-    <Page navigation={NavigationName.Stories}>
+    <>
       <div className=" flex flex-col gap-8">
         <TitleBox title={storiesContent.title} />
         <Text
@@ -86,6 +84,6 @@ export default function Stories() {
         <Divider style={{ width: "1.75rem", paddingTop: "1px" }} />
         {renderPagination}
       </div>
-    </Page>
+    </>
   );
 }
