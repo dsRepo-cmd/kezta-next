@@ -1,42 +1,14 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
-import { User } from "./User";
+import mongoose, { Document, Schema, Model } from "mongoose";
 
-export enum StoryBlockType {
-  TEXT = "text",
-  IMAGE = "image",
-  TITLE = "title",
-  CHECK_LIST = "checkList",
-  IMAGE_TEXT = "imageText",
-}
-
-interface StoryBlock {
-  type: StoryBlockType;
-  title?: string;
-  text?: string;
-  texts?: { id: string; text: string }[];
-  checkList?: { id: string; text: string }[];
-  image?: string;
-}
-
-export interface StoryI extends Document {
+export interface IStory extends Document {
   title: string;
   createdAt: Date;
   type: string;
   image: string;
-  blocks: StoryBlock[];
   comments?: string;
 }
 
-const StoryBlockSchema = new Schema<StoryBlock>({
-  type: { type: String, enum: Object.values(StoryBlockType), required: true },
-  title: { type: String },
-  text: { type: String },
-  texts: [{ id: String, text: String }],
-  checkList: [{ id: String, text: String }],
-  image: { type: String },
-});
-
-const StorySchema = new Schema<StoryI>(
+const StorySchema = new Schema<IStory>(
   {
     title: { type: String, required: true },
     createdAt: {
@@ -45,8 +17,6 @@ const StorySchema = new Schema<StoryI>(
     },
     type: { type: String, required: true },
     image: { type: String, required: true },
-
-    blocks: { type: [StoryBlockSchema] },
     comments: { type: String },
   },
   {
@@ -54,5 +24,7 @@ const StorySchema = new Schema<StoryI>(
   }
 );
 
-export default mongoose.models.StorySchema ||
-  mongoose.model<StoryI>("Story", StorySchema);
+const StoryModel: Model<IStory> =
+  mongoose.models.Story || mongoose.model<IStory>("Story", StorySchema);
+
+export default StoryModel;

@@ -6,8 +6,6 @@ export interface StoryFormData {
   title: string;
   type: string;
   image: string;
-
-  user: {};
   blocks: [];
 }
 
@@ -18,18 +16,14 @@ interface Error {
   image_url?: string;
 }
 
-type FormStoryProps = {
-  formId?: string;
-  storyForm: StoryFormData;
-  forNewStory?: boolean;
+const storyForm: StoryFormData = {
+  title: "",
+  type: "",
+  image: "https://picsum.photos/920/446?random=1",
+  blocks: [],
 };
 
-export default function FormStory({
-  formId,
-  storyForm,
-
-  forNewStory = true,
-}: FormStoryProps) {
+export default function FormStory() {
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
 
@@ -37,7 +31,7 @@ export default function FormStory({
     title: storyForm.title,
     type: storyForm.type,
     image: storyForm.image,
-    user: storyForm.user,
+
     blocks: storyForm.blocks,
   });
 
@@ -95,11 +89,7 @@ export default function FormStory({
 
   return (
     <>
-      <form
-        id={formId}
-        onSubmit={handleSubmit}
-        className=" flex flex-col gap-5 w-[500px]"
-      >
+      <form onSubmit={handleSubmit} className=" flex flex-col gap-5 w-[500px]">
         <label htmlFor="title">Title</label>
         <input
           className=" text-black"
@@ -132,15 +122,6 @@ export default function FormStory({
           onChange={handleChange}
           required
         />
-
-        {/* <label htmlFor="block">Block</label>
-        <textarea
-          className=" text-black"
-          name="block"
-          maxLength={60}
-          value={form.blocks}
-          onChange={handleChange}
-        /> */}
 
         <button type="submit" className="btn">
           Submit
