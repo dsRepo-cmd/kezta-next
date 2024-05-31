@@ -1,15 +1,77 @@
-import React, { useMemo } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import { SroriesBlockType, stories } from "@/data/stories";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
+import { SocialLink } from "@/data/socialLinks";
+
+interface AdjacentLink {
+  _id: string;
+  title: string;
+}
+
+interface FetchStories {
+  story: Srory;
+  prevStory: AdjacentLink;
+  nextStory: AdjacentLink;
+}
 
 interface StoryProps {
   params: { id: string };
+}
+
+export enum SroriesBlockType {
+  TEXT = "text",
+  IMAGE = "image",
+  TITLE = "title",
+  CHECK_LIST = "checkList",
+  IMAGE_TEXT = "imageText",
+}
+
+interface StoriesBlock {
+  id: string;
+  type: SroriesBlockType;
+  title?: string;
+  text?: string;
+  texts?: { id: string; text: string }[];
+  checkList?: { id: string; text: string }[];
+  image?: string;
+}
+
+interface Srory {
+  id: string;
+  title: string;
+  date: string;
+  type: string;
+  image: string;
+  userName: string;
+  socialLinks: SocialLink[];
+  blocks: StoriesBlock[];
+  comments?: string;
+}
+
+interface CommentFormData {
+  message: string;
+  userName: string;
+  avatarLink: string;
+  userEmail: string;
+  storyId: string;
+  commentId?: string;
+}
+
+interface Comment {
+  _id: string;
+  message: string;
+  userName: string;
+  userEmail: string;
+  avatarLink: string;
+  commentId?: string;
+  storyId?: string;
+  replies?: Comment[];
 }
 
 const shimmer = (w: number, h: number) => `
@@ -32,22 +94,155 @@ const toBase64 = (str: string) =>
     : window.btoa(str);
 
 export default function Story({ params }: StoryProps) {
-  const story = stories.find((block) => block.id === params.id);
+  const [story, setStory] = useState<Srory>();
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [message, setMessage] = useState("");
 
-  const currentIndex = useMemo(
-    () => stories.findIndex((block) => block.id === params.id),
-    [params.id]
-  );
+  const [prevStory, setPrevStory] = useState<AdjacentLink>();
+  const [nextStory, setNextStory] = useState<AdjacentLink>();
 
-  const prevStory = useMemo(
-    () => (currentIndex > 0 ? stories[currentIndex - 1] : null),
-    [currentIndex]
-  );
-  const nextStory = useMemo(
-    () =>
-      currentIndex < stories.length - 1 ? stories[currentIndex + 1] : null,
-    [currentIndex]
-  );
+  const [form, setForm] = useState<CommentFormData>({
+    message: "",
+    userName: "",
+    avatarLink: "https://picsum.photos/100/100?random=1",
+    userEmail: "",
+    storyId: params.id,
+  });
+
+  const [isReplyMode, setIsReplyMode] = useState(false);
+  const [currentCommentId, setCurrentCommentId] = useState<string | null>(null);
+
+  const formValidate = () => {
+    let err: Record<string, string> = {};
+    if (!form.message) err.message = "Message is required";
+    if (!form.userEmail) err.userEmail = "Email is required";
+    if (!form.userName) err.userName = "Name is required";
+    return err;
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const postComment = async (formData: CommentFormData) => {
+    try {
+      const res = await fetch("/api/stories/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      setMessage(data.message);
+      fetchComments(params.id); // Fetch comments again to update the list
+      resetForm();
+    } catch (error) {
+      console.error("Error posting comment:", error);
+    }
+  };
+
+  const postReply = async (formData: CommentFormData) => {
+    try {
+      const res = await fetch("/api/stories/comments", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      setMessage(data.message);
+      fetchComments(params.id); // Fetch comments again to update the list
+      resetForm();
+    } catch (error) {
+      console.error("Error posting reply:", error);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const errs = formValidate();
+    if (Object.keys(errs).length === 0) {
+      if (isReplyMode && currentCommentId) {
+        await postReply({ ...form, commentId: currentCommentId });
+      } else {
+        await postComment(form);
+      }
+    } else {
+      setErrors(errs);
+    }
+  };
+
+  const handleReplyClick = (commentId: string) => {
+    setIsReplyMode(true);
+    setCurrentCommentId(commentId);
+    setForm((prevForm) => ({
+      ...prevForm,
+      commentId: commentId,
+      message: "",
+    }));
+  };
+
+  const resetForm = () => {
+    setIsReplyMode(false);
+    setCurrentCommentId(null);
+    setForm({
+      message: "",
+      userName: "",
+      avatarLink: "https://picsum.photos/100/100?random=1",
+      userEmail: "",
+      storyId: params.id,
+    });
+  };
+
+  const fetchComments = async (storyId: string) => {
+    try {
+      const res = await fetch(`/api/stories/comments?storyId=${storyId}`);
+      const data = await res.json();
+      setComments(data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+
+  const fetchStories = async (storyId: string) => {
+    try {
+      const res = await fetch(`/api/stories?storyId=${storyId}`);
+      const data: FetchStories = await res.json();
+
+      setStory(data.story);
+      setPrevStory(data.prevStory);
+      setNextStory(data.nextStory);
+    } catch (error) {
+      console.error("Error fetching stories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStories(params.id);
+  }, [params.id]);
+
+  useEffect(() => {
+    fetchComments(params.id);
+  }, [params.id]);
+
+  const renderComments = (comments: Comment[]) => {
+    return comments.map((comment) => (
+      <div key={comment._id} className="ml-10 mt-5">
+        <p>{comment.message}</p>
+        <p>{comment.userEmail}</p>
+        <button onClick={() => handleReplyClick(comment._id)}>Reply</button>
+        {comment.replies && comment.replies.length > 0 && (
+          <div className="ml-5">{renderComments(comment.replies)}</div>
+        )}
+      </div>
+    ));
+  };
 
   if (!story) {
     return (
@@ -59,7 +254,7 @@ export default function Story({ params }: StoryProps) {
           <Divider style={{ width: "3rem", paddingTop: "1px" }} />
           <Text text="Back to main" />
         </Link>
-        <TitleBox title="Story not found" />
+        <TitleBox title="Loadind...." />
       </>
     );
   }
@@ -175,7 +370,7 @@ export default function Story({ params }: StoryProps) {
                   color="text-grayPrimary"
                   text="Next:"
                 />
-                <Link href={`/stories/${nextStory.id}`}>
+                <Link href={`/stories/${nextStory._id}`}>
                   <Text
                     fontSize="text-xl"
                     className="duration-300  hover:text-orange"
@@ -193,7 +388,7 @@ export default function Story({ params }: StoryProps) {
                   color="text-grayPrimary"
                   text="Prev:"
                 />
-                <Link href={`/stories/${prevStory.id}`}>
+                <Link href={`/stories/${prevStory._id}`}>
                   <Text
                     fontSize="text-xl"
                     className="duration-300  hover:text-orange"
@@ -202,6 +397,75 @@ export default function Story({ params }: StoryProps) {
                 </Link>
               </>
             )}
+          </div>
+        </div>
+
+        {/* Comments Section */}
+        <Text
+          fontSize="text-[28px]"
+          color="text-grayPrimary"
+          title="Comments"
+        />
+        <div className="flex flex-col gap-5">
+          {renderComments(comments)}
+
+          {/* Comments Form */}
+          <Text
+            fontSize="text-[28px]"
+            color="text-grayPrimary"
+            title={isReplyMode ? "Reply Form" : "Comments Form"}
+          />
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10 flex flex-col gap-5 w-[500px]"
+          >
+            <label htmlFor="message">Message</label>
+            <input
+              className="text-black"
+              type="text"
+              maxLength={60}
+              name="message"
+              value={form.message || ""}
+              onChange={handleChange}
+              required
+            />
+
+            <label htmlFor="userEmail">Email</label>
+            <input
+              className="text-black"
+              type="text"
+              maxLength={60}
+              name="userEmail"
+              value={form.userEmail || ""}
+              onChange={handleChange}
+              required
+            />
+
+            <label htmlFor="userName">Name</label>
+            <input
+              className="text-black"
+              type="text"
+              maxLength={60}
+              name="userName"
+              value={form.userName || ""}
+              onChange={handleChange}
+              required
+            />
+
+            <button type="submit" className="btn">
+              {isReplyMode ? "Submit Reply" : "Submit"}
+            </button>
+            {isReplyMode && (
+              <button type="button" className="btn" onClick={resetForm}>
+                Cancel Reply
+              </button>
+            )}
+          </form>
+          <p>{message}</p>
+          <div>
+            {Object.keys(errors).map((err, index) => (
+              <li key={index}>{errors[err]}</li>
+            ))}
           </div>
         </div>
       </div>

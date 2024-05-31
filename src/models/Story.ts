@@ -14,6 +14,7 @@ export interface SocialLink {
 }
 
 export interface IStory extends Document {
+  _id: Types.ObjectId;
   title: string;
   createdAt: Date;
   type: string;

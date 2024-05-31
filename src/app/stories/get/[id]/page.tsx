@@ -7,7 +7,7 @@ interface StoryProps {
   params: { id: string };
 }
 
-interface SroryProps {
+interface Story {
   _id: string;
   title: string;
   type: string;
@@ -35,11 +35,10 @@ interface Comment {
 }
 
 export default function StoryId({ params }: StoryProps) {
-  const [story, setStory] = useState<SroryProps>();
+  const [story, setStory] = useState<Story>();
   const [comments, setComments] = useState<Comment[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
-  console.log(story);
 
   const [form, setForm] = useState<CommentFormData>({
     message: "",
