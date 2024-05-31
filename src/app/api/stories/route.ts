@@ -13,11 +13,20 @@ async function connectToDatabase() {
 }
 
 // Handle GET requests
-export async function GET() {
+export async function GET(req: NextRequest) {
   await connectToDatabase();
   try {
-    const stories = await Story.find({});
-    return NextResponse.json(stories);
+    const url = new URL(req.url);
+    const storyId = url.searchParams.get("storyId");
+
+    if (!storyId) {
+      const stories = await Story.find({});
+
+      return NextResponse.json(stories);
+    }
+    const story = await Story.findById(storyId);
+
+    return NextResponse.json(story);
   } catch (error) {
     console.error("Error fetching stories:", error);
     return NextResponse.json(
