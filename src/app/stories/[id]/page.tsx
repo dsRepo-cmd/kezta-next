@@ -50,7 +50,7 @@ export default function Story({ params }: StoryProps) {
   const [form, setForm] = useState<CommentFormData>({
     message: "",
     userName: "",
-    avatarLink: "https://picsum.photos/100/100?random=1",
+    avatarLink: "https://picsum.photos/id/237/100/100",
     userEmail: "",
     storyId: params.id,
   });
@@ -132,7 +132,7 @@ export default function Story({ params }: StoryProps) {
     setForm({
       message: "",
       userName: "",
-      avatarLink: "https://picsum.photos/100/100?random=1",
+      avatarLink: "https://picsum.photos/id/237/100/100",
       userEmail: "",
       storyId: params.id,
     });

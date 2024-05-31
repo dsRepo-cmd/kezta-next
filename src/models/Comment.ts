@@ -21,7 +21,11 @@ const CommentSchema = new mongoose.Schema<IComment>(
     userName: { type: String, required: true },
     userEmail: { type: String, required: true },
     replies: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
-    avatarLink: { type: String, required: true },
+    avatarLink: {
+      type: String,
+      required: true,
+      default: "https://picsum.photos/id/237/100/100",
+    },
   },
   {
     timestamps: true,

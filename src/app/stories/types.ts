@@ -60,6 +60,7 @@ export interface Comment {
   userName: string;
   userEmail: string;
   avatarLink: string;
+  createdAt: string;
   commentId?: string;
   storyId?: string;
   replies?: Comment[];
