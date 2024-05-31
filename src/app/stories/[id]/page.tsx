@@ -7,72 +7,17 @@ import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
-import { SocialLink } from "@/data/socialLinks";
-
-interface AdjacentLink {
-  _id: string;
-  title: string;
-}
-
-interface FetchStories {
-  story: Srory;
-  prevStory: AdjacentLink;
-  nextStory: AdjacentLink;
-}
-
-interface StoryProps {
-  params: { id: string };
-}
-
-export enum SroriesBlockType {
-  TEXT = "text",
-  IMAGE = "image",
-  TITLE = "title",
-  CHECK_LIST = "checkList",
-  IMAGE_TEXT = "imageText",
-}
-
-interface StoriesBlock {
-  id: string;
-  type: SroriesBlockType;
-  title?: string;
-  text?: string;
-  texts?: { id: string; text: string }[];
-  checkList?: { id: string; text: string }[];
-  image?: string;
-}
-
-interface Srory {
-  id: string;
-  title: string;
-  date: string;
-  type: string;
-  image: string;
-  userName: string;
-  socialLinks: SocialLink[];
-  blocks: StoriesBlock[];
-  comments?: string;
-}
-
-interface CommentFormData {
-  message: string;
-  userName: string;
-  avatarLink: string;
-  userEmail: string;
-  storyId: string;
-  commentId?: string;
-}
-
-interface Comment {
-  _id: string;
-  message: string;
-  userName: string;
-  userEmail: string;
-  avatarLink: string;
-  commentId?: string;
-  storyId?: string;
-  replies?: Comment[];
-}
+import {
+  AdjacentLink,
+  Comment,
+  CommentFormData,
+  FetchStories,
+  SroriesBlockType,
+  Srory,
+  StoryProps,
+} from "../types";
+import CommentForm from "@/containers/CommentForm/CommentForm";
+import CommentsList from "@/containers/CommentsList/CommentsList";
 
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -119,13 +64,6 @@ export default function Story({ params }: StoryProps) {
     if (!form.userEmail) err.userEmail = "Email is required";
     if (!form.userName) err.userName = "Name is required";
     return err;
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
   };
 
   const postComment = async (formData: CommentFormData) => {
@@ -231,19 +169,6 @@ export default function Story({ params }: StoryProps) {
     fetchComments(params.id);
   }, [params.id]);
 
-  const renderComments = (comments: Comment[]) => {
-    return comments.map((comment) => (
-      <div key={comment._id} className="ml-10 mt-5">
-        <p>{comment.message}</p>
-        <p>{comment.userEmail}</p>
-        <button onClick={() => handleReplyClick(comment._id)}>Reply</button>
-        {comment.replies && comment.replies.length > 0 && (
-          <div className="ml-5">{renderComments(comment.replies)}</div>
-        )}
-      </div>
-    ));
-  };
-
   if (!story) {
     return (
       <>
@@ -254,7 +179,7 @@ export default function Story({ params }: StoryProps) {
           <Divider style={{ width: "3rem", paddingTop: "1px" }} />
           <Text text="Back to main" />
         </Link>
-        <TitleBox title="Loadind...." />
+        <TitleBox title="Loading...." />
       </>
     );
   }
@@ -269,7 +194,7 @@ export default function Story({ params }: StoryProps) {
         <Text fontSize="text-xl" text="Back to main" />
       </Link>
 
-      <div className=" flex ">
+      <div className="flex">
         <Image
           src={story.image}
           alt={story.image}
@@ -373,7 +298,7 @@ export default function Story({ params }: StoryProps) {
                 <Link href={`/stories/${nextStory._id}`}>
                   <Text
                     fontSize="text-xl"
-                    className="duration-300  hover:text-orange"
+                    className="duration-300 hover:text-orange"
                     text={nextStory.title}
                   />
                 </Link>
@@ -391,7 +316,7 @@ export default function Story({ params }: StoryProps) {
                 <Link href={`/stories/${prevStory._id}`}>
                   <Text
                     fontSize="text-xl"
-                    className="duration-300  hover:text-orange"
+                    className="duration-300 hover:text-orange"
                     text={prevStory.title}
                   />
                 </Link>
@@ -407,66 +332,24 @@ export default function Story({ params }: StoryProps) {
           title="Comments"
         />
         <div className="flex flex-col gap-5">
-          {renderComments(comments)}
-
-          {/* Comments Form */}
+          <CommentsList
+            comments={comments}
+            handleReplyClick={handleReplyClick}
+          />
           <Text
             fontSize="text-[28px]"
             color="text-grayPrimary"
             title={isReplyMode ? "Reply Form" : "Comments Form"}
           />
-          <form
-            onSubmit={handleSubmit}
-            className="mt-10 flex flex-col gap-5 w-[500px]"
-          >
-            <label htmlFor="message">Message</label>
-            <input
-              className="text-black"
-              type="text"
-              maxLength={60}
-              name="message"
-              value={form.message || ""}
-              onChange={handleChange}
-              required
-            />
-
-            <label htmlFor="userEmail">Email</label>
-            <input
-              className="text-black"
-              type="text"
-              maxLength={60}
-              name="userEmail"
-              value={form.userEmail || ""}
-              onChange={handleChange}
-              required
-            />
-
-            <label htmlFor="userName">Name</label>
-            <input
-              className="text-black"
-              type="text"
-              maxLength={60}
-              name="userName"
-              value={form.userName || ""}
-              onChange={handleChange}
-              required
-            />
-
-            <button type="submit" className="btn">
-              {isReplyMode ? "Submit Reply" : "Submit"}
-            </button>
-            {isReplyMode && (
-              <button type="button" className="btn" onClick={resetForm}>
-                Cancel Reply
-              </button>
-            )}
-          </form>
-          <p>{message}</p>
-          <div>
-            {Object.keys(errors).map((err, index) => (
-              <li key={index}>{errors[err]}</li>
-            ))}
-          </div>
+          <CommentForm
+            form={form}
+            setForm={setForm}
+            handleSubmit={handleSubmit}
+            resetForm={resetForm}
+            isReplyMode={isReplyMode}
+            errors={errors}
+            message={message}
+          />
         </div>
       </div>
     </>
