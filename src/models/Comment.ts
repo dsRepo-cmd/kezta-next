@@ -1,14 +1,15 @@
-import mongoose, { Schema, Types } from "mongoose";
-import { User } from "./User";
+import mongoose, { Model, Schema, Types } from "mongoose";
 
-export interface Comments extends mongoose.Document {
+export interface IComment extends Document {
   message: string;
   createdAt: Date;
-  user: Types.ObjectId | User;
-  replies: Types.ObjectId[] | Comment[];
+  userName: string;
+  userEmail: string;
+  replies?: (Types.ObjectId | IComment)[];
+  avatarLink: string;
 }
 
-const CommentSchema = new mongoose.Schema<Comments>(
+const CommentSchema = new mongoose.Schema<IComment>(
   {
     message: {
       type: String,
@@ -16,26 +17,18 @@ const CommentSchema = new mongoose.Schema<Comments>(
       trim: true,
       maxlength: [2000, "Message cannot be more than 2000 characters"],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    replies: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Comment",
-      },
-    ],
+    createdAt: { type: Date, default: Date.now },
+    userName: { type: String, required: true },
+    userEmail: { type: String, required: true },
+    replies: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    avatarLink: { type: String, required: true },
   },
   {
     timestamps: true,
   }
 );
 
-export default mongoose.models.CommentSchema ||
-  mongoose.model<Comments>("Comment", CommentSchema);
+const CommentModel: Model<IComment> =
+  mongoose.models.Comment || mongoose.model<IComment>("Comment", CommentSchema);
+
+export default CommentModel;
