@@ -6,15 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 import { storiesContent } from "@/data/storiesContent";
-import { StoryI } from "@/models/Story";
 
 const ITEMS_PER_PAGE = 4;
 
-interface StoriesProps {
-  stories: StoryI[];
-}
-
-export default function Stories({ stories }: StoriesProps) {
+export default function Stories() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(storiesContent.cards.length / ITEMS_PER_PAGE);

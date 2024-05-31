@@ -13,6 +13,26 @@ async function connectToDatabase() {
   }
 }
 
+interface PopulateConfig {
+  path: string;
+  model: string;
+  populate: PopulateConfig[];
+}
+
+// Recursive function to populate comments and their replies up to a specified depth
+function populateComments(depth: number): PopulateConfig[] {
+  if (depth <= 0) {
+    return []; // Return an empty array if depth limit is reached
+  }
+  return [
+    {
+      path: "replies",
+      model: "Comment",
+      populate: populateComments(depth - 1), // Recursively populate replies
+    },
+  ];
+}
+
 // Add a comment to a story
 export async function POST(req: NextRequest) {
   await connectToDatabase();
@@ -34,8 +54,6 @@ export async function POST(req: NextRequest) {
     if (!story) {
       return NextResponse.json({ error: "Story not found" }, { status: 404 });
     }
-
-    console.log("story==================", story);
 
     if (!story.comments) {
       story.comments = [];
@@ -109,13 +127,10 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // Find the story and populate comments and their replies
+    // Find the story and populate comments and their replies recursively up to 10 levels
     const story = await Story.findById(storyId).populate({
       path: "comments",
-      populate: {
-        path: "replies",
-        model: "Comment",
-      },
+      populate: populateComments(10),
     });
 
     if (!story) {

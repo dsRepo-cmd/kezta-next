@@ -39,6 +39,7 @@ export default function StoryId({ params }: StoryProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
+  console.log(story);
 
   const [form, setForm] = useState<CommentFormData>({
     message: "",
@@ -167,16 +168,16 @@ export default function StoryId({ params }: StoryProps) {
   }, [params.id]);
 
   const renderComments = (comments: Comment[]) => {
-    return comments.map((comment) => {
-      return (
-        <div key={comment._id} className="ml-10 mt-5">
-          <p>{comment.message}</p>
-          <p>{comment.userEmail}</p>
-          <button onClick={() => handleReplyClick(comment._id)}>Reply</button>
-          {renderComments(comment.replies || [])}
-        </div>
-      );
-    });
+    return comments.map((comment) => (
+      <div key={comment._id} className="ml-10 mt-5">
+        <p>{comment.message}</p>
+        <p>{comment.userEmail}</p>
+        <button onClick={() => handleReplyClick(comment._id)}>Ответить</button>
+        {comment.replies && comment.replies.length > 0 && (
+          <div className="ml-5">{renderComments(comment.replies)}</div>
+        )}
+      </div>
+    ));
   };
 
   return (
