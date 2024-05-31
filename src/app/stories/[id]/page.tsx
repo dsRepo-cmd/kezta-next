@@ -326,20 +326,11 @@ export default function Story({ params }: StoryProps) {
         </div>
 
         {/* Comments Section */}
-        <Text
-          fontSize="text-[28px]"
-          color="text-grayPrimary"
-          title="Comments"
-        />
-        <div className="flex flex-col gap-5">
+
+        <div className="flex flex-col gap-10">
           <CommentsList
             comments={comments}
             handleReplyClick={handleReplyClick}
-          />
-          <Text
-            fontSize="text-[28px]"
-            color="text-grayPrimary"
-            title={isReplyMode ? "Reply Form" : "Comments Form"}
           />
           <CommentForm
             form={form}

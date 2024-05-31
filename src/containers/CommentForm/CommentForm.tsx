@@ -1,4 +1,6 @@
 import { CommentFormData } from "@/app/stories/types";
+import Divider from "@/components/Divider/Divider";
+import TitleBox from "@/components/TitleBox/TitleBox";
 import React from "react";
 
 interface CommentFormProps {
@@ -29,51 +31,84 @@ const CommentForm: React.FC<CommentFormProps> = ({
 
   return (
     <>
+      <TitleBox title={isReplyMode ? "Leave a Reply" : "Leave a Comment"} />
+
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex flex-col gap-5 w-[500px]"
+        className="mt-10 flex flex-col gap-10 w-full"
       >
-        <label htmlFor="message">Message</label>
-        <input
-          className="text-black"
-          type="text"
-          maxLength={60}
-          name="message"
-          value={form.message || ""}
-          onChange={handleChange}
-          required
-        />
+        <div className=" flex  gap-10">
+          <div className=" flex flex-col  gap-2 w-full ">
+            <div className=" flex gap-4 ">
+              <label className="text-grayPrimary text-lg" htmlFor="userName">
+                Name
+              </label>
+              <input
+                className="bg-black border-none focus-visible:outline-none"
+                type="text"
+                maxLength={60}
+                name="userName"
+                value={form.userName || ""}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <Divider />
+          </div>
 
-        <label htmlFor="userEmail">Email</label>
-        <input
-          className="text-black"
-          type="text"
-          maxLength={60}
-          name="userEmail"
-          value={form.userEmail || ""}
-          onChange={handleChange}
-          required
-        />
+          <div className=" flex flex-col  gap-2 w-full ">
+            <div className=" flex gap-4 ">
+              <label className="text-grayPrimary text-lg" htmlFor="userEmail">
+                Email
+              </label>
+              <input
+                className="bg-black border-none focus-visible:outline-none"
+                type="text"
+                maxLength={60}
+                name="userEmail"
+                value={form.userEmail || ""}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <Divider />
+          </div>
+        </div>
 
-        <label htmlFor="userName">Name</label>
-        <input
-          className="text-black"
-          type="text"
-          maxLength={60}
-          name="userName"
-          value={form.userName || ""}
-          onChange={handleChange}
-          required
-        />
+        <div className=" flex flex-col  gap-2 w-full ">
+          <div className=" flex gap-4 ">
+            <label className="text-grayPrimary text-lg" htmlFor="message">
+              Message
+            </label>
+            <textarea
+              className="bg-black border-none resize-x w-full focus-visible:outline-none"
+              rows={5}
+              name="message"
+              value={form.message || ""}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <Divider />
+        </div>
 
-        <button type="submit" className="btn">
-          {isReplyMode ? "Submit Reply" : "Submit"}
-        </button>
-        {isReplyMode && (
-          <button type="button" className="btn" onClick={resetForm}>
-            Cancel Reply
+        <div className=" flex justify-between">
+          <button
+            type="submit"
+            className="text-lg px-12 py-3 bg-orange uppercase"
+          >
+            {isReplyMode ? "Submit Reply" : "Submit"}
           </button>
-        )}
+          {isReplyMode && (
+            <button
+              type="button"
+              className="text-lg px-12 py-3 bg-orange uppercase"
+              onClick={resetForm}
+            >
+              Cancel Reply
+            </button>
+          )}
+        </div>
       </form>
       <p>{message}</p>
       <div>
