@@ -37,8 +37,17 @@ export default function Stories() {
 
   const handlePageClick = useCallback((page: number) => {
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  const totalPages = Math.ceil(stories.length / ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
+  const totalPages = useMemo(
+    () => Math.ceil(stories.length / ITEMS_PER_PAGE),
+    [stories.length]
+  );
 
   const currentCards = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;

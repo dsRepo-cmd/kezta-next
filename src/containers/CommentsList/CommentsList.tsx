@@ -4,6 +4,7 @@ import { Comment } from "@/app/stories/types";
 import CommentItem from "../CommentItem/CommentItem";
 
 import TitleBox from "@/components/TitleBox/TitleBox";
+import Text from "@/components/Text/Text";
 
 interface CommentsListProps {
   comments: Comment[];
@@ -17,6 +18,14 @@ const CommentsList: React.FC<CommentsListProps> = ({
   return (
     <>
       <TitleBox title={"Comments"} />
+      {comments.length === 0 && (
+        <Text
+          color="text-grayPrimary"
+          className=" mb-5"
+          fontSize="text-[28px]"
+          text="No comments yet"
+        />
+      )}
       {comments.map((comment) => (
         <CommentItem
           key={comment._id}

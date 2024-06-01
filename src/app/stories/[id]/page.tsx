@@ -295,7 +295,12 @@ export default function Story({ params }: StoryProps) {
                   color="text-grayPrimary"
                   text="Next:"
                 />
-                <Link href={`/stories/${nextStory._id}`}>
+                <Link
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  href={`/stories/${nextStory._id}`}
+                >
                   <Text
                     fontSize="text-xl"
                     className="duration-300 hover:text-orange"
@@ -313,7 +318,12 @@ export default function Story({ params }: StoryProps) {
                   color="text-grayPrimary"
                   text="Prev:"
                 />
-                <Link href={`/stories/${prevStory._id}`}>
+                <Link
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  href={`/stories/${prevStory._id}`}
+                >
                   <Text
                     fontSize="text-xl"
                     className="duration-300 hover:text-orange"
