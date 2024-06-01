@@ -1,6 +1,7 @@
 import { CommentFormData } from "@/app/stories/types";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
+import Textarea from "@/components/Textarea/Textarea";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import React from "react";
 
@@ -56,13 +57,12 @@ const CommentForm: React.FC<CommentFormProps> = ({
           />
         </div>
 
-        <Input
+        <Textarea
           value={form.message}
           label="Message"
           required
           name="message"
           onChange={handleChange}
-          isTextArea
         />
 
         <div className=" flex justify-between">

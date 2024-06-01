@@ -1,7 +1,7 @@
 import Button from "@/components/Button/Button";
-
 import Input from "@/components/Input/Input";
 import Text from "@/components/Text/Text";
+import Textarea from "@/components/Textarea/Textarea";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import { contactContent } from "@/data/contactContent";
 
@@ -11,7 +11,15 @@ const Contact = () => {
     name: string,
     type = "text",
     isTextArea = false
-  ) => <Input label={label} name={name} type={type} isTextArea={isTextArea} />;
+  ) => (
+    <>
+      {isTextArea ? (
+        <Textarea label={label} name={name} type={type} />
+      ) : (
+        <Input label={label} name={name} type={type} />
+      )}
+    </>
+  );
 
   const renderInfoBlock = (title: string, text: string | string[]) => (
     <div className="flex flex-col w-full gap-2">

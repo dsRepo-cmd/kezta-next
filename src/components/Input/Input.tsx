@@ -4,15 +4,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
   htmlFor?: string;
-  isTextArea?: boolean;
-  rows?: number;
+
+  value?: string;
 }
 export default function Input({
   label,
-  rows = 6,
   name,
   type = "text",
-  isTextArea,
+  value,
+
   ...otherProps
 }: InputProps) {
   return (
@@ -22,20 +22,13 @@ export default function Input({
           {label}
         </label>
 
-        {isTextArea ? (
-          <textarea
-            className="bg-black border-none resize-x w-full focus-visible:outline-none"
-            rows={rows}
-            name={name}
-          />
-        ) : (
-          <input
-            className="bg-black border-none focus-visible:outline-none"
-            name={name}
-            type={type}
-            {...otherProps}
-          />
-        )}
+        <input
+          className="bg-black border-none focus-visible:outline-none"
+          name={name}
+          type={type}
+          value={value}
+          {...otherProps}
+        />
       </div>
       <Divider />
     </div>
