@@ -27,6 +27,7 @@ interface Story {
   userName: string;
   socialLinks: SocialLink[];
   blocks: StoriesBlock[];
+  comments?: string;
 }
 
 export const stories: Story[] = [

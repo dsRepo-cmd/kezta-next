@@ -1,4 +1,6 @@
-import Divider from "@/components/Divider/Divider";
+import Button from "@/components/Button/Button";
+
+import Input from "@/components/Input/Input";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import { contactContent } from "@/data/contactContent";
@@ -9,30 +11,7 @@ const Contact = () => {
     name: string,
     type = "text",
     isTextArea = false
-  ) => (
-    <div className="flex flex-col gap-2 w-full">
-      <div className="flex gap-4">
-        <label className="text-grayPrimary text-lg" htmlFor={name}>
-          {label}
-        </label>
-        {isTextArea ? (
-          <textarea
-            className="bg-black border-none focus-visible:outline-none"
-            rows={6}
-            cols={40}
-            name={name}
-          />
-        ) : (
-          <input
-            className="bg-black border-none focus-visible:outline-none"
-            name={name}
-            type={type}
-          />
-        )}
-      </div>
-      <Divider />
-    </div>
-  );
+  ) => <Input label={label} name={name} type={type} isTextArea={isTextArea} />;
 
   const renderInfoBlock = (title: string, text: string | string[]) => (
     <div className="flex flex-col w-full gap-2">
@@ -83,9 +62,9 @@ const Contact = () => {
             "text",
             true
           )}
-          <button className="text-lg px-12 py-3 bg-orange uppercase">
+          <Button className="text-lg px-12 py-3 bg-orange uppercase">
             {contactContent.form.button}
-          </button>
+          </Button>
         </form>
         {/* info  */}
 

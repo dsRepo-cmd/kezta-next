@@ -1,16 +1,23 @@
-import React, { useMemo } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import { SroriesBlockType, stories } from "@/data/stories";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
-
-interface StoryProps {
-  params: { id: string };
-}
+import {
+  AdjacentLink,
+  Comment,
+  CommentFormData,
+  FetchStories,
+  SroriesBlockType,
+  Srory,
+  StoryProps,
+} from "../types";
+import CommentForm from "@/containers/CommentForm/CommentForm";
+import CommentsList from "@/containers/CommentsList/CommentsList";
 
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -32,22 +39,135 @@ const toBase64 = (str: string) =>
     : window.btoa(str);
 
 export default function Story({ params }: StoryProps) {
-  const story = stories.find((block) => block.id === params.id);
+  const [story, setStory] = useState<Srory>();
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [message, setMessage] = useState("");
 
-  const currentIndex = useMemo(
-    () => stories.findIndex((block) => block.id === params.id),
-    [params.id]
-  );
+  const [prevStory, setPrevStory] = useState<AdjacentLink>();
+  const [nextStory, setNextStory] = useState<AdjacentLink>();
 
-  const prevStory = useMemo(
-    () => (currentIndex > 0 ? stories[currentIndex - 1] : null),
-    [currentIndex]
-  );
-  const nextStory = useMemo(
-    () =>
-      currentIndex < stories.length - 1 ? stories[currentIndex + 1] : null,
-    [currentIndex]
-  );
+  const [form, setForm] = useState<CommentFormData>({
+    message: "",
+    userName: "",
+    avatarLink: "https://picsum.photos/id/237/100/100",
+    userEmail: "",
+    storyId: params.id,
+  });
+
+  const [isReplyMode, setIsReplyMode] = useState(false);
+  const [currentCommentId, setCurrentCommentId] = useState<string | null>(null);
+
+  const formValidate = () => {
+    let err: Record<string, string> = {};
+    if (!form.message) err.message = "Message is required";
+    if (!form.userEmail) err.userEmail = "Email is required";
+    if (!form.userName) err.userName = "Name is required";
+    return err;
+  };
+
+  const postComment = async (formData: CommentFormData) => {
+    try {
+      const res = await fetch("/api/stories/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      setMessage(data.message);
+      fetchComments(params.id); // Fetch comments again to update the list
+      resetForm();
+    } catch (error) {
+      console.error("Error posting comment:", error);
+    }
+  };
+
+  const postReply = async (formData: CommentFormData) => {
+    try {
+      const res = await fetch("/api/stories/comments", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      setMessage(data.message);
+      fetchComments(params.id); // Fetch comments again to update the list
+      resetForm();
+    } catch (error) {
+      console.error("Error posting reply:", error);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const errs = formValidate();
+    if (Object.keys(errs).length === 0) {
+      if (isReplyMode && currentCommentId) {
+        await postReply({ ...form, commentId: currentCommentId });
+      } else {
+        await postComment(form);
+      }
+    } else {
+      setErrors(errs);
+    }
+  };
+
+  const handleReplyClick = (commentId: string) => {
+    setIsReplyMode(true);
+    setCurrentCommentId(commentId);
+    setForm((prevForm) => ({
+      ...prevForm,
+      commentId: commentId,
+      message: "",
+    }));
+  };
+
+  const resetForm = () => {
+    setIsReplyMode(false);
+    setCurrentCommentId(null);
+    setForm({
+      message: "",
+      userName: "",
+      avatarLink: "https://picsum.photos/id/237/100/100",
+      userEmail: "",
+      storyId: params.id,
+    });
+  };
+
+  const fetchComments = async (storyId: string) => {
+    try {
+      const res = await fetch(`/api/stories/comments?storyId=${storyId}`);
+      const data = await res.json();
+      setComments(data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+
+  const fetchStories = async (storyId: string) => {
+    try {
+      const res = await fetch(`/api/stories?storyId=${storyId}`);
+      const data: FetchStories = await res.json();
+
+      setStory(data.story);
+      setPrevStory(data.prevStory);
+      setNextStory(data.nextStory);
+    } catch (error) {
+      console.error("Error fetching stories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStories(params.id);
+  }, [params.id]);
+
+  useEffect(() => {
+    fetchComments(params.id);
+  }, [params.id]);
 
   if (!story) {
     return (
@@ -59,7 +179,7 @@ export default function Story({ params }: StoryProps) {
           <Divider style={{ width: "3rem", paddingTop: "1px" }} />
           <Text text="Back to main" />
         </Link>
-        <TitleBox title="Story not found" />
+        <TitleBox title="Loading...." />
       </>
     );
   }
@@ -74,7 +194,7 @@ export default function Story({ params }: StoryProps) {
         <Text fontSize="text-xl" text="Back to main" />
       </Link>
 
-      <div className=" flex ">
+      <div className="flex">
         <Image
           src={story.image}
           alt={story.image}
@@ -175,10 +295,15 @@ export default function Story({ params }: StoryProps) {
                   color="text-grayPrimary"
                   text="Next:"
                 />
-                <Link href={`/stories/${nextStory.id}`}>
+                <Link
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  href={`/stories/${nextStory._id}`}
+                >
                   <Text
                     fontSize="text-xl"
-                    className="duration-300  hover:text-orange"
+                    className="duration-300 hover:text-orange"
                     text={nextStory.title}
                   />
                 </Link>
@@ -193,16 +318,39 @@ export default function Story({ params }: StoryProps) {
                   color="text-grayPrimary"
                   text="Prev:"
                 />
-                <Link href={`/stories/${prevStory.id}`}>
+                <Link
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  href={`/stories/${prevStory._id}`}
+                >
                   <Text
                     fontSize="text-xl"
-                    className="duration-300  hover:text-orange"
+                    className="duration-300 hover:text-orange"
                     text={prevStory.title}
                   />
                 </Link>
               </>
             )}
           </div>
+        </div>
+
+        {/* Comments Section */}
+
+        <div className="flex flex-col gap-10">
+          <CommentsList
+            comments={comments}
+            handleReplyClick={handleReplyClick}
+          />
+          <CommentForm
+            form={form}
+            setForm={setForm}
+            handleSubmit={handleSubmit}
+            resetForm={resetForm}
+            isReplyMode={isReplyMode}
+            errors={errors}
+            message={message}
+          />
         </div>
       </div>
     </>

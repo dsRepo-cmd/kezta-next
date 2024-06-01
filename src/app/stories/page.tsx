@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Image from "next/image";
@@ -9,20 +9,51 @@ import { storiesContent } from "@/data/storiesContent";
 
 const ITEMS_PER_PAGE = 4;
 
+interface StoryProps {
+  _id: string;
+  title: string;
+  type: string;
+  image: string;
+  date: string;
+}
+
 export default function Stories() {
+  const [stories, setStories] = useState<StoryProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(storiesContent.cards.length / ITEMS_PER_PAGE);
+  const fetchStories = async () => {
+    try {
+      const res = await fetch("/api/stories");
+      const data = await res.json();
+      setStories(data);
+    } catch (error) {
+      console.error("Error fetching stories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStories();
+  }, []);
+
+  const handlePageClick = useCallback((page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
+  const totalPages = useMemo(
+    () => Math.ceil(stories.length / ITEMS_PER_PAGE),
+    [stories.length]
+  );
 
   const currentCards = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = currentPage * ITEMS_PER_PAGE;
-    return storiesContent.cards.slice(startIndex, endIndex);
-  }, [currentPage]);
-
-  const handlePageClick = useCallback((page: number) => {
-    setCurrentPage(page);
-  }, []);
+    return stories.slice(startIndex, endIndex);
+  }, [currentPage, stories]);
 
   const renderPagination = useMemo(() => {
     const pages = [];
@@ -55,10 +86,10 @@ export default function Stories() {
 
       <div className=" flex flex-col gap-20">
         {currentCards.map((card) => (
-          <div className="flex flex-col gap-3" key={card.id}>
+          <div className="flex flex-col gap-3" key={card._id}>
             <div className=" flex overflow-hidden">
               <Link
-                href={`/stories/${card.id}`}
+                href={`/stories/${card._id}`}
                 className="relative w-[900px] h-[300px] "
               >
                 <Image
