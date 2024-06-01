@@ -1,4 +1,5 @@
 import { CommentFormData } from "@/app/stories/types";
+import Button from "@/components/Button/Button";
 import Divider from "@/components/Divider/Divider";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import React from "react";
@@ -93,20 +94,11 @@ const CommentForm: React.FC<CommentFormProps> = ({
         </div>
 
         <div className=" flex justify-between">
-          <button
-            type="submit"
-            className="text-lg px-12 py-3 bg-orange uppercase"
-          >
-            {isReplyMode ? "Submit Reply" : "Submit"}
-          </button>
+          <Button type="submit">{isReplyMode ? "Reply" : "Submit"}</Button>
           {isReplyMode && (
-            <button
-              type="button"
-              className="text-lg px-12 py-3 bg-orange uppercase"
-              onClick={resetForm}
-            >
-              Cancel Reply
-            </button>
+            <Button type="button" onClick={resetForm}>
+              Cancel
+            </Button>
           )}
         </div>
       </form>

@@ -1,3 +1,4 @@
+import Button from "@/components/Button/Button";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
@@ -82,9 +83,9 @@ const Contact = () => {
             "text",
             true
           )}
-          <button className="text-lg px-12 py-3 bg-orange uppercase">
+          <Button className="text-lg px-12 py-3 bg-orange uppercase">
             {contactContent.form.button}
-          </button>
+          </Button>
         </form>
         {/* info  */}
 

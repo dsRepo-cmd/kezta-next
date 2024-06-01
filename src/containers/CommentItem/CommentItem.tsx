@@ -1,4 +1,5 @@
 import { Comment } from "@/app/stories/types";
+import Button from "@/components/Button/Button";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import Image from "next/image";
@@ -52,12 +53,13 @@ const CommentItem: React.FC<CommentItemProps> = ({
 
             <div className=" flex gap-5 items-center">
               <Divider style={{ width: "3rem", paddingTop: "1px" }} />
-              <button
+              <Button
+                variant="clear"
                 className=" text-orange "
                 onClick={() => handleReplyClick(comment._id)}
               >
                 Reply
-              </button>
+              </Button>
             </div>
           </div>
         </div>
