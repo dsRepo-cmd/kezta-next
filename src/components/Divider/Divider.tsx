@@ -11,7 +11,7 @@ export default function Divider({ vertical, className, style }: DividerProps) {
     return (
       <div
         style={style}
-        className={` block border-solid border-l-2 border-divider mr-20 ${className} sm:mr-2`}
+        className={` block border-solid border-l-2 border-divider ${className} `}
       ></div>
     );
   }

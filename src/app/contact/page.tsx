@@ -41,15 +41,15 @@ const Contact = () => {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className=" sm:w-full"
+        className=" md:w-full"
       ></iframe>
 
-      <div className="flex gap-32 mt-20 sm:flex-col">
+      <div className="flex gap-32 mt-20 md:flex-col">
         {/* form  */}
 
         <form
           noValidate
-          className="flex flex-col gap-10 w-1/2 items-start sm:w-full"
+          className="flex flex-col gap-10 w-1/2 items-start md:w-full"
         >
           <Input label={contactContent.form.name} name={"name"} type={"text"} />
           <Input
