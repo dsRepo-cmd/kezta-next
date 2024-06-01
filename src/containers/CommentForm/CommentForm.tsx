@@ -1,6 +1,6 @@
 import { CommentFormData } from "@/app/stories/types";
 import Button from "@/components/Button/Button";
-import Divider from "@/components/Divider/Divider";
+import Input from "@/components/Input/Input";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import React from "react";
 
@@ -39,59 +39,31 @@ const CommentForm: React.FC<CommentFormProps> = ({
         className="mt-10 flex flex-col gap-10 w-full"
       >
         <div className=" flex  gap-10">
-          <div className=" flex flex-col  gap-2 w-full ">
-            <div className=" flex gap-4 ">
-              <label className="text-grayPrimary text-lg" htmlFor="userName">
-                Name
-              </label>
-              <input
-                className="bg-black border-none focus-visible:outline-none"
-                type="text"
-                maxLength={60}
-                name="userName"
-                value={form.userName || ""}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <Divider />
-          </div>
+          <Input
+            onChange={handleChange}
+            value={form.userName}
+            label="Name"
+            required
+            name="userName"
+          />
 
-          <div className=" flex flex-col  gap-2 w-full ">
-            <div className=" flex gap-4 ">
-              <label className="text-grayPrimary text-lg" htmlFor="userEmail">
-                Email
-              </label>
-              <input
-                className="bg-black border-none focus-visible:outline-none"
-                type="text"
-                maxLength={60}
-                name="userEmail"
-                value={form.userEmail || ""}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <Divider />
-          </div>
+          <Input
+            value={form.userEmail}
+            label="Email"
+            required
+            name="userEmail"
+            onChange={handleChange}
+          />
         </div>
 
-        <div className=" flex flex-col  gap-2 w-full ">
-          <div className=" flex gap-4 ">
-            <label className="text-grayPrimary text-lg" htmlFor="message">
-              Message
-            </label>
-            <textarea
-              className="bg-black border-none resize-x w-full focus-visible:outline-none"
-              rows={5}
-              name="message"
-              value={form.message || ""}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <Divider />
-        </div>
+        <Input
+          value={form.message}
+          label="Message"
+          required
+          name="message"
+          onChange={handleChange}
+          isTextArea
+        />
 
         <div className=" flex justify-between">
           <Button type="submit">{isReplyMode ? "Reply" : "Submit"}</Button>
