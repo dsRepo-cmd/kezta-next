@@ -8,11 +8,23 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      screens: {
+        "2xl": "1535px",
+        xl: "1279px",
+        lg: "1023px",
+        sm: "639px",
+        md: "767px",
+      },
+    },
+
     screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
+      "2xl": { max: "1535px" },
+      xl: { max: "1279px" },
+      lg: { max: "1023px" },
+      md: { max: "836px" },
+      sm: { max: "639px" },
+      exsm: { max: "380px" },
     },
 
     colors: {

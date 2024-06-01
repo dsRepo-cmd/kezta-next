@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="flex flex-row  min-h-screen  justify-between  bg-black overflow-hidden">
       {/* left side */}
-      <div className=" flex flex-col items-center  p-10 w-[212px]">
+      <div className=" flex flex-col items-center  p-10 w-[212px] ">
         <LogoIcon />
 
         <div className=" flex h-full">

@@ -23,7 +23,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 w-full">
         <TitleBox title={contactContent.title} />
         <Text
           fontSize="text-xl"
@@ -41,12 +41,16 @@ const Contact = () => {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
+        className=" sm:w-full"
       ></iframe>
 
-      <div className="flex gap-32 mt-20">
+      <div className="flex gap-32 mt-20 sm:flex-col">
         {/* form  */}
 
-        <form noValidate className="flex flex-col gap-10 w-1/2 items-start">
+        <form
+          noValidate
+          className="flex flex-col gap-10 w-1/2 items-start sm:w-full"
+        >
           <Input label={contactContent.form.name} name={"name"} type={"text"} />
           <Input
             label={contactContent.form.email}

@@ -7,7 +7,7 @@ interface NavigationProps {
 
 export default function Navigation({ path }: NavigationProps) {
   return (
-    <nav className=" flex justify-center items-center gap-10">
+    <nav className=" flex justify-center items-center gap-10 lg:gap-5 sm:flex-col">
       {navigation.map((link) => (
         <Link
           className={` text-lg hover:text-orange duration-300 ${
