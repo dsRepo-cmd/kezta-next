@@ -20,23 +20,34 @@ interface TextProps {
   fontSize?: FontSize;
 }
 
+const colorClasses: { [key in TextColor]: string } = {
+  "text-grayPrimary": "text-grayPrimary selection:bg-grayLight",
+  "text-white": "text-white selection:text-grayPrimary selection:bg-grayLight",
+  "text-orange": "text-orange",
+};
+
 export default function Text({
   title,
   subtitle,
   text,
-  color,
+  color = "text-white",
   className,
   fontSize = "text-base",
 }: TextProps) {
+  const colorClass = colorClasses[color] || "";
   return (
     <>
       {title && (
-        <h2 className={` ${color} ${className} ${fontSize}`}>{title}</h2>
+        <h2 className={` ${colorClass} ${className} ${fontSize}`}>{title}</h2>
       )}
       {subtitle && (
-        <h3 className={`  ${color} ${className} ${fontSize}`}>{subtitle}</h3>
+        <h3 className={`  ${colorClass} ${className} ${fontSize}`}>
+          {subtitle}
+        </h3>
       )}
-      {text && <p className={` ${color} ${className} ${fontSize}`}>{text}</p>}
+      {text && (
+        <p className={` ${colorClass} ${className} ${fontSize}`}>{text}</p>
+      )}
     </>
   );
 }

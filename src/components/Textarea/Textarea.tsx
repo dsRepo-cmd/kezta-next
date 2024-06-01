@@ -25,7 +25,7 @@ export default function Textarea({
         </label>
 
         <textarea
-          className="bg-black border-none resize-x w-full focus-visible:outline-none"
+          className="bg-black border-none resize-x w-full focus-visible:outline-none selection:text-grayPrimary"
           rows={rows}
           name={name}
           {...otherProps}

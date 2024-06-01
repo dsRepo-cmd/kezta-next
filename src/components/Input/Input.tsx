@@ -18,12 +18,12 @@ export default function Input({
   return (
     <div className="flex flex-col gap-2 w-full">
       <div className="flex gap-4">
-        <label className="text-grayPrimary text-lg text-nowrap" htmlFor={name}>
+        <label className="text-grayPrimary text-lg text-nowrap " htmlFor={name}>
           {label}
         </label>
 
         <input
-          className="bg-black border-none focus-visible:outline-none"
+          className="bg-black border-none focus-visible:outline-none selection:text-grayPrimary"
           name={name}
           type={type}
           value={value}
