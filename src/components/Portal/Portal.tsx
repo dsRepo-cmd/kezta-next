@@ -16,7 +16,7 @@ export default function Portal(props: PortalProps) {
 
   return mounted && ref.current
     ? createPortal(
-        <div className=" block fixed  left-0 top-16  overflow-auto bg-opacity-20 z-50">
+        <div className=" block fixed  left-0 top-[70px]  overflow-auto bg-opacity-20 z-50">
           {props.children}
         </div>,
         ref.current

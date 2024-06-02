@@ -13,8 +13,9 @@ html {
 
 body {
   color: #fff;
-  background-color: black;
+
   position: relative;
+  width: 100vw;
 }
 
 ::-webkit-scrollbar {
