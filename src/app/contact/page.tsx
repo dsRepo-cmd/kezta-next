@@ -6,21 +6,6 @@ import TitleBox from "@/components/TitleBox/TitleBox";
 import { contactContent } from "@/data/contactContent";
 
 const Contact = () => {
-  const renderFormInput = (
-    label: string,
-    name: string,
-    type = "text",
-    isTextArea = false
-  ) => (
-    <>
-      {isTextArea ? (
-        <Textarea label={label} name={name} type={type} />
-      ) : (
-        <Input label={label} name={name} type={type} />
-      )}
-    </>
-  );
-
   const renderInfoBlock = (title: string, text: string | string[]) => (
     <div className="flex flex-col w-full gap-2">
       <Text className="text-lg" color="text-orange" text={title} />
@@ -38,7 +23,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 w-full">
         <TitleBox title={contactContent.title} />
         <Text
           fontSize="text-xl"
@@ -56,20 +41,28 @@ const Contact = () => {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
+        className=" md:w-full"
       ></iframe>
 
-      <div className="flex gap-32 mt-20">
+      <div className="flex gap-32 mt-20 md:flex-col">
         {/* form  */}
 
-        <form noValidate className="flex flex-col gap-10 w-1/2 items-start">
-          {renderFormInput(contactContent.form.name, "name")}
-          {renderFormInput(contactContent.form.email, "email")}
-          {renderFormInput(
-            contactContent.form.message,
-            "message",
-            "text",
-            true
-          )}
+        <form
+          noValidate
+          className="flex flex-col gap-10 w-1/2 items-start md:w-full"
+        >
+          <Input label={contactContent.form.name} name={"name"} type={"text"} />
+          <Input
+            label={contactContent.form.email}
+            name={"email"}
+            type={"text"}
+          />
+          <Textarea
+            label={contactContent.form.message}
+            name={"message"}
+            type={"text"}
+          />
+
           <Button className="text-lg px-12 py-3 bg-orange uppercase">
             {contactContent.form.button}
           </Button>

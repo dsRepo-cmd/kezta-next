@@ -18,25 +18,7 @@ import {
 } from "../types";
 import CommentForm from "@/containers/CommentForm/CommentForm";
 import CommentsList from "@/containers/CommentsList/CommentsList";
-
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
-
-const toBase64 = (str: string) =>
-  typeof window === "undefined"
-    ? Buffer.from(str).toString("base64")
-    : window.btoa(str);
+import Icon from "@/components/Icon/Icon";
 
 export default function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
@@ -200,15 +182,7 @@ export default function Story({ params }: StoryProps) {
           alt={story.image}
           width={912}
           height={446}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
           priority
-          placeholder={`data:image/svg+xml;base64,${toBase64(
-            shimmer(912, 446)
-          )}`}
         />
       </div>
 
@@ -248,8 +222,12 @@ export default function Story({ params }: StoryProps) {
               <ul className="flex flex-col gap-5">
                 {block.checkList?.map((item) => (
                   <li className="flex gap-5" key={item.id}>
-                    <CheckIcon />
-                    <Text fontSize="text-lg" text={item.text} />
+                    <Icon Svg={CheckIcon} />
+                    <Text
+                      className=" w-full"
+                      fontSize="text-lg"
+                      text={item.text}
+                    />
                   </li>
                 ))}
               </ul>
@@ -257,13 +235,12 @@ export default function Story({ params }: StoryProps) {
             {block.type === SroriesBlockType.IMAGE_TEXT && (
               <span>
                 {block.image && (
-                  <div className="relative w-[500px] h-[230px] flex-shrink-0 float-right">
+                  <div className="relative flex-shrink-0 float-right">
                     <Image
                       src={block.image}
                       alt={block.image}
-                      fill
-                      sizes="50vw"
-                      style={{ objectFit: "contain" }}
+                      width={500}
+                      height={230}
                     />
                   </div>
                 )}

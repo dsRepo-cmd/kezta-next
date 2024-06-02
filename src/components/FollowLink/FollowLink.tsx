@@ -4,7 +4,7 @@ import FollowIcon from "@/assets/follow-us.svg";
 export default function FollowLink() {
   return (
     <Link href={"#"}>
-      <div className=" absolute top-[450px] left-[80px] rotate-[270deg] flex  gap-2  justify-center items-center ">
+      <div className=" absolute top-[450px] left-[80px] rotate-[270deg] flex  gap-2  justify-center items-center md:hidden xl:left-8 ">
         <span className=" text-lg">Follow Us</span>
         <div className=" text-orange rotate-90">
           <FollowIcon />

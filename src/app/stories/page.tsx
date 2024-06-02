@@ -90,14 +90,14 @@ export default function Stories() {
             <div className=" flex overflow-hidden">
               <Link
                 href={`/stories/${card._id}`}
-                className="relative w-[900px] h-[300px] "
+                className="relative flex  w-full h-full"
               >
                 <Image
                   className=" duration-500 hover:scale-[1.05]"
                   src={card.image}
                   alt={card.image}
-                  fill
-                  style={{ objectFit: "contain" }}
+                  width={900}
+                  height={300}
                   priority
                 />
               </Link>
