@@ -63,7 +63,7 @@ function Navigation({ path }: NavigationProps) {
       {!isBigScreen && (
         <Portal>
           <div
-            className={`w-full mt-10 h-screen duration-300 md:flex flex-col justify-start items-center gap-5 bg-black fixed z-50 ${
+            className={`w-full  h-screen duration-300 md:flex flex-col justify-start items-center gap-5 bg-black fixed z-50 ${
               isOpen ? "right-0" : "translate-x-[100%]"
             }`}
           >
