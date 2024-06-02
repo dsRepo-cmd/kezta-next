@@ -1,27 +1,25 @@
 "use client";
 import { NavigationName, navigation } from "@/data/navigation";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import Button from "../Button/Button";
-import Icon from "../Icon/Icon";
-import BurgerIcon from "@/assets/burger-menu.svg";
 import Portal from "../Portal/Portal";
 
 interface NavigationProps {
   path?: NavigationName;
 }
 
-export default function Navigation({ path }: NavigationProps) {
+function Navigation({ path }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMediumScreen, setIsMediumScreen] = useState(false);
+  const [isBigScreen, setIsBigScreen] = useState(false);
 
-  const toggleNav = () => {
+  const toggleNav = useCallback(() => {
     setIsOpen((prev) => !prev);
-  };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMediumScreen(window.innerWidth >= 836);
+      setIsBigScreen(window.innerWidth >= 836);
     };
 
     handleResize();
@@ -50,7 +48,7 @@ export default function Navigation({ path }: NavigationProps) {
       <Button
         onClick={toggleNav}
         variant="clear"
-        className={` p-1 ${isMediumScreen ? "hidden" : "block"}`}
+        className=" p-1 hidden md:block"
       >
         <div className={`${isOpen && "open"}`} id="nav-icon">
           <span></span>
@@ -59,14 +57,13 @@ export default function Navigation({ path }: NavigationProps) {
         </div>
       </Button>
 
-      {isMediumScreen ? (
-        <div className="flex gap-10 justify-center items-center duration-300 md:hidden">
-          {navigationLinks}
-        </div>
-      ) : (
+      <div className="flex gap-10 justify-center items-center duration-300 md:hidden">
+        {navigationLinks}
+      </div>
+      {!isBigScreen && (
         <Portal>
           <div
-            className={`w-full h-screen duration-300 md:flex flex-col justify-center items-center gap-5 bg-black fixed z-50 ${
+            className={`w-full mt-10 h-screen duration-300 md:flex flex-col justify-start items-center gap-5 bg-black fixed z-50 ${
               isOpen ? "right-0" : "translate-x-[100%]"
             }`}
           >
@@ -77,3 +74,5 @@ export default function Navigation({ path }: NavigationProps) {
     </nav>
   );
 }
+
+export default memo(Navigation);

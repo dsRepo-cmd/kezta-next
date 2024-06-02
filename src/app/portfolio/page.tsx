@@ -35,7 +35,7 @@ export default function Portfolio() {
     <>
       <TitleBox title={portfolioContent.title} />
       <div className="flex gap-32">
-        <div className="flex gap-10">
+        <div className="flex flex-wrap gap-10">
           {portfolioContent.typeTabs.map((tab) => (
             <button
               key={tab.id}
@@ -49,7 +49,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 md:hidden">
           <button
             onClick={() => handleViewChange(PortfolioView.LIST)}
             className={`duration-300 text-grayPrimary hover:text-white ${
@@ -76,22 +76,27 @@ export default function Portfolio() {
         }`}
       >
         {filteredContent.map((item) => (
-          <div
-            key={item.id}
-            className={`relative ${
-              view === PortfolioView.GRID
-                ? "w-[300px] h-[300px]"
-                : "w-[950px] h-[350px]"
-            }`}
-          >
-            <Image
-              src={item.image}
-              alt={item.image}
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </div>
+          <>
+            {view === PortfolioView.GRID ? (
+              <Image
+                key={item.id}
+                src={item.imageSquard}
+                alt={item.image}
+                width={920}
+                height={325}
+                className=" object-contain"
+              />
+            ) : (
+              <Image
+                key={item.id}
+                src={item.image}
+                alt={item.image}
+                width={920}
+                height={325}
+                className=" object-contain"
+              />
+            )}
+          </>
         ))}
       </div>
     </>

@@ -1,25 +1,35 @@
 "use client";
-import Text from "@/components/Text/Text";
-import TitleBox from "@/components/TitleBox/TitleBox";
-import { aboutContent } from "@/data/aboutContent";
 import Image from "next/image";
 import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
+import Text from "@/components/Text/Text";
+import Icon from "@/components/Icon/Icon";
+import TitleBox from "@/components/TitleBox/TitleBox";
+import Button from "@/components/Button/Button";
+import { aboutContent } from "@/data/aboutContent";
+import ClientLogoIcon1 from "@/assets/client-logo1.svg";
+import ClientLogoIcon2 from "@/assets/client-logo2.svg";
+import ClientLogoIcon3 from "@/assets/client-logo3.svg";
+import ClientLogoIcon4 from "@/assets/client-logo4.svg";
+import ClientLogoIcon5 from "@/assets/client-logo5.svg";
+import ClientLogoIcon6 from "@/assets/client-logo6.svg";
+import ClientLogoIcon7 from "@/assets/client-logo7.svg";
+import ClientLogoIcon8 from "@/assets/client-logo8.svg";
 
 export default function About() {
   return (
     <>
       <div className="flex flex-col gap-24">
         {/* section1 */}
-        <section className="flex flex-col gap-10">
+        <section className="flex flex-col gap-10 justify-center">
           <TitleBox title={aboutContent.section1.title} />
           <Text
             fontSize="text-[32px]"
             color="text-white"
             subtitle={aboutContent.section1.subtitle}
           />
-          <div className="flex gap-20">
-            <div className="relative w-1/2 max-w-[400px] min-h-20 flex flex-col">
+          <div className="flex gap-20 md:flex-col items-center">
+            <div className="relative w-1/2 max-w-[400px] min-h-20 flex flex-col md:w-full">
               <Image
                 src="/k-letter.svg"
                 alt="k-letter"
@@ -30,7 +40,7 @@ export default function About() {
               <div className="w-full h-40" />
               <div className="w-full h-48 bg-orange" />
             </div>
-            <div className="flex flex-col gap-6 w-1/2">
+            <div className="flex flex-col gap-6 w-1/2 md:w-full">
               {aboutContent.section1.text.map((text) => (
                 <Text
                   fontSize="text-lg"
@@ -53,7 +63,7 @@ export default function About() {
             </div>
           </div>
           <div className="m-auto">
-            <ul className="flex gap-10 w-full mt-20">
+            <ul className="flex flex-wrap gap-10 w-full mt-20">
               {aboutContent.section1.cards.map((card) => (
                 <li className="flex flex-col gap-4 self-center" key={card.id}>
                   <Text
@@ -83,9 +93,12 @@ export default function About() {
         {/* What We Do */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section2.title} />
-          <ul className="flex flex-wrap gap-20">
+          <ul className="flex flex-wrap gap-20 md:gap-5 md:grid md:grid-cols-2">
             {aboutContent.section2.cards.map((card) => (
-              <li className="flex flex-col gap-4 w-1/4" key={card.id}>
+              <li
+                className="flex flex-col gap-4 w-1/4  md:w-full "
+                key={card.id}
+              >
                 <Image
                   src={card.image}
                   alt={card.image}
@@ -105,8 +118,8 @@ export default function About() {
         {/* Our Expertise */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section3.title} />
-          <div className="flex gap-20">
-            <div className="flex flex-col gap-10 w-1/2">
+          <div className="flex gap-20  md:flex-col">
+            <div className="flex flex-col gap-10 w-1/2 md:w-full">
               <Text
                 fontSize="text-xl"
                 color="text-grayPrimary"
@@ -128,14 +141,13 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div className="flex p-10 bg-grayPrimary w-[450px] h-[360px]">
+            <div className="flex p-10 self-center bg-grayPrimary ">
               <div className="w-full relative">
                 <Image
                   src={aboutContent.section3.image}
                   alt={aboutContent.section3.image}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  sizes="50vh"
+                  width={321}
+                  height={256}
                 />
               </div>
             </div>
@@ -144,15 +156,56 @@ export default function About() {
         {/* Clients */}
         <section className="flex flex-col gap-10">
           <TitleBox title={aboutContent.section4.title} />
-          <ul className="flex flex-wrap w-[700px] gap-20">
-            {aboutContent.section4.cards.map((card) => (
-              <li className="flex gap-4" key={card.id}>
-                <button className="duration-300 text-grayLight hover:text-orange">
-                  {card.image}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className=" grid grid-cols-4 justify-center  gap-20 md:gap-10 max-w-[600px] ">
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon1} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon2} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon3} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon4} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon5} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon6} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon7} />
+            </Button>
+            <Button
+              variant="clear"
+              className="duration-300 text-grayLight hover:text-orange"
+            >
+              <Icon width={60} height={60} Svg={ClientLogoIcon8} />
+            </Button>
+          </div>
         </section>
       </div>
     </>

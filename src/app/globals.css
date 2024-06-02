@@ -14,7 +14,7 @@ html {
 body {
   color: #fff;
   background-color: black;
-  /* color: #c4c4c44f; */
+  position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -58,7 +58,7 @@ body {
   position: absolute;
   height: 3px;
   width: 100%;
-  background: #d5a02c;
+  background: #fff;
   border-radius: 4.5px;
   opacity: 1;
   left: 0;
@@ -105,5 +105,9 @@ body {
   transform: rotate(-135deg);
 }
 #nav-icon:hover span {
-  background-color: rgb(255, 255, 255);
+  background-color: #d5a02c;
+}
+
+#nav-icon:focus span {
+  background-color: #fff;
 }

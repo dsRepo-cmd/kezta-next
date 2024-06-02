@@ -39,7 +39,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
         onSubmit={handleSubmit}
         className="mt-10 flex flex-col gap-10 w-full"
       >
-        <div className=" flex  gap-10">
+        <div className=" flex  gap-10 md:flex-col">
           <Input
             onChange={handleChange}
             value={form.userName}
