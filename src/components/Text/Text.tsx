@@ -44,7 +44,7 @@ export default function Text({
   subtitle,
   text,
   color = "text-white",
-  className,
+  className = "",
   fontSize = "text-base",
 }: TextProps) {
   const colorClass = colorClasses[color] || "";

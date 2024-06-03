@@ -1,10 +1,8 @@
 import React from "react";
-
 import { Comment } from "@/app/stories/types";
-import CommentItem from "../CommentItem/CommentItem";
-
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
+import CommentItem from "../CommentItem/CommentItem";
 
 interface CommentsListProps {
   comments: Comment[];

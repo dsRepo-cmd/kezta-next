@@ -1,7 +1,7 @@
 "use client";
-import { NavigationName, navigation } from "@/data/navigation";
-import Link from "next/link";
 import { memo, useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { NavigationName, navigation } from "@/data/navigation";
 import Button from "../Button/Button";
 import Portal from "../Portal/Portal";
 import cls from "./Navigation.module.css";

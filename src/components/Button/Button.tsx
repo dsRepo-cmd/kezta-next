@@ -17,10 +17,8 @@ const variantClasses: { [key in ButtonVariant]: string } = {
 
 export default function Button({
   className = "",
-
   children,
   disabled = false,
-
   style,
   variant = "filled",
   ...otherProps

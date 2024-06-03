@@ -20,9 +20,6 @@ interface StoryProps {
 
 export default function Stories() {
   const [stories, setStories] = useState<StoryProps[]>([]);
-
-  console.log("render");
-
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchStories = async () => {
@@ -77,20 +74,35 @@ export default function Stories() {
     return pages;
   }, [currentPage, handlePageClick, totalPages]);
 
-  if (!stories) {
+  if (stories.length === 0) {
     return (
-      <div className=" w-[100vw] flex flex-col gap-10 ">
-        <Skeleton width={"50%"} height={60} />
-        <Skeleton width={"50%"} height={"100%"} />
+      <>
+        <div className=" flex flex-col gap-8">
+          <TitleBox title={storiesContent.title} />
+          <Text
+            fontSize="text-xl"
+            color="text-grayPrimary"
+            text={storiesContent.subtitle}
+          />
+        </div>
+        <div className=" w-[60vw] flex flex-col gap-10 md:w-[100vw]">
+            <Skeleton width={"90%"} height={400} />
+          <Skeleton width={"50%"} height={50} />
+          <Skeleton width={"30%"} height={60} />
 
-        <Skeleton width={"100%"} height={430} />
-        <Skeleton width={"50%"} height={50} />
-        <Skeleton width={"30%"} height={120} />
+          <Skeleton width={"90%"} height={400} />
+          <Skeleton width={"50%"} height={50} />
+          <Skeleton width={"30%"} height={60} />
 
-        <Skeleton width={"100%"} height={430} />
-        <Skeleton width={"50%"} height={50} />
-        <Skeleton width={"30%"} height={120} />
-      </div>
+          <Skeleton width={"90%"} height={400} />
+          <Skeleton width={"50%"} height={50} />
+          <Skeleton width={"30%"} height={60} />
+
+          <Skeleton width={"90%"} height={400} />
+          <Skeleton width={"50%"} height={50} />
+          <Skeleton width={"30%"} height={60} />
+        </div>
+      </>
     );
   }
 
