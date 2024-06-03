@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import GridIcon from "@/assets/grid.svg";
 import ListIcon from "@/assets/list.svg";
+import Skeleton from "@/components/Skeleton/Skeleton";
 
 export default function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);
