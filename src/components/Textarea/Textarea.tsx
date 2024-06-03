@@ -5,7 +5,6 @@ interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   name: string;
   htmlFor?: string;
-
   rows?: number;
   value?: string;
 }

@@ -35,6 +35,7 @@ export default function About() {
                 alt="k-letter"
                 width={220}
                 height={220}
+                style={{ width: "auto", height: "auto" }}
                 className="absolute left-1/2 top-5 translate-x-[-50%]"
               />
               <div className="w-full h-40" />
@@ -99,12 +100,15 @@ export default function About() {
                 className="flex flex-col gap-4 w-1/4  md:w-full "
                 key={card.id}
               >
-                <Image
-                  src={card.image}
-                  alt={card.image}
-                  width={50}
-                  height={50}
-                />
+                <div className=" w-[55px] h-[55px]">
+                  <Image
+                    src={card.image}
+                    alt={card.image}
+                    width={50}
+                    height={50}
+                    style={{ width: "auto", height: "auto" }}
+                  />
+                </div>
                 <Text
                   fontSize="text-2xl"
                   color="text-white"
@@ -148,6 +152,7 @@ export default function About() {
                   alt={aboutContent.section3.image}
                   width={321}
                   height={256}
+                  style={{ width: "auto", height: "auto" }}
                 />
               </div>
             </div>

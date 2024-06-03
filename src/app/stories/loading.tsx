@@ -2,17 +2,25 @@ import Skeleton from "@/components/Skeleton/Skeleton";
 
 export default function LoadingStories() {
   return (
-    <div className=" w-[100vw] flex flex-col gap-10 ">
-      <Skeleton width={"50%"} height={60} />
-      <Skeleton width={"50%"} height={"100%"} />
+    <>
+      <Skeleton width={"50%"} height={80} />
+      <Skeleton width={"100%"} height={80} />
 
-      <Skeleton width={"100%"} height={430} />
+      <Skeleton width={"100%"} height={400} />
       <Skeleton width={"50%"} height={50} />
-      <Skeleton width={"30%"} height={120} />
+      <Skeleton width={"30%"} height={60} />
 
-      <Skeleton width={"100%"} height={430} />
+      <Skeleton width={"100%"} height={400} />
       <Skeleton width={"50%"} height={50} />
-      <Skeleton width={"30%"} height={120} />
-    </div>
+      <Skeleton width={"30%"} height={60} />
+
+      <Skeleton width={"100%"} height={400} />
+      <Skeleton width={"50%"} height={50} />
+      <Skeleton width={"30%"} height={60} />
+
+      <Skeleton width={"100%"} height={400} />
+      <Skeleton width={"50%"} height={50} />
+      <Skeleton width={"30%"} height={60} />
+    </>
   );
 }

@@ -1,9 +1,9 @@
-import { CommentFormData } from "@/app/stories/types";
+import React from "react";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import Textarea from "@/components/Textarea/Textarea";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import React from "react";
+import { CommentFormData } from "@/app/stories/types";
 
 interface CommentFormProps {
   form: CommentFormData;

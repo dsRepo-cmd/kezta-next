@@ -162,12 +162,11 @@ export default function Story({ params }: StoryProps) {
           <Divider style={{ width: "3rem", paddingTop: "1px" }} />
           <Text fontSize="text-xl" text="Back to main" />
         </Link>
-        <div className=" w-[60vw] flex flex-col gap-10 md:w-[100vw]">
-          <Skeleton width={"100%"} height={400} />
-          <Skeleton width={"50%"} height={60} />
-          <Skeleton width={"50%"} height={120} />
-          <Skeleton width={"100%"} height={800} />
-        </div>
+
+        <Skeleton width={"100%"} height={400} />
+        <Skeleton width={"50%"} height={60} />
+        <Skeleton width={"50%"} height={120} />
+        <Skeleton width={"100%"} height={800} />
       </>
     );
   }
@@ -188,8 +187,7 @@ export default function Story({ params }: StoryProps) {
           alt={story.image}
           width={912}
           height={446}
-          sizes="100vw"
-          className="w-full h-auto"
+          style={{ width: "auto", height: "auto" }}
           priority
         />
       </div>
@@ -249,6 +247,7 @@ export default function Story({ params }: StoryProps) {
                       alt={block.image}
                       width={500}
                       height={230}
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 )}

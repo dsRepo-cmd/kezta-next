@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { Comment } from "@/app/stories/types";
 import Button from "@/components/Button/Button";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
-import Image from "next/image";
 
 interface CommentItemProps {
   comment: Comment;
