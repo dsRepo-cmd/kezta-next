@@ -14,28 +14,31 @@ interface PageProps {
 }
 export default function Page({ children, navigation, isHome }: PageProps) {
   return (
-    <>
+    <div className=" min-h-screen relative">
       <Header>
         <LogoIcon />
         <Navigation path={navigation} />
       </Header>
+
       {isHome ? (
         <>
+          <Label right />
           <main>{children}</main>
         </>
       ) : (
         <>
           <Label />
           <FollowLink />
-          <main className=" flex gap-5 pt-32 mx-auto mb-20 w-[70%] pr-40 md:w-full md:px-2 md:mt-0 xl:pr-0">
+          <main className="  flex gap-5 pt-32 mx-auto mb-20 w-[70%] pr-40 md:w-full md:px-2 md:mt-0 xl:pr-0">
             <Divider vertical />
             <div className=" flex flex-col gap-10">{children}</div>
           </main>
-          <div className=" absolute bottom-[20px] right-[50px] rotate-[270deg] flex justify-center items-center md:hidden ">
-            <span className=" text-grayLight">©2024</span>
-          </div>
         </>
       )}
-    </>
+
+      <div className=" absolute bottom-[60px] right-[50px] rotate-[270deg] xl:bottom-[60px] xl:right-[30px] md:hidden ">
+        <span className=" text-grayLight">©2024</span>
+      </div>
+    </div>
   );
 }
