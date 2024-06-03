@@ -4,6 +4,7 @@ import Link from "next/link";
 import { memo, useCallback, useEffect, useState } from "react";
 import Button from "../Button/Button";
 import Portal from "../Portal/Portal";
+import cls from "./Navigation.module.css";
 
 interface NavigationProps {
   path?: NavigationName;
@@ -50,7 +51,7 @@ function Navigation({ path }: NavigationProps) {
         variant="clear"
         className=" p-1 hidden md:block"
       >
-        <div className={`${isOpen && "open"}`} id="nav-icon">
+        <div className={`${cls.NavIcon} ${isOpen && cls.open}`}>
           <span></span>
           <span></span>
           <span></span>

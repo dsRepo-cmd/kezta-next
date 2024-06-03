@@ -2,7 +2,7 @@ import Skeleton from "@/components/Skeleton/Skeleton";
 
 export default function LoadingStories() {
   return (
-    <div className=" w-[60vw] flex flex-col gap-10 md:w-[90vw]">
+    <div className=" w-[100vw] flex flex-col gap-10 ">
       <Skeleton width={"50%"} height={60} />
       <Skeleton width={"50%"} height={"100%"} />
 

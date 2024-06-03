@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
-import TitleBox from "@/components/TitleBox/TitleBox";
 import Image from "next/image";
 import Link from "next/link";
 import CheckIcon from "@/assets/check.svg";
