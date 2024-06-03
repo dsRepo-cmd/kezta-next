@@ -75,29 +75,29 @@ export default function Portfolio() {
             : "flex flex-col gap-10"
         }`}
       >
-        {filteredContent.map((item) => (
-          <>
-            {view === PortfolioView.GRID ? (
-              <Image
-                key={item.id}
-                src={item.imageSquard}
-                alt={item.image}
-                width={920}
-                height={325}
-                className=" object-contain"
-              />
-            ) : (
-              <Image
-                key={item.id}
-                src={item.image}
-                alt={item.image}
-                width={920}
-                height={325}
-                className=" object-contain"
-              />
-            )}
-          </>
-        ))}
+        {filteredContent.map((item) =>
+          view === PortfolioView.GRID ? (
+            <Image
+              key={item.id}
+              src={item.imageSquard}
+              alt={item.image}
+              width={920}
+              height={325}
+              className="object-contain"
+              priority
+            />
+          ) : (
+            <Image
+              key={item.id}
+              src={item.image}
+              alt={item.image}
+              width={920}
+              height={325}
+              className="object-contain"
+              priority
+            />
+          )
+        )}
       </div>
     </>
   );

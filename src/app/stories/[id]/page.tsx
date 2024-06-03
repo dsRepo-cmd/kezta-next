@@ -187,8 +187,7 @@ export default function Story({ params }: StoryProps) {
           alt={story.image}
           width={912}
           height={446}
-          sizes="100vw"
-          className="w-full h-auto"
+          style={{ width: "auto", height: "auto" }}
           priority
         />
       </div>
@@ -248,6 +247,7 @@ export default function Story({ params }: StoryProps) {
                       alt={block.image}
                       width={500}
                       height={230}
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 )}
