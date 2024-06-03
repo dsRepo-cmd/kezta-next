@@ -1,3 +1,5 @@
+import TitleBox from "@/components/TitleBox/TitleBox";
+
 export default function LoadingStory() {
-  return <div>Loading...</div>;
+  return <TitleBox title="Loading..." />;
 }
