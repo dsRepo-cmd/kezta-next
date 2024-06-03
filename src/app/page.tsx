@@ -1,15 +1,14 @@
 import { NavigationName } from "@/data/navigation";
-
+import Image from "next/image";
 import Text from "@/components/Text/Text";
 import Page from "@/components/Page/Page";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import { socialLinks } from "@/data/socialLinks";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <Page isHome navigation={NavigationName.Home}>
-      <div className=" fixed flex top-[20px] left-[200px] right-[150px] bottom-[80px] xl:left-[100px] xl:right-[60px] md:left-[10px] md:right-[10px]  z-[-20]   p-10 ">
+      <div className=" fixed flex top-[20px] left-[200px] right-[200px] bottom-[80px] xl:left-[100px] xl:right-[160px] md:left-[10px] md:right-[10px] z-[-20] p-10 ">
         <Image
           src={"/main-hero.png"}
           fill

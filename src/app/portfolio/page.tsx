@@ -1,12 +1,12 @@
 "use client";
 import { useCallback, useState, useMemo } from "react";
+import Image from "next/image";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import {
   PortfolioType,
   PortfolioView,
   portfolioContent,
 } from "@/data/portfolioContent";
-import Image from "next/image";
 import GridIcon from "@/assets/grid.svg";
 import ListIcon from "@/assets/list.svg";
 

@@ -1,10 +1,11 @@
 "use client";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import Image from "next/image";
-import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
+import Skeleton from "@/components/Skeleton/Skeleton";
 import { storiesContent } from "@/data/storiesContent";
 
 const ITEMS_PER_PAGE = 4;
@@ -19,6 +20,9 @@ interface StoryProps {
 
 export default function Stories() {
   const [stories, setStories] = useState<StoryProps[]>([]);
+
+  console.log("render");
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchStories = async () => {
@@ -72,6 +76,23 @@ export default function Stories() {
     }
     return pages;
   }, [currentPage, handlePageClick, totalPages]);
+
+  if (!stories) {
+    return (
+      <div className=" w-[100vw] flex flex-col gap-10 ">
+        <Skeleton width={"50%"} height={60} />
+        <Skeleton width={"50%"} height={"100%"} />
+
+        <Skeleton width={"100%"} height={430} />
+        <Skeleton width={"50%"} height={50} />
+        <Skeleton width={"30%"} height={120} />
+
+        <Skeleton width={"100%"} height={430} />
+        <Skeleton width={"50%"} height={50} />
+        <Skeleton width={"30%"} height={120} />
+      </div>
+    );
+  }
 
   return (
     <>

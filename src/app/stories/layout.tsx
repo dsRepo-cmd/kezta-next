@@ -1,6 +1,6 @@
 import Page from "@/components/Page/Page";
-import { NavigationName } from "@/data/navigation";
 import type { Metadata } from "next";
+import { NavigationName } from "@/data/navigation";
 
 export const metadata: Metadata = {
   description: "KEZTA app",

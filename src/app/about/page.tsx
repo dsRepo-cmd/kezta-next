@@ -158,49 +158,49 @@ export default function About() {
           <TitleBox title={aboutContent.section4.title} />
           <div className=" grid grid-cols-4 justify-center  gap-20 md:gap-10 max-w-[600px] ">
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon1} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon2} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon3} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon4} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon5} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon6} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon7} />
             </Button>
             <Button
-              variant="clear"
+              variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon8} />

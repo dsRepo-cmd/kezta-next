@@ -1,17 +1,16 @@
 import { ButtonHTMLAttributes } from "react";
 
-type ButtonVariant = "clear" | "outline" | "filled";
+type ButtonVariant = "clear" | "clearSecondary" | "filled";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children?: React.ReactNode;
-
   variant?: ButtonVariant;
 }
 
 const variantClasses: { [key in ButtonVariant]: string } = {
   clear: "text-orange hover:text-white active:text-grayPrimary",
-  outline: "",
+  clearSecondary: "text-grayPrimary hover:text-orange active:text-white",
   filled:
     "text-lg px-12 py-3 bg-orange uppercase hover:opacity-80 hover:text-grayLight active:text-white ",
 };
@@ -30,7 +29,7 @@ export default function Button({
 
   return (
     <button
-      className={` duration-300   ${className} ${variantClass} `}
+      className={` duration-300  ${className} ${variantClass} `}
       {...otherProps}
     >
       {children}
