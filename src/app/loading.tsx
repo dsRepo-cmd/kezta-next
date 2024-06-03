@@ -1,3 +1,5 @@
+import Skeleton from "@/components/Skeleton/Skeleton";
+
 export default function LoadingHome() {
-  return <div>Loading...</div>;
+  return <Skeleton height={"100%"} width={"100%"} />;
 }

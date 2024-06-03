@@ -1,12 +1,12 @@
 "use client";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import Image from "next/image";
-import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
-import { storiesContent } from "@/data/storiesContent";
 import Skeleton from "@/components/Skeleton/Skeleton";
+import { storiesContent } from "@/data/storiesContent";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -20,6 +20,9 @@ interface StoryProps {
 
 export default function Stories() {
   const [stories, setStories] = useState<StoryProps[]>([]);
+
+  console.log("render");
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchStories = async () => {

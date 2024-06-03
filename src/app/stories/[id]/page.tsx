@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Divider from "@/components/Divider/Divider";
-import Text from "@/components/Text/Text";
 import Image from "next/image";
 import Link from "next/link";
-import CheckIcon from "@/assets/check.svg";
+
+import Divider from "@/components/Divider/Divider";
+import Text from "@/components/Text/Text";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import {
   AdjacentLink,
@@ -19,6 +19,7 @@ import CommentForm from "@/containers/CommentForm/CommentForm";
 import CommentsList from "@/containers/CommentsList/CommentsList";
 import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
+import CheckIcon from "@/assets/check.svg";
 
 export default function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
@@ -161,7 +162,7 @@ export default function Story({ params }: StoryProps) {
           <Divider style={{ width: "3rem", paddingTop: "1px" }} />
           <Text fontSize="text-xl" text="Back to main" />
         </Link>
-        <div className=" w-[60vw] flex flex-col gap-10 md:w-[90vw]">
+        <div className=" w-[60vw] flex flex-col gap-10 md:w-[100vw]">
           <Skeleton width={"100%"} height={400} />
           <Skeleton width={"50%"} height={60} />
           <Skeleton width={"50%"} height={120} />
@@ -187,6 +188,8 @@ export default function Story({ params }: StoryProps) {
           alt={story.image}
           width={912}
           height={446}
+          sizes="100vw"
+          className="w-full h-auto"
           priority
         />
       </div>
