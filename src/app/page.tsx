@@ -8,8 +8,13 @@ import { socialLinks } from "@/data/socialLinks";
 function Home() {
   return (
     <Page isHome navigation={NavigationName.Home}>
+      {/* SosialLinks */}
+      <div className=" ms-10   items-center justify-center p-10 xl:ms-0">
+        <SosialLinks links={socialLinks} />
+      </div>
+
       {/* Hero */}
-      <div className=" fixed flex top-[20px] left-[200px] right-[200px] bottom-[80px] xl:left-[100px] xl:right-[160px] md:left-[10px] md:right-[10px] z-[-20] p-10 ">
+      <div className=" fixed flex top-[20px] left-[200px] right-[200px] bottom-[80px] xl:left-[100px] xl:right-[160px] md:left-[10px] md:right-[10px] z-[-20]  ">
         <Image
           src={"/main-hero.png"}
           fill
@@ -25,11 +30,6 @@ function Home() {
             <Text fontSize="text-lg" text="LIFESTYLE" />
           </div>
         </div>
-      </div>
-
-      {/* SosialLinks */}
-      <div className="h-full ms-10 pt-40 self-start items-center p-10 xl:ms-0">
-        <SosialLinks links={socialLinks} />
       </div>
     </Page>
   );
