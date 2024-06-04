@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, memo } from "react";
 
 type ButtonVariant = "clear" | "clearSecondary" | "filled";
 
@@ -15,7 +15,7 @@ const variantClasses: { [key in ButtonVariant]: string } = {
     "text-lg px-12 py-3 bg-orange uppercase hover:opacity-80 hover:text-grayLight active:text-white ",
 };
 
-export default function Button({
+function Button({
   className = "",
   children,
   disabled = false,
@@ -34,3 +34,5 @@ export default function Button({
     </button>
   );
 }
+
+export default memo(Button);

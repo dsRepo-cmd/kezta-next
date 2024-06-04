@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
 
-export default function Story({ params }: StoryProps) {
+function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
   const [comments, setComments] = useState<Comment[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -163,7 +163,7 @@ export default function Story({ params }: StoryProps) {
           <Text fontSize="text-xl" text="Back to main" />
         </Link>
 
-        <Skeleton width={"100%"} height={400} />
+        <Skeleton width={"100%"} height={400} className=" max-w-[912px]" />
         <Skeleton width={"50%"} height={60} />
         <Skeleton width={"50%"} height={120} />
         <Skeleton width={"100%"} height={800} />
@@ -340,3 +340,5 @@ export default function Story({ params }: StoryProps) {
     </>
   );
 }
+
+export default memo(Story);

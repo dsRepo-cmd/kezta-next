@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, memo } from "react";
 import Divider from "../Divider/Divider";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -7,7 +7,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
   value?: string;
 }
-export default function Input({
+function Input({
   label,
   name,
   type = "text",
@@ -34,3 +34,5 @@ export default function Input({
     </div>
   );
 }
+
+export default memo(Input);

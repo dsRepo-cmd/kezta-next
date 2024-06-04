@@ -16,7 +16,7 @@ import ClientLogoIcon6 from "@/assets/client-logo6.svg";
 import ClientLogoIcon7 from "@/assets/client-logo7.svg";
 import ClientLogoIcon8 from "@/assets/client-logo8.svg";
 
-export default function About() {
+function About() {
   return (
     <>
       <div className="flex flex-col gap-24">
@@ -216,3 +216,5 @@ export default function About() {
     </>
   );
 }
+
+export default About;

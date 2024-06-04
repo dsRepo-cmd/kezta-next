@@ -5,7 +5,7 @@ import Page from "@/components/Page/Page";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import { socialLinks } from "@/data/socialLinks";
 
-export default function Home() {
+function Home() {
   return (
     <Page isHome navigation={NavigationName.Home}>
       {/* Hero */}
@@ -34,3 +34,5 @@ export default function Home() {
     </Page>
   );
 }
+
+export default Home;

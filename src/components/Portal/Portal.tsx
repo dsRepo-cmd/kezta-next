@@ -1,11 +1,11 @@
-import { useRef, useEffect, useState, ReactNode } from "react";
+import { useRef, useEffect, useState, ReactNode, memo } from "react";
 import { createPortal } from "react-dom";
 
 interface PortalProps {
   children: ReactNode;
 }
 
-export default function Portal(props: PortalProps) {
+function Portal(props: PortalProps) {
   const ref = useRef<Element | null>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -23,3 +23,4 @@ export default function Portal(props: PortalProps) {
       )
     : null;
 }
+export default memo(Portal);

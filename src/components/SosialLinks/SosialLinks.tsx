@@ -6,6 +6,7 @@ import FacebookIcon from "@/assets/social-f.svg";
 import LinkedInIcon from "@/assets/social-linkedin.svg";
 import DribbbleIcon from "@/assets/social-dribbble.svg";
 import { SocialLink, SocialLinkName } from "@/data/socialLinks";
+import { memo } from "react";
 
 const iconMap: { [key in SocialLinkName]: any } = {
   twitter: TwitterIcon,
@@ -20,7 +21,7 @@ interface SosialLinksProps {
   horisontal?: boolean;
 }
 
-export default function SosialLinks({ links, horisontal }: SosialLinksProps) {
+function SosialLinks({ links, horisontal }: SosialLinksProps) {
   return (
     <div
       className={` flex  gap-5 self-center ${
@@ -39,3 +40,5 @@ export default function SosialLinks({ links, horisontal }: SosialLinksProps) {
     </div>
   );
 }
+
+export default memo(SosialLinks);

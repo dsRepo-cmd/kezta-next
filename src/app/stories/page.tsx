@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Text from "@/components/Text/Text";
@@ -18,7 +18,7 @@ interface StoryProps {
   date: string;
 }
 
-export default function Stories() {
+function Stories() {
   const [stories, setStories] = useState<StoryProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -26,6 +26,7 @@ export default function Stories() {
     try {
       const res = await fetch("/api/stories");
       const data = await res.json();
+
       setStories(data);
     } catch (error) {
       console.error("Error fetching stories:", error);
@@ -33,6 +34,8 @@ export default function Stories() {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    console.log("render");
     fetchStories();
   }, []);
 
@@ -41,23 +44,22 @@ export default function Stories() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage]);
-
   const totalPages = useMemo(
     () => Math.ceil(stories.length / ITEMS_PER_PAGE),
+
     [stories.length]
   );
 
   const currentCards = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = currentPage * ITEMS_PER_PAGE;
+
     return stories.slice(startIndex, endIndex);
   }, [currentPage, stories]);
 
   const renderPagination = useMemo(() => {
     const pages = [];
+
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <button
@@ -86,19 +88,19 @@ export default function Stories() {
           />
         </div>
 
-        <Skeleton width={"100%"} height={400} />
+        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
         <Skeleton width={"50%"} height={50} />
         <Skeleton width={"30%"} height={60} />
 
-        <Skeleton width={"100%"} height={400} />
+        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
         <Skeleton width={"50%"} height={50} />
         <Skeleton width={"30%"} height={60} />
 
-        <Skeleton width={"100%"} height={400} />
+        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
         <Skeleton width={"50%"} height={50} />
         <Skeleton width={"30%"} height={60} />
 
-        <Skeleton width={"100%"} height={400} />
+        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
         <Skeleton width={"50%"} height={50} />
         <Skeleton width={"30%"} height={60} />
       </>
@@ -150,3 +152,5 @@ export default function Stories() {
     </>
   );
 }
+
+export default memo(Stories);

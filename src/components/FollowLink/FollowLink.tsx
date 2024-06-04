@@ -1,7 +1,8 @@
+import { memo } from "react";
 import Link from "next/link";
 import FollowIcon from "@/assets/follow-us.svg";
 
-export default function FollowLink() {
+function FollowLink() {
   return (
     <Link href={"#"}>
       <div className=" absolute top-[450px] left-[80px] rotate-[270deg] flex  gap-2  justify-center items-center md:hidden xl:left-12 xl:top-[420px] ">
@@ -13,3 +14,5 @@ export default function FollowLink() {
     </Link>
   );
 }
+
+export default memo(FollowLink);

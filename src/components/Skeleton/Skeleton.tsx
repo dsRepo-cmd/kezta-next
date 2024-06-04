@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes } from "react";
+import { CSSProperties, HTMLAttributes, memo } from "react";
 import cls from "./Skeleton.module.css";
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
@@ -8,7 +8,7 @@ interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   border?: string;
 }
 
-export default function Skeleton(props: SkeletonProps) {
+ function Skeleton(props: SkeletonProps) {
   const { className, height, width, border } = props;
 
   const styles: CSSProperties = {
@@ -19,3 +19,4 @@ export default function Skeleton(props: SkeletonProps) {
 
   return <div className={`${cls.Skeleton} ${className}`} style={styles} />;
 }
+export default memo (Skeleton)

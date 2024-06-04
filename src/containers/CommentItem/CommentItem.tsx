@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Image from "next/image";
 import { Comment } from "@/app/stories/types";
 import Button from "@/components/Button/Button";
@@ -80,4 +81,4 @@ const CommentItem: React.FC<CommentItemProps> = ({
   );
 };
 
-export default CommentItem;
+export default memo(CommentItem);
