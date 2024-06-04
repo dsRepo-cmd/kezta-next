@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     story.comments.push(newComment._id);
     await story.save();
 
-    return NextResponse.json("newComment", { status: 201 });
+    return NextResponse.json("Coment has been sent", { status: 201 });
   } catch (error) {
     console.error("Error creating comment:", error);
     return NextResponse.json(
@@ -103,7 +103,7 @@ export async function PUT(req: NextRequest) {
     originalComment.replies.push(newReply._id);
     await originalComment.save();
 
-    return NextResponse.json(newReply, { status: 201 });
+    return NextResponse.json("Reply has been sent", { status: 201 });
   } catch (error) {
     console.error("Error creating reply:", error);
     return NextResponse.json(

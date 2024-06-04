@@ -2,7 +2,6 @@
 import React, { memo, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
@@ -25,7 +24,7 @@ function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
   const [comments, setComments] = useState<Comment[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [message, setMessage] = useState("");
+  const [response, setResponse] = useState("");
 
   const [prevStory, setPrevStory] = useState<AdjacentLink>();
   const [nextStory, setNextStory] = useState<AdjacentLink>();
@@ -44,9 +43,25 @@ function Story({ params }: StoryProps) {
   const formValidate = () => {
     let err: Record<string, string> = {};
     if (!form.message) err.message = "Message is required";
+
     if (!form.userEmail) err.userEmail = "Email is required";
     if (!form.userName) err.userName = "Name is required";
+    if (form.userName.length > 20)
+      err.userName = "The name must be no more than 20 characters";
     return err;
+  };
+
+  const resetForm = () => {
+    setIsReplyMode(false);
+    setCurrentCommentId(null);
+    setForm({
+      message: "",
+      userName: "",
+      avatarLink: "https://picsum.photos/id/237/100/100",
+      userEmail: "",
+      storyId: params.id,
+    });
+    console.log("resetForm", form);
   };
 
   const postComment = async (formData: CommentFormData) => {
@@ -58,8 +73,8 @@ function Story({ params }: StoryProps) {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      setMessage(data.message);
+      const response = await res.json();
+      setResponse(response);
       fetchComments(params.id); // Fetch comments again to update the list
       resetForm();
     } catch (error) {
@@ -76,8 +91,8 @@ function Story({ params }: StoryProps) {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      setMessage(data.message);
+      const response = await res.json();
+      setResponse(response);
       fetchComments(params.id); // Fetch comments again to update the list
       resetForm();
     } catch (error) {
@@ -107,18 +122,6 @@ function Story({ params }: StoryProps) {
       commentId: commentId,
       message: "",
     }));
-  };
-
-  const resetForm = () => {
-    setIsReplyMode(false);
-    setCurrentCommentId(null);
-    setForm({
-      message: "",
-      userName: "",
-      avatarLink: "https://picsum.photos/id/237/100/100",
-      userEmail: "",
-      storyId: params.id,
-    });
   };
 
   const fetchComments = async (storyId: string) => {
@@ -333,7 +336,7 @@ function Story({ params }: StoryProps) {
             resetForm={resetForm}
             isReplyMode={isReplyMode}
             errors={errors}
-            message={message}
+            response={response}
           />
         </div>
       </div>

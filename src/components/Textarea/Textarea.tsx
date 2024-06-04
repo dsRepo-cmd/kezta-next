@@ -27,6 +27,7 @@ function Textarea({
           className="bg-black border-none resize-x w-full focus-visible:outline-none selection:text-grayPrimary"
           rows={rows}
           name={name}
+          value={value}
           {...otherProps}
         />
       </div>
