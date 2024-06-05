@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, memo } from "react";
 
 interface DividerProps {
   vertical?: boolean;
@@ -6,7 +6,7 @@ interface DividerProps {
   style?: CSSProperties | undefined;
 }
 
-export default function Divider({ vertical, className, style }: DividerProps) {
+function Divider({ vertical, className, style }: DividerProps) {
   if (vertical) {
     return (
       <div
@@ -22,3 +22,5 @@ export default function Divider({ vertical, className, style }: DividerProps) {
     ></span>
   );
 }
+
+export default memo(Divider);

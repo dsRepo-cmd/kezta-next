@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, memo } from "react";
 import Divider from "../Divider/Divider";
 
 interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
@@ -8,7 +8,7 @@ interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   rows?: number;
   value?: string;
 }
-export default function Textarea({
+function Textarea({
   label,
   rows = 6,
   name,
@@ -27,6 +27,7 @@ export default function Textarea({
           className="bg-black border-none resize-x w-full focus-visible:outline-none selection:text-grayPrimary"
           rows={rows}
           name={name}
+          value={value}
           {...otherProps}
         />
       </div>
@@ -34,3 +35,5 @@ export default function Textarea({
     </div>
   );
 }
+
+export default memo(Textarea);

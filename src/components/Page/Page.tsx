@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import { NavigationName } from "@/data/navigation";
 import Label from "@/components/Label/Label";
 import FollowLink from "@/components/FollowLink/FollowLink";
@@ -12,7 +12,7 @@ interface PageProps {
   navigation?: NavigationName;
   isHome?: boolean;
 }
-export default function Page({ children, navigation, isHome }: PageProps) {
+function Page({ children, navigation, isHome }: PageProps) {
   return (
     <div className=" min-h-screen relative">
       <Header>
@@ -42,3 +42,5 @@ export default function Page({ children, navigation, isHome }: PageProps) {
     </div>
   );
 }
+
+export default memo(Page);

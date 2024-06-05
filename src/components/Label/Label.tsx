@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface LabelProps {
   right?: boolean;
 }
 
-export default function Label({ right }: LabelProps) {
+function Label({ right }: LabelProps) {
   return (
     <div
       className={` absolute z-[-30] rotate-[270deg] md:hidden  ${
@@ -17,3 +19,4 @@ export default function Label({ right }: LabelProps) {
     </div>
   );
 }
+export default memo(Label);

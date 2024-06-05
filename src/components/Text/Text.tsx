@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type TextColor = "text-grayPrimary" | "text-white" | "text-orange";
 type FontSize =
   | "text-sm"
@@ -39,7 +41,7 @@ const FontSizeClasses: { [key in FontSize]: string } = {
   "text-7xl": "text-7xl md:text-5xl",
 };
 
-export default function Text({
+function Text({
   title,
   subtitle,
   text,
@@ -67,3 +69,5 @@ export default function Text({
     </>
   );
 }
+
+export default memo(Text);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import Textarea from "@/components/Textarea/Textarea";
@@ -12,7 +12,7 @@ interface CommentFormProps {
   resetForm: () => void;
   isReplyMode: boolean;
   errors: Record<string, string>;
-  message: string;
+  response: string;
 }
 
 const CommentForm: React.FC<CommentFormProps> = ({
@@ -22,7 +22,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
   resetForm,
   isReplyMode,
   errors,
-  message,
+  response,
 }) => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -74,7 +74,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
           )}
         </div>
       </form>
-      <p>{message}</p>
+      <p>{response}</p>
       <div>
         {Object.keys(errors).map((err, index) => (
           <li key={index}>{errors[err]}</li>
@@ -84,4 +84,4 @@ const CommentForm: React.FC<CommentFormProps> = ({
   );
 };
 
-export default CommentForm;
+export default memo(CommentForm);
