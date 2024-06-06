@@ -23,7 +23,9 @@ function Page({ children, navigation, isHome }: PageProps) {
       {isHome ? (
         <>
           <Label right />
-          <main>{children}</main>
+          <main className=" flex flex-col items-start justify-center h-[80vh]">
+            {children}
+          </main>
         </>
       ) : (
         <>

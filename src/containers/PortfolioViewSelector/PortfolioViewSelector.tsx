@@ -1,0 +1,39 @@
+import { memo, useCallback } from "react";
+import { PortfolioView } from "@/data/portfolioContent";
+import GridIcon from "@/assets/grid.svg";
+import ListIcon from "@/assets/list.svg";
+
+interface PortfolioViewSelectorProps {
+  view: PortfolioView;
+  setView: (view: PortfolioView) => void;
+}
+
+function PortfolioViewSelector({ view, setView }: PortfolioViewSelectorProps) {
+  const handleViewChange = useCallback(
+    (newView: PortfolioView) => setView(newView),
+    [setView]
+  );
+
+  return (
+    <div className="flex gap-2 md:hidden">
+      <button
+        onClick={() => handleViewChange(PortfolioView.LIST)}
+        className={`duration-300 text-grayPrimary hover:text-white ${
+          view === PortfolioView.LIST ? "text-orange" : ""
+        }`}
+      >
+        <ListIcon />
+      </button>
+      <button
+        onClick={() => handleViewChange(PortfolioView.GRID)}
+        className={`duration-300 text-grayPrimary hover:text-white ${
+          view === PortfolioView.GRID ? "text-orange" : ""
+        }`}
+      >
+        <GridIcon />
+      </button>
+    </div>
+  );
+}
+
+export default memo(PortfolioViewSelector);

@@ -6,9 +6,21 @@ export enum PortfolioType {
   ALL_WORKS = "ALL WORKS",
 }
 
+export interface PortfolioContent {
+  id: string;
+  type: PortfolioType;
+  image: string;
+  imageSquard: string;
+}
+
 export enum PortfolioView {
   LIST = "list",
   GRID = "grid",
+}
+
+export interface PortfolioTab {
+  id: string;
+  value: PortfolioType;
 }
 
 export const portfolioContent = {

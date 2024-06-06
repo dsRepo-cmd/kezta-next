@@ -18,6 +18,7 @@ export interface IStory extends Document {
   title: string;
   createdAt: Date;
   type: string;
+  date: string;
   image: string;
   comments?: (Types.ObjectId | IComment)[];
   socialLinks?: SocialLink[];
@@ -29,6 +30,8 @@ const StorySchema = new Schema<IStory>(
     createdAt: { type: Date, default: Date.now },
     type: { type: "String", required: true },
     image: { type: String, required: true },
+    date: { type: String, required: true },
+
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     socialLinks: [
       {

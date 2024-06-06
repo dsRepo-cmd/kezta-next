@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
     const storyId = url.searchParams.get("storyId");
 
     if (!storyId) {
-      const stories = await Story.find({}, "_id title createdAt type image");
+      const stories = await Story.find({}, "_id title date type image");
 
       return NextResponse.json(stories);
     }
