@@ -9,8 +9,7 @@ import {
 import PortfolioTabs from "@/containers/PortfolioTabs/PortfolioTabs";
 import PortfolioViewSelector from "@/containers/PortfolioViewSelector/PortfolioViewSelector";
 import PortfolioImageContent from "@/containers/PortfolioContent/PortfolioContent";
-
-export default function Portfolio() {
+function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);
   const [view, setView] = useState(PortfolioView.LIST);
 
@@ -38,3 +37,5 @@ export default function Portfolio() {
     </>
   );
 }
+
+export default Portfolio;
