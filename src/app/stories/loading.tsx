@@ -1,10 +1,10 @@
 import Skeleton from "@/components/Skeleton/Skeleton";
-import { ITEMS_PER_PAGE } from "./page";
 import Divider from "@/components/Divider/Divider";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
 import { storiesContent } from "@/data/storiesContent";
 
+const ITEMS_PER_PAGE = 4;
 export default function LoadingStories() {
   return (
     <>
