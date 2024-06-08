@@ -3,16 +3,16 @@ import Skeleton from "@/components/Skeleton/Skeleton";
 export default function LoadingAbout() {
   return (
     <>
-      <Skeleton width={"50%"} height={60} />
-      <Skeleton width={"100%"} height={120} />
+      <Skeleton className=" w-1/2 h-[60px]" />
+      <Skeleton className=" w-full h-[120px] " />
 
-      <Skeleton width={"100%"} height={800} />
-      <Skeleton width={"50%"} height={50} />
-      <Skeleton width={"30%"} height={120} />
+      <Skeleton className=" w-full h-[800px] " />
+      <Skeleton className=" w-1/2 h-[50px]" />
+      <Skeleton className=" w-1/3 h-[120px]" />
 
-      <Skeleton width={"100%"} height={430} />
-      <Skeleton width={"50%"} height={50} />
-      <Skeleton width={"30%"} height={120} />
+      <Skeleton className=" w-full h-[430px] " />
+      <Skeleton className=" w-1/2 h-[50px]" />
+      <Skeleton className=" w-1/3 h-[120px]" />
     </>
   );
 }
