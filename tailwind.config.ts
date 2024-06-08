@@ -7,6 +7,7 @@ const config: Config = {
     "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
     container: {
       screens: {
@@ -38,8 +39,9 @@ const config: Config = {
     },
 
     extend: {
-      backgroundImage: {
-        "hero-pattern": "url('/main-hero.png')",
+      fontFamily: {
+        sans: ["var(--font-roboto)"],
+        mono: ["var(--font-roboto-mono)"],
       },
     },
   },

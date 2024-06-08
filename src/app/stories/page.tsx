@@ -26,7 +26,6 @@ function Stories() {
     try {
       const res = await fetch("/api/stories");
       const data = await res.json();
-
       setStories(data);
     } catch (error) {
       console.error("Error fetching stories:", error);
@@ -35,7 +34,6 @@ function Stories() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log("render");
     fetchStories();
   }, []);
 
@@ -46,20 +44,17 @@ function Stories() {
 
   const totalPages = useMemo(
     () => Math.ceil(stories.length / ITEMS_PER_PAGE),
-
     [stories.length]
   );
 
   const currentCards = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = currentPage * ITEMS_PER_PAGE;
-
     return stories.slice(startIndex, endIndex);
   }, [currentPage, stories]);
 
   const renderPagination = useMemo(() => {
     const pages = [];
-
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <button
@@ -79,7 +74,7 @@ function Stories() {
   if (stories.length === 0) {
     return (
       <>
-        <div className=" flex flex-col gap-8">
+        <div className="flex flex-col gap-8">
           <TitleBox title={storiesContent.title} />
           <Text
             fontSize="text-xl"
@@ -88,28 +83,24 @@ function Stories() {
           />
         </div>
 
-        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
-        <Skeleton width={"50%"} height={50} />
-        <Skeleton width={"30%"} height={60} />
-
-        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
-        <Skeleton width={"50%"} height={50} />
-        <Skeleton width={"30%"} height={60} />
-
-        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
-        <Skeleton width={"50%"} height={50} />
-        <Skeleton width={"30%"} height={60} />
-
-        <Skeleton width={"100%"} height={400} className=" max-w-[900px]" />
-        <Skeleton width={"50%"} height={50} />
-        <Skeleton width={"30%"} height={60} />
+        {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
+          <div key={index} className="flex flex-col gap-8 max-w-full">
+            <Skeleton
+              width="100%"
+              height="400px"
+              className="w-full max-w-full"
+            />
+            <Skeleton width="50%" height="50px" className="max-w-full" />
+            <Skeleton width="30%" height="60px" className="max-w-full" />
+          </div>
+        ))}
       </>
     );
   }
 
   return (
     <>
-      <div className=" flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
         <TitleBox title={storiesContent.title} />
         <Text
           fontSize="text-xl"
@@ -118,16 +109,16 @@ function Stories() {
         />
       </div>
 
-      <div className=" flex flex-col gap-20">
+      <div className="flex flex-col gap-20">
         {currentCards.map((card) => (
           <div className="flex flex-col gap-3" key={card._id}>
-            <div className=" flex overflow-hidden">
+            <div className="flex overflow-hidden">
               <Link
                 href={`/stories/${card._id}`}
-                className="relative flex  w-full h-full"
+                className="relative flex w-full h-full"
               >
                 <Image
-                  className=" duration-500 hover:scale-[1.05]"
+                  className="duration-500 hover:scale-[1.05]"
                   src={card.image}
                   alt={card.image}
                   width={900}
@@ -136,16 +127,16 @@ function Stories() {
                 />
               </Link>
             </div>
-            <Text fontSize="text-[32px]" className=" mt-2" text={card.title} />
+            <Text fontSize="text-[32px]" className="mt-2" text={card.title} />
             <Divider style={{ width: "10rem" }} />
-            <div className=" flex  flex-col gap-1">
+            <div className="flex flex-col gap-1">
               <Text fontSize="text-lg" text={card.date} />
               <Text color="text-orange" fontSize="text-lg" text={card.type} />
             </div>
           </div>
         ))}
       </div>
-      <div className="flex m justify-end mt-5 items-center gap-2">
+      <div className="flex justify-end mt-5 items-center gap-2">
         <Divider style={{ width: "1.75rem", paddingTop: "1px" }} />
         {renderPagination}
       </div>
