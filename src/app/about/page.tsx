@@ -163,48 +163,64 @@ function About() {
           <TitleBox title={aboutContent.section4.title} />
           <div className=" grid grid-cols-4 justify-center  gap-20 md:gap-10 max-w-[600px] ">
             <Button
+              id="ClientLogoIcon1"
+              title="ClientLogoIcon1"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon1} />
             </Button>
             <Button
+              id="ClientLogoIcon2"
+              title="ClientLogoIcon2"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon2} />
             </Button>
             <Button
+              id="ClientLogoIcon3"
+              title="ClientLogoIcon3"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon3} />
             </Button>
             <Button
+              id="ClientLogoIcon4"
+              title="ClientLogoIcon4"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon4} />
             </Button>
             <Button
+              id="ClientLogoIcon5"
+              title="ClientLogoIcon5"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon5} />
             </Button>
             <Button
+              id="ClientLogoIcon6"
+              title="ClientLogoIcon6"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon6} />
             </Button>
             <Button
+              id="ClientLogoIcon7"
+              title="ClientLogoIcon7"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >
               <Icon width={60} height={60} Svg={ClientLogoIcon7} />
             </Button>
             <Button
+              id="ClientLogoIcon8"
+              title="ClientLogoIcon8"
               variant="clearSecondary"
               className="duration-300 text-grayLight hover:text-orange"
             >

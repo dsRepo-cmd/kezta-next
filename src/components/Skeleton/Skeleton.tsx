@@ -1,5 +1,4 @@
 import { CSSProperties, HTMLAttributes, memo } from "react";
-import cls from "./Skeleton.module.css";
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -8,7 +7,7 @@ interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   border?: string;
 }
 
- function Skeleton(props: SkeletonProps) {
+function Skeleton(props: SkeletonProps) {
   const { className, height, width, border } = props;
 
   const styles: CSSProperties = {
@@ -17,6 +16,13 @@ interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
     borderRadius: border,
   };
 
-  return <div className={`${cls.Skeleton} ${className}`} style={styles} />;
+  return (
+    <div
+      className={` relative w-full h-[50px] shadow-custom bg-[#161515] overflow-hidden  ${className}`}
+      style={styles}
+    >
+      <div className=" block absolute left-40 top-0 h-full w-[80%] animate-load bg-gradient-custom"></div>
+    </div>
+  );
 }
-export default memo (Skeleton)
+export default memo(Skeleton);
