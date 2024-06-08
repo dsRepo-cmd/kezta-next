@@ -155,42 +155,55 @@ function Story({ params }: StoryProps) {
     fetchComments(params.id);
   }, [params.id]);
 
+  const backToMainLink = (
+    <Link
+      className="flex gap-4 items-center duration-300 text-orange hover:text-white"
+      href="/stories"
+    >
+      <Divider style={{ width: "3rem", paddingTop: "1px" }} />
+      <Text fontSize="text-xl" text="Back to main" />
+    </Link>
+  );
+
   if (!story) {
     return (
       <>
-        <Link
-          className="flex gap-4 items-center duration-300 text-orange hover:text-white"
-          href="/stories"
-        >
-          <Divider style={{ width: "3rem", paddingTop: "1px" }} />
-          <Text fontSize="text-xl" text="Back to main" />
-        </Link>
+        {backToMainLink}
 
-        <Skeleton width={"100%"} height={400} className=" max-w-[912px]" />
-        <Skeleton width={"50%"} height={60} />
-        <Skeleton width={"50%"} height={70} />
-        <Skeleton width={"100%"} height={800} />
+        <div className="flex aspect-[912/446] max-w-[912px]">
+          <Skeleton
+            width={"100%"}
+            height={"100%"}
+            className="flex w-full h-full"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Skeleton width={"50%"} className=" h-[78px] md:h-[60px]" />
+          <Divider style={{ width: "10rem" }} />
+
+          <Skeleton width={"30%"} className=" h-[28px] md:h-[24px]" />
+          <Skeleton width={"30%"} className=" h-[28px] md:h-[24px]" />
+        </div>
+
+        <div className="flex flex-col gap-10">
+          <Skeleton width={"100%"} height={800} />
+        </div>
       </>
     );
   }
 
   return (
     <>
-      <Link
-        className="flex gap-4 items-center duration-300 text-orange hover:text-white"
-        href="/stories"
-      >
-        <Divider style={{ width: "3rem", paddingTop: "1px" }} />
-        <Text fontSize="text-xl" text="Back to main" />
-      </Link>
+      {backToMainLink}
 
-      <div className="flex">
+      <div className="flex aspect-[912/446] max-w-[912px]">
         <Image
           src={story.image}
           alt={story.image}
           width={912}
           height={446}
-          style={{ width: "auto", height: "auto" }}
+          className=" object-cover"
           priority
         />
       </div>

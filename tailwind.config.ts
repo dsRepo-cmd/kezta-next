@@ -38,11 +38,28 @@ const config: Config = {
       grayPrimary: "#6c6c6c",
     },
 
+    boxShadow: {
+      custom: "0 2px 10px 0 #161515",
+    },
+
     extend: {
       fontFamily: {
         sans: ["var(--font-roboto)"],
         mono: ["var(--font-roboto-mono)"],
       },
+      animation: {
+        load: "load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+      },
+      keyframes: {
+        load: {
+          "0%": { left: "-150px" },
+          "100%": { left: "100%" },
+        },
+      },
+      backgroundImage: (theme) => ({
+        "gradient-custom":
+          "linear-gradient(to right, transparent 0%, #242425 50%, transparent 100%)",
+      }),
     },
   },
   plugins: [],
