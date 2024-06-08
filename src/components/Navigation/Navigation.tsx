@@ -47,6 +47,8 @@ function Navigation({ path }: NavigationProps) {
   return (
     <nav>
       <Button
+        id="buttonNavigation"
+        title="navigation"
         onClick={toggleNav}
         variant="clear"
         className=" p-1 hidden md:block"
