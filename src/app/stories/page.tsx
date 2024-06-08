@@ -8,7 +8,7 @@ import Divider from "@/components/Divider/Divider";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import { storiesContent } from "@/data/storiesContent";
 
-export const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 4;
 
 interface StoryProps {
   _id: string;
