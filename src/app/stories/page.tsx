@@ -18,28 +18,30 @@ interface StoryProps {
   date: string;
 }
 
-function Stories() {
+const Stories = () => {
   const [stories, setStories] = useState<StoryProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchStories = async () => {
-    try {
-      const res = await fetch("/api/stories");
-      const data = await res.json();
-      setStories(data);
-    } catch (error) {
-      console.error("Error fetching stories:", error);
-    }
-  };
-
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const fetchStories = async () => {
+      try {
+        const res = await fetch("/api/stories");
+        const data = await res.json();
+        setStories(data);
+      } catch (error) {
+        console.error("Error fetching stories:", error);
+      }
+    };
+
     fetchStories();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   const handlePageClick = useCallback((page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const totalPages = useMemo(
@@ -49,40 +51,32 @@ function Stories() {
 
   const currentCards = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIndex = currentPage * ITEMS_PER_PAGE;
-    return stories.slice(startIndex, endIndex);
+    return stories.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   }, [currentPage, stories]);
 
   const renderPagination = useMemo(() => {
-    const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <button
-          key={i}
-          onClick={() => handlePageClick(i)}
-          className={`duration-300 p-2 hover:text-white ${
-            i === currentPage ? "text-orange underline" : "text-grayLight"
-          }`}
-        >
-          {i}
-        </button>
-      );
-    }
-    return pages;
+    return Array.from({ length: totalPages }, (_, i) => (
+      <button
+        key={i + 1}
+        onClick={() => handlePageClick(i + 1)}
+        className={`duration-300 p-2 hover:text-white ${
+          i + 1 === currentPage ? "text-orange underline" : "text-grayLight"
+        }`}
+      >
+        {i + 1}
+      </button>
+    ));
   }, [currentPage, handlePageClick, totalPages]);
 
   if (stories.length === 0) {
     return (
-      <>
-        <div className="flex flex-col gap-8">
-          <TitleBox title={storiesContent.title} />
-          <Text
-            fontSize="text-xl"
-            color="text-grayPrimary"
-            text={storiesContent.subtitle}
-          />
-        </div>
-
+      <div className="flex flex-col gap-8">
+        <TitleBox title={storiesContent.title} />
+        <Text
+          fontSize="text-xl"
+          color="text-grayPrimary"
+          text={storiesContent.subtitle}
+        />
         {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
           <div key={index} className="flex flex-col gap-8 max-w-full">
             <Skeleton
@@ -94,7 +88,7 @@ function Stories() {
             <Skeleton width="30%" height="60px" className="max-w-full" />
           </div>
         ))}
-      </>
+      </div>
     );
   }
 
@@ -108,7 +102,6 @@ function Stories() {
           text={storiesContent.subtitle}
         />
       </div>
-
       <div className="flex flex-col gap-20">
         {currentCards.map((card) => (
           <div className="flex flex-col gap-3" key={card._id}>
@@ -142,6 +135,6 @@ function Stories() {
       </div>
     </>
   );
-}
+};
 
 export default memo(Stories);
