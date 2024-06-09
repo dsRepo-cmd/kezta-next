@@ -14,7 +14,7 @@ function Skeleton(props: SkeletonProps) {
 
   return (
     <div
-      className={`relative shadow-custom bg-[#161515] overflow-hidden ${className}`}
+      className={`relative max-w-full shadow-custom bg-[#161515] overflow-hidden ${className}`}
       style={styles}
     >
       <div className="absolute left-40 top-0 h-full w-[80%] animate-load bg-gradient-custom"></div>
