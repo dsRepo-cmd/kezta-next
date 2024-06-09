@@ -30,8 +30,6 @@ function Navigation({ path }: NavigationProps) {
     };
   }, []);
 
-  console.log("isOpen", isOpen);
-
   const navigationLinks = navigation.map((link) => (
     <Link
       className={`text-lg hover:text-orange duration-300 ${
