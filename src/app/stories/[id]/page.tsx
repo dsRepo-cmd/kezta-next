@@ -15,7 +15,7 @@ import {
 import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
-import CommentBox from "@/containers/CommentBox/CommentBox";
+import CommentBox from "./_containers/CommentBox";
 
 function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();

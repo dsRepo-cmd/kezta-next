@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Comment } from "@/app/stories/types";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
-import CommentItem from "../CommentItem/CommentItem";
+import CommentItem from "./CommentItem";
 
 interface CommentsListProps {
   comments: Comment[];

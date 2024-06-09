@@ -7,7 +7,7 @@ interface PortfolioContentProps {
   filteredContent: PortfolioContent[];
 }
 
-function PortfolioImageContent({
+function PortfolioImagesContent({
   view,
   filteredContent,
 }: PortfolioContentProps) {
@@ -46,4 +46,4 @@ function PortfolioImageContent({
   );
 }
 
-export default memo(PortfolioImageContent);
+export default memo(PortfolioImagesContent);

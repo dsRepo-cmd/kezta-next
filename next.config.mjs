@@ -16,12 +16,7 @@ const nextConfig = {
       },
     ],
   },
-  compiler: {
-    reactRemoveProperties: true,
-    removeConsole: {
-      exclude: ["error"],
-    },
-  },
+
   poweredByHeader: false,
 };
 
