@@ -31,9 +31,11 @@ function Page({ children, navigation, isHome }: PageProps) {
         <>
           <Label />
           <FollowLink />
-          <main className="  flex gap-5 pt-32 mx-auto mb-20 w-[70%] pr-40 min-h-[85vh] md:w-full md:px-2 md:mt-0 xl:pr-0">
+          <main className="  flex gap-5 pt-16 mx-auto mb-20 w-[70%] pr-40 min-h-[85vh] md:w-full md:px-2 md:mt-0 xl:pr-0">
             <Divider vertical />
-            <div className=" flex flex-col gap-10 min-w-full">{children}</div>
+            <div className=" mt-2 w-full h-full">
+              <div className=" flex flex-col gap-10 min-w-full">{children}</div>
+            </div>
           </main>
         </>
       )}

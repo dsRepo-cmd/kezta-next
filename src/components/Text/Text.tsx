@@ -11,7 +11,7 @@ type FontSize =
   | "text-[32px]"
   | "text-[44px]"
   | "text-[52px]"
-  | "text-7xl";
+  | "text-[4rem]";
 
 interface TextProps {
   title?: string;
@@ -38,7 +38,7 @@ const FontSizeClasses: { [key in FontSize]: string } = {
   "text-[32px]": "text-[32px] md:text-[20px]",
   "text-[44px]": "text-[44px] md:text-[32px]",
   "text-[52px]": "text-[52px] md:text-[44px]",
-  "text-7xl": "text-7xl md:text-5xl",
+  "text-[4rem]": "text-[4rem] md:text-5xl",
 };
 
 function Text({
