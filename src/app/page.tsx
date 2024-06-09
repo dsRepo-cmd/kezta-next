@@ -24,7 +24,7 @@ function Home() {
         {/* Hero Card */}
         <div className=" absolute bottom-[50px] right-[-50px] w-[450px] h-[250px]  md:w-[350px] md:h-[200px] md:right-[20px] z-10 ">
           <div className=" bg-orange p-10 h-full flex flex-col gap-2">
-            <Text fontSize="text-7xl" title="Structure" />
+            <Text fontSize="text-[4rem]" title="Structure" />
             <Text fontSize="text-2xl" text="The freeware for community" />
             <div className=" border-solid border-x-white  border-b-[2px] w-1/3" />
             <Text fontSize="text-lg" text="LIFESTYLE" />
