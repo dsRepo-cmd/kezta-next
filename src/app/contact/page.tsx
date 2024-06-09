@@ -41,7 +41,7 @@ const Contact = () => {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className=" md:w-full"
+        className=" w-full  "
       ></iframe>
 
       <div className="flex gap-32 mt-20 md:flex-col">
