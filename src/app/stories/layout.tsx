@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { NavigationName } from "@/data/navigation";
 
 export const metadata: Metadata = {
+  title: "KEZTA stories",
   description: "KEZTA app",
 };
 
