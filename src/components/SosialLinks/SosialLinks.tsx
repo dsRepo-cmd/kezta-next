@@ -30,6 +30,7 @@ function SosialLinks({ links, horisontal }: SosialLinksProps) {
     >
       {links?.map((link) => (
         <Link
+          title={link.name}
           key={link.id}
           className=" duration-300 hover:text-orange "
           href={"#"}

@@ -41,7 +41,7 @@ function Page({ children, navigation, isHome }: PageProps) {
       )}
 
       <div className=" absolute bottom-[60px] right-[50px] rotate-[270deg] xl:bottom-[60px] xl:right-[30px] md:hidden ">
-        <span className=" text-grayLight">©2024</span>
+        <span className=" select-none text-grayLight">©2024</span>
       </div>
     </div>
   );

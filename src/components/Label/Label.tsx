@@ -13,7 +13,7 @@ function Label({ right }: LabelProps) {
           : "top-[300px] left-[-255px] xl:left-[-240px]"
       } `}
     >
-      <span className=" text-[250px] text-gray font-bold xl:text-[200px]">
+      <span className=" select-none text-[250px] text-gray font-bold xl:text-[200px]">
         kezto
       </span>
     </div>

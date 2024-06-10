@@ -6,9 +6,9 @@ import {
   PortfolioView,
   portfolioContent,
 } from "@/data/portfolioContent";
-import PortfolioTabs from "../containers/PortfolioTabs/PortfolioTabs";
-import PortfolioViewSelector from "../containers/PortfolioViewSelector/PortfolioViewSelector";
-import PortfolioImagesContent from "../containers/PortfolioImagesContent/PortfolioImagesContent";
+import PortfolioTabs from "../../containers/PortfolioTabs/PortfolioTabs";
+import PortfolioViewSelector from "../../containers/PortfolioViewSelector/PortfolioViewSelector";
+import PortfolioImagesContent from "../../containers/PortfolioImagesContent/PortfolioImagesContent";
 
 function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);

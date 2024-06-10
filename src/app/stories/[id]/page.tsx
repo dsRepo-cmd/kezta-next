@@ -15,7 +15,7 @@ import {
 import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
-import CommentBox from "../../containers/CommentBox/CommentBox";
+import CommentBox from "../../../containers/CommentBox/CommentBox";
 
 function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
@@ -104,7 +104,7 @@ function Story({ params }: StoryProps) {
         <Text fontSize="text-lg" color="text-orange" text={story.type} />
       </div>
 
-      <div className="flex flex-col gap-10">
+      <article className="flex flex-col gap-10">
         {story.blocks.map((block) => (
           <div key={block.id}>
             {block.type === SroriesBlockType.TEXT && (
@@ -218,7 +218,7 @@ function Story({ params }: StoryProps) {
 
         {/* Comments Section */}
         <CommentBox storyId={params.id} />
-      </div>
+      </article>
     </>
   );
 }
