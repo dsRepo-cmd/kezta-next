@@ -3,39 +3,15 @@ import dbConnect from "@/lib/dbConnect";
 import Story from "@/models/Story";
 import Comment from "@/models/Comment";
 
-// Connect to the database
-async function connectToDatabase() {
-  try {
-    await dbConnect();
-  } catch (error) {
-    console.error("Database connection error:", error);
-    throw new Error("Failed to connect to the database");
-  }
-}
-
 interface PopulateConfig {
   path: string;
   model: string;
   populate: PopulateConfig[];
 }
 
-// Recursive function to populate comments and their replies up to a specified depth
-function populateComments(depth: number): PopulateConfig[] {
-  if (depth <= 0) {
-    return []; // Return an empty array if depth limit is reached
-  }
-  return [
-    {
-      path: "replies",
-      model: "Comment",
-      populate: populateComments(depth - 1), // Recursively populate replies
-    },
-  ];
-}
-
 // Add a comment to a story
 export async function POST(req: NextRequest) {
-  await connectToDatabase();
+  await dbConnect();
   try {
     const { storyId, message, userName, userEmail, avatarLink } =
       await req.json();
@@ -74,7 +50,7 @@ export async function POST(req: NextRequest) {
 
 // Reply to a comment
 export async function PUT(req: NextRequest) {
-  await connectToDatabase();
+  await dbConnect();
   try {
     const { commentId, message, userName, userEmail, avatarLink } =
       await req.json();
@@ -113,9 +89,23 @@ export async function PUT(req: NextRequest) {
   }
 }
 
+// Recursive function to populate comments and their replies up to a specified depth
+function populateComments(depth: number): PopulateConfig[] {
+  if (depth <= 0) {
+    return [];
+  }
+  return [
+    {
+      path: "replies",
+      model: "Comment",
+      populate: populateComments(depth - 1),
+    },
+  ];
+}
+
 // Get all comments for a story with replies
 export async function GET(req: NextRequest) {
-  await connectToDatabase();
+  await dbConnect();
   try {
     const url = new URL(req.url);
     const storyId = url.searchParams.get("storyId");
