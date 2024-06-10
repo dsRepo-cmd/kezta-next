@@ -6,9 +6,10 @@ import {
   PortfolioView,
   portfolioContent,
 } from "@/data/portfolioContent";
-import PortfolioTabs from "@/containers/PortfolioTabs/PortfolioTabs";
-import PortfolioViewSelector from "@/containers/PortfolioViewSelector/PortfolioViewSelector";
-import PortfolioImageContent from "@/containers/PortfolioContent/PortfolioContent";
+import PortfolioTabs from "../containers/PortfolioTabs/PortfolioTabs";
+import PortfolioViewSelector from "../containers/PortfolioViewSelector/PortfolioViewSelector";
+import PortfolioImagesContent from "../containers/PortfolioImagesContent/PortfolioImagesContent";
+
 function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);
   const [view, setView] = useState(PortfolioView.LIST);
@@ -33,7 +34,7 @@ function Portfolio() {
 
         <PortfolioViewSelector view={view} setView={setView} />
       </div>
-      <PortfolioImageContent view={view} filteredContent={filteredContent} />
+      <PortfolioImagesContent view={view} filteredContent={filteredContent} />
     </>
   );
 }

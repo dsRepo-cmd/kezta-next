@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Comment, CommentFormData } from "@/app/stories/types";
 import CommentsList from "../CommentsList/CommentsList";
 import CommentForm from "../CommentForm/CommentForm";
-import { Comment, CommentFormData } from "@/app/stories/types";
+
 interface CommentBoxProps {
   storyId: string;
 }

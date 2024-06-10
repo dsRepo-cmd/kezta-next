@@ -84,7 +84,10 @@ const Stories = () => {
           {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
             <div key={index} className="flex flex-col gap-3">
               <div className="flex aspect-[920/300]  ">
-                <Skeleton aspectRatio="920/300" className=" w-full h-full" />
+                <Skeleton
+                  aspectRatio="920/300"
+                  className=" w-full h-full max-w-[920px]"
+                />
               </div>
 
               <Skeleton className=" w-1/2 h-[56px] md:h-[38px]" />
