@@ -24,6 +24,7 @@ function Input({
 
         <input
           className="bg-black border-none focus-visible:outline-none selection:text-grayPrimary"
+          id={name}
           name={name}
           type={type}
           value={value}

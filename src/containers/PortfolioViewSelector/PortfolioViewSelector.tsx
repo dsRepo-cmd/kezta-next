@@ -17,6 +17,7 @@ function PortfolioViewSelector({ view, setView }: PortfolioViewSelectorProps) {
   return (
     <div className="flex gap-2 md:hidden">
       <button
+        title="list"
         onClick={() => handleViewChange(PortfolioView.LIST)}
         className={`duration-300 text-grayPrimary hover:text-white ${
           view === PortfolioView.LIST ? "text-orange" : ""
@@ -25,6 +26,7 @@ function PortfolioViewSelector({ view, setView }: PortfolioViewSelectorProps) {
         <ListIcon />
       </button>
       <button
+        title="Grid"
         onClick={() => handleViewChange(PortfolioView.GRID)}
         className={`duration-300 text-grayPrimary hover:text-white ${
           view === PortfolioView.GRID ? "text-orange" : ""
