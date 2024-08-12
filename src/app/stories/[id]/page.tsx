@@ -5,18 +5,16 @@ import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
-import {
-  AdjacentLink,
-  FetchStories,
-  SroriesBlockType,
-  Srory,
-  StoryProps,
-} from "../types";
+import { AdjacentLink, FetchStories, SroriesBlockType, Srory } from "../types";
 import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
 import CommentBox from "../../../containers/CommentBox/CommentBox";
 import NavigationLinks from "./navigationLinks";
+
+interface StoryProps {
+  params: { id: string };
+}
 
 function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();

@@ -11,10 +11,6 @@ export interface FetchStories {
   nextStory: AdjacentLink;
 }
 
-export interface StoryProps {
-  params: { id: string };
-}
-
 export enum SroriesBlockType {
   TEXT = "text",
   IMAGE = "image",
