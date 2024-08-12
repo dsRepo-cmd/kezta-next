@@ -1,15 +1,5 @@
-export type SocialLinkName =
-  | "twitter"
-  | "be"
-  | "facebook"
-  | "linkedIn"
-  | "dribbble";
+import { SocialLink } from "@/types/types";
 
-export interface SocialLink {
-  id: string;
-  name: SocialLinkName;
-  link: string;
-}
 export const socialLinks: SocialLink[] = [
   {
     id: "1",

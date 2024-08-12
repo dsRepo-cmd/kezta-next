@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon/Icon";
 import BeIcon from "@/assets/social-be.svg";
@@ -5,8 +6,7 @@ import TwitterIcon from "@/assets/social-twitter.svg";
 import FacebookIcon from "@/assets/social-f.svg";
 import LinkedInIcon from "@/assets/social-linkedin.svg";
 import DribbbleIcon from "@/assets/social-dribbble.svg";
-import { SocialLink, SocialLinkName } from "@/data/socialLinks";
-import { memo } from "react";
+import { SocialLink, SocialLinkName } from "@/types/types";
 
 const iconMap: { [key in SocialLinkName]: any } = {
   twitter: TwitterIcon,

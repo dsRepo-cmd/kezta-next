@@ -2,8 +2,8 @@ import Image from "next/image";
 import Text from "@/components/Text/Text";
 import Page from "@/components/Page/Page";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
-import { socialLinks } from "@/data/socialLinks";
 import { NavigationName } from "@/components/Navigation/const";
+import { socialLinks } from "@/components/SosialLinks/const";
 
 function Home() {
   return (

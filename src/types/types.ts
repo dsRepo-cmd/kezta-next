@@ -1,5 +1,4 @@
-import { SocialLink } from "@/data/socialLinks";
-
+//Srories
 export interface AdjacentLink {
   _id: string;
   title: string;
@@ -60,4 +59,19 @@ export interface Comment {
   commentId?: string;
   storyId?: string;
   replies?: Comment[];
+}
+
+// SocialLink
+
+export type SocialLinkName =
+  | "twitter"
+  | "be"
+  | "facebook"
+  | "linkedIn"
+  | "dribbble";
+
+export interface SocialLink {
+  id: string;
+  name: SocialLinkName;
+  link: string;
 }
