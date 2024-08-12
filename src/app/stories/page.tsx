@@ -6,7 +6,7 @@ import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Divider from "@/components/Divider/Divider";
 import Skeleton from "@/components/Skeleton/Skeleton";
-import { storiesContent } from "@/data/storiesContent";
+import { storiesContent } from "./const";
 
 const ITEMS_PER_PAGE = 4;
 
