@@ -1,7 +1,7 @@
 import { memo, useCallback } from "react";
-import { PortfolioView } from "@/data/portfolioContent";
 import GridIcon from "@/assets/grid.svg";
 import ListIcon from "@/assets/list.svg";
+import { PortfolioView } from "./const";
 
 interface ViewSelectorProps {
   view: PortfolioView;

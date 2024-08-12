@@ -1,4 +1,4 @@
-import { PortfolioContent, PortfolioView } from "@/data/portfolioContent";
+import { PortfolioContent, PortfolioView } from "@/app/portfolio/const";
 import Image from "next/image";
 import { memo } from "react";
 

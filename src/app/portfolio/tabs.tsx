@@ -1,5 +1,5 @@
-import { PortfolioTab, PortfolioType } from "@/data/portfolioContent";
 import { memo, useCallback } from "react";
+import { PortfolioTab, PortfolioType } from "./const";
 
 interface TabsProps {
   tabValue: PortfolioType;
