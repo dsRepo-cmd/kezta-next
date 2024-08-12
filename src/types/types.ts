@@ -1,8 +1,9 @@
-//Srories
 export interface AdjacentLink {
   _id: string;
   title: string;
 }
+
+//Srories
 
 export interface FetchStories {
   story: Srory;
@@ -39,6 +40,8 @@ export interface Srory {
   blocks: StoriesBlock[];
   comments?: string;
 }
+
+// Comments
 
 export interface CommentFormData {
   message: string;
