@@ -23,15 +23,21 @@ function Story({ params }: StoryProps) {
 
   const [prevStory, setPrevStory] = useState<AdjacentLink>();
   const [nextStory, setNextStory] = useState<AdjacentLink>();
+  const [loading, setLoading] = useState(false);
 
   const fetchStories = async (storyId: string) => {
+    setLoading(true);
     try {
       const res = await fetch(`/api/stories?storyId=${storyId}`);
       const data: FetchStories = await res.json();
 
-      setStory(data.story);
-      setPrevStory(data.prevStory);
-      setNextStory(data.nextStory);
+      if (res.ok) {
+        setStory(data.story);
+        setPrevStory(data.prevStory);
+        setNextStory(data.nextStory);
+      }
+
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching stories:", error);
     }
@@ -51,7 +57,7 @@ function Story({ params }: StoryProps) {
     </Link>
   );
 
-  if (!story) {
+  if (loading || !story) {
     return (
       <>
         {backToMainLink}
