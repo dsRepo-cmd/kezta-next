@@ -1,9 +1,9 @@
 "use client";
 import { memo, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { NavigationName, navigation } from "@/data/navigation";
 import Button from "../Button/Button";
 import Portal from "../Portal/Portal";
+import { navigation, NavigationName } from "./const";
 
 interface NavigationProps {
   path?: NavigationName;

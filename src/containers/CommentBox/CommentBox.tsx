@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Comment, CommentFormData } from "@/app/stories/types";
+import { Comment, CommentFormData } from "@/types/types";
 import CommentsList from "../CommentsList/CommentsList";
 import CommentForm from "../CommentForm/CommentForm";
 

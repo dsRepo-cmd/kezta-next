@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Text from "@/components/Text/Text";
-import { AdjacentLink } from "../types";
+import { AdjacentLink } from "../../../types/types";
 
 interface NavigationLinksProps {
   nextStory?: AdjacentLink;

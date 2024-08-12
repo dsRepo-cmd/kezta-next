@@ -5,7 +5,12 @@ import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
-import { AdjacentLink, FetchStories, SroriesBlockType, Srory } from "../types";
+import {
+  AdjacentLink,
+  FetchStories,
+  SroriesBlockType,
+  Srory,
+} from "../../../types/types";
 import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
