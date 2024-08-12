@@ -1,6 +1,5 @@
 import Text from "@/components/Text/Text";
-import { contactContent } from "@/data/contactContent";
-import React from "react";
+import { contactContent } from "./const";
 
 function Info() {
   const renderInfoBlock = (title: string, text: string | string[]) => (

@@ -1,7 +1,7 @@
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import Textarea from "@/components/Textarea/Textarea";
-import { contactContent } from "@/data/contactContent";
+import { contactContent } from "./const";
 
 function Form() {
   return (

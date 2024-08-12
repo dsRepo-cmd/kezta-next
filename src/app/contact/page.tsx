@@ -1,9 +1,9 @@
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import { contactContent } from "@/data/contactContent";
 import GoogleMap from "./googleMap";
 import Form from "./form";
 import Info from "./info";
+import { contactContent } from "./const";
 
 const Contact = () => {
   return (
