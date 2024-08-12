@@ -16,6 +16,7 @@ import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
 import CommentBox from "../../../containers/CommentBox/CommentBox";
+import NavigationLinks from "./navigationLinks";
 
 function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
@@ -161,64 +162,16 @@ function Story({ params }: StoryProps) {
             )}
           </div>
         ))}
-
-        <div className="flex w-full justify-end items-center gap-5">
-          <Divider style={{ width: "2rem", paddingTop: "1px" }} />
-          <SosialLinks horisontal links={story.socialLinks} />
-        </div>
-
-        <div className="flex flex-col gap-4 ">
-          <div className="flex gap-4 items-baseline">
-            {nextStory && (
-              <>
-                <Text
-                  fontSize="text-[28px]"
-                  color="text-grayPrimary"
-                  text="Next:"
-                />
-                <Link
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  href={`/stories/${nextStory._id}`}
-                >
-                  <Text
-                    fontSize="text-xl"
-                    className="duration-300 hover:text-orange"
-                    text={nextStory.title}
-                  />
-                </Link>
-              </>
-            )}
-          </div>
-          <div className="flex gap-4 items-baseline">
-            {prevStory && (
-              <>
-                <Text
-                  fontSize="text-[28px]"
-                  color="text-grayPrimary"
-                  text="Prev:"
-                />
-                <Link
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  href={`/stories/${prevStory._id}`}
-                >
-                  <Text
-                    fontSize="text-xl"
-                    className="duration-300 hover:text-orange"
-                    text={prevStory.title}
-                  />
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Comments Section */}
-        <CommentBox storyId={params.id} />
       </article>
+
+      <div className="flex w-full justify-end items-center gap-5">
+        <Divider style={{ width: "2rem", paddingTop: "1px" }} />
+        <SosialLinks horisontal links={story.socialLinks} />
+      </div>
+
+      <NavigationLinks nextStory={nextStory} prevStory={prevStory} />
+
+      <CommentBox storyId={params.id} />
     </>
   );
 }
