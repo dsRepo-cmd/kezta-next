@@ -1,10 +1,11 @@
+"use client";
 import Link from "next/link";
 import Text from "@/components/Text/Text";
 import { AdjacentLink } from "../../../types/types";
 
 interface NavigationLinksProps {
-  nextStory?: AdjacentLink;
-  prevStory?: AdjacentLink;
+  nextStory: AdjacentLink | null;
+  prevStory: AdjacentLink | null;
 }
 
 const NavigationLinks: React.FC<NavigationLinksProps> = ({

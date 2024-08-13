@@ -1,14 +1,14 @@
+//Srories
+
 export interface AdjacentLink {
   _id: string;
   title: string;
 }
 
-//Srories
-
-export interface FetchStories {
+export interface FetchStory {
   story: Srory;
-  prevStory: AdjacentLink;
-  nextStory: AdjacentLink;
+  prevStory: AdjacentLink | null;
+  nextStory: AdjacentLink | null;
 }
 
 export enum SroriesBlockType {
@@ -36,9 +36,9 @@ export interface Srory {
   type: string;
   image: string;
   userName: string;
-  socialLinks: SocialLink[];
+  socialLinks: SocialLink[] | undefined;
   blocks: StoriesBlock[];
-  comments?: string;
+  comments?: Comment[];
 }
 
 // Comments

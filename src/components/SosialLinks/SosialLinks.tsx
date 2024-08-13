@@ -17,7 +17,7 @@ const iconMap: { [key in SocialLinkName]: any } = {
 };
 
 interface SosialLinksProps {
-  links: SocialLink[];
+  links?: SocialLink[];
   horisontal?: boolean;
 }
 
