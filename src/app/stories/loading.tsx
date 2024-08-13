@@ -2,7 +2,7 @@ import Skeleton from "@/components/Skeleton/Skeleton";
 import Divider from "@/components/Divider/Divider";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
-import { storiesContent } from "@/data/storiesContent";
+import { storiesContent } from "./const";
 
 const ITEMS_PER_PAGE = 4;
 export default function LoadingStories() {

@@ -1,11 +1,11 @@
 import { ReactNode, memo } from "react";
-import { NavigationName } from "@/data/navigation";
 import Label from "@/components/Label/Label";
 import FollowLink from "@/components/FollowLink/FollowLink";
 import Divider from "@/components/Divider/Divider";
 import LogoIcon from "@/assets/logo.svg";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
+import { NavigationName } from "../Navigation/const";
 
 interface PageProps {
   children: ReactNode;

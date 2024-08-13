@@ -6,7 +6,6 @@ import Text from "@/components/Text/Text";
 import Icon from "@/components/Icon/Icon";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Button from "@/components/Button/Button";
-import { aboutContent } from "@/data/aboutContent";
 import ClientLogoIcon1 from "@/assets/client-logo1.svg";
 import ClientLogoIcon2 from "@/assets/client-logo2.svg";
 import ClientLogoIcon3 from "@/assets/client-logo3.svg";
@@ -15,6 +14,7 @@ import ClientLogoIcon5 from "@/assets/client-logo5.svg";
 import ClientLogoIcon6 from "@/assets/client-logo6.svg";
 import ClientLogoIcon7 from "@/assets/client-logo7.svg";
 import ClientLogoIcon8 from "@/assets/client-logo8.svg";
+import { aboutContent } from "./const";
 
 function About() {
   return (

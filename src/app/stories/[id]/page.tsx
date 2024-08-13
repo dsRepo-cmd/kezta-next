@@ -10,27 +10,37 @@ import {
   FetchStories,
   SroriesBlockType,
   Srory,
-  StoryProps,
-} from "../types";
+} from "../../../types/types";
 import Icon from "@/components/Icon/Icon";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CheckIcon from "@/assets/check.svg";
-import CommentBox from "../../../containers/CommentBox/CommentBox";
+import CommentBox from "./(comments)/CommentBox";
+import NavigationLinks from "./navigationLinks";
+
+interface StoryProps {
+  params: { id: string };
+}
 
 function Story({ params }: StoryProps) {
   const [story, setStory] = useState<Srory>();
 
   const [prevStory, setPrevStory] = useState<AdjacentLink>();
   const [nextStory, setNextStory] = useState<AdjacentLink>();
+  const [loading, setLoading] = useState(false);
 
   const fetchStories = async (storyId: string) => {
+    setLoading(true);
     try {
       const res = await fetch(`/api/stories?storyId=${storyId}`);
       const data: FetchStories = await res.json();
 
-      setStory(data.story);
-      setPrevStory(data.prevStory);
-      setNextStory(data.nextStory);
+      if (res.ok) {
+        setStory(data.story);
+        setPrevStory(data.prevStory);
+        setNextStory(data.nextStory);
+      }
+
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching stories:", error);
     }
@@ -50,7 +60,7 @@ function Story({ params }: StoryProps) {
     </Link>
   );
 
-  if (!story) {
+  if (loading || !story) {
     return (
       <>
         {backToMainLink}
@@ -161,64 +171,16 @@ function Story({ params }: StoryProps) {
             )}
           </div>
         ))}
-
-        <div className="flex w-full justify-end items-center gap-5">
-          <Divider style={{ width: "2rem", paddingTop: "1px" }} />
-          <SosialLinks horisontal links={story.socialLinks} />
-        </div>
-
-        <div className="flex flex-col gap-4 ">
-          <div className="flex gap-4 items-baseline">
-            {nextStory && (
-              <>
-                <Text
-                  fontSize="text-[28px]"
-                  color="text-grayPrimary"
-                  text="Next:"
-                />
-                <Link
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  href={`/stories/${nextStory._id}`}
-                >
-                  <Text
-                    fontSize="text-xl"
-                    className="duration-300 hover:text-orange"
-                    text={nextStory.title}
-                  />
-                </Link>
-              </>
-            )}
-          </div>
-          <div className="flex gap-4 items-baseline">
-            {prevStory && (
-              <>
-                <Text
-                  fontSize="text-[28px]"
-                  color="text-grayPrimary"
-                  text="Prev:"
-                />
-                <Link
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  href={`/stories/${prevStory._id}`}
-                >
-                  <Text
-                    fontSize="text-xl"
-                    className="duration-300 hover:text-orange"
-                    text={prevStory.title}
-                  />
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Comments Section */}
-        <CommentBox storyId={params.id} />
       </article>
+
+      <div className="flex w-full justify-end items-center gap-5">
+        <Divider style={{ width: "2rem", paddingTop: "1px" }} />
+        <SosialLinks horisontal links={story.socialLinks} />
+      </div>
+
+      <NavigationLinks nextStory={nextStory} prevStory={prevStory} />
+
+      <CommentBox storyId={params.id} />
     </>
   );
 }

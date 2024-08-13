@@ -1,14 +1,10 @@
 "use client";
 import { useState, useMemo } from "react";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import {
-  PortfolioType,
-  PortfolioView,
-  portfolioContent,
-} from "@/data/portfolioContent";
-import PortfolioTabs from "../../containers/PortfolioTabs/PortfolioTabs";
-import PortfolioViewSelector from "../../containers/PortfolioViewSelector/PortfolioViewSelector";
-import PortfolioImagesContent from "../../containers/PortfolioImagesContent/PortfolioImagesContent";
+import ImagesContent from "./imagesContent";
+import ViewSelector from "./viewSelector";
+import Tabs from "./tabs";
+import { portfolioContent, PortfolioType, PortfolioView } from "./const";
 
 function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);
@@ -26,15 +22,15 @@ function Portfolio() {
     <>
       <TitleBox title={portfolioContent.title} />
       <div className="flex gap-32">
-        <PortfolioTabs
+        <Tabs
           tabValue={tabValue}
           setTabValue={setTabValue}
           typeTabs={portfolioContent.typeTabs}
         />
 
-        <PortfolioViewSelector view={view} setView={setView} />
+        <ViewSelector view={view} setView={setView} />
       </div>
-      <PortfolioImagesContent view={view} filteredContent={filteredContent} />
+      <ImagesContent view={view} filteredContent={filteredContent} />
     </>
   );
 }

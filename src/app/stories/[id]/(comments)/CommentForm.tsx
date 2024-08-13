@@ -3,7 +3,7 @@ import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import Textarea from "@/components/Textarea/Textarea";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import { CommentFormData } from "@/app/stories/types";
+import { CommentFormData } from "@/types/types";
 
 interface CommentFormProps {
   form: CommentFormData;

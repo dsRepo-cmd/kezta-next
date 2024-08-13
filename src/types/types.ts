@@ -1,18 +1,14 @@
-import { SocialLink } from "@/data/socialLinks";
-
 export interface AdjacentLink {
   _id: string;
   title: string;
 }
 
+//Srories
+
 export interface FetchStories {
   story: Srory;
   prevStory: AdjacentLink;
   nextStory: AdjacentLink;
-}
-
-export interface StoryProps {
-  params: { id: string };
 }
 
 export enum SroriesBlockType {
@@ -45,6 +41,8 @@ export interface Srory {
   comments?: string;
 }
 
+// Comments
+
 export interface CommentFormData {
   message: string;
   userName: string;
@@ -64,4 +62,19 @@ export interface Comment {
   commentId?: string;
   storyId?: string;
   replies?: Comment[];
+}
+
+// SocialLink
+
+export type SocialLinkName =
+  | "twitter"
+  | "be"
+  | "facebook"
+  | "linkedIn"
+  | "dribbble";
+
+export interface SocialLink {
+  id: string;
+  name: SocialLinkName;
+  link: string;
 }

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import Image from "next/image";
-import { Comment } from "@/app/stories/types";
+import { Comment } from "@/types/types";
 import Button from "@/components/Button/Button";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";

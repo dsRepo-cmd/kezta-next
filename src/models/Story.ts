@@ -1,17 +1,6 @@
 import mongoose, { Document, Schema, Model, Types } from "mongoose";
 import { IComment } from "./Comment";
-
-export type SocialLinkName =
-  | "twitter"
-  | "be"
-  | "facebook"
-  | "linkedIn"
-  | "dribbble";
-
-export interface SocialLink {
-  name: SocialLinkName;
-  link: string;
-}
+import { SocialLink } from "@/types/types";
 
 export interface IStory extends Document {
   _id: Types.ObjectId;
