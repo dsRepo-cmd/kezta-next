@@ -3,7 +3,7 @@ import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import Pagination from "./pagination";
-import { getStories } from "@/lib/story";
+import { getStories } from "@/lib/getStories";
 
 interface Props {
   page: string;

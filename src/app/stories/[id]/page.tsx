@@ -5,7 +5,7 @@ import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import Skeleton from "@/components/Skeleton/Skeleton";
 import CommentBox from "./(comments)/CommentBox";
 import NavigationLinks from "./navigationLinks";
-import { getStory } from "@/lib/story";
+import { getStory } from "@/lib/getStory";
 import Article from "./article";
 
 interface StoryProps {
