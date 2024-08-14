@@ -1,20 +1,7 @@
 "use client";
 import Divider from "@/components/Divider/Divider";
-import {
-  ReadonlyURLSearchParams,
-  usePathname,
-  useRouter,
-} from "next/navigation";
-
-const createUrl = (
-  pathname: string,
-  params: URLSearchParams | ReadonlyURLSearchParams
-) => {
-  const paramsString = params.toString();
-  const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
-
-  return `${pathname}${queryString}`;
-};
+import { createUrl } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   itemsPerPage: number;
