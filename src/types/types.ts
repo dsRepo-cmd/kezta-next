@@ -6,7 +6,7 @@ export interface AdjacentLink {
 }
 
 export interface FetchStory {
-  story: Srory;
+  story: Story;
   prevStory: AdjacentLink | null;
   nextStory: AdjacentLink | null;
 }
@@ -29,12 +29,15 @@ export interface StoriesBlock {
   image?: string;
 }
 
-export interface Srory {
+export interface StoryBase {
   id: string;
   title: string;
   date: string;
   type: string;
   image: string;
+}
+
+export interface Story extends StoryBase {
   userName: string;
   socialLinks: SocialLink[] | undefined;
   blocks: StoriesBlock[];

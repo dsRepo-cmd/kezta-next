@@ -1,12 +1,12 @@
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
-import { SroriesBlockType, Srory } from "@/types/types";
+import { SroriesBlockType, Story } from "@/types/types";
 import Image from "next/image";
 import CheckIcon from "@/assets/check.svg";
 import Icon from "@/components/Icon/Icon";
 
 interface Props {
-  story: Srory;
+  story: Story;
 }
 
 function Article({ story }: Props) {
