@@ -4,25 +4,11 @@ import { Comment } from "@/types/types";
 import Button from "@/components/Button/Button";
 import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
+import { formatDateString } from "@/lib/utils";
 
 interface CommentItemProps {
   comment: Comment;
   handleReplyClick: (commentId: string) => void;
-}
-
-function formatDateString(dateString: string): string {
-  const date = new Date(dateString);
-
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
-
-  return date.toLocaleString("en-US", options).replace(",", " at");
 }
 
 const CommentItem: React.FC<CommentItemProps> = ({
