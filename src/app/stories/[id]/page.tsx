@@ -3,8 +3,8 @@ import Divider from "@/components/Divider/Divider";
 import Text from "@/components/Text/Text";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import Skeleton from "@/components/Skeleton/Skeleton";
-import CommentBox from "./(comments)/CommentBox";
-import NavigationLinks from "./navigationLinks";
+import CommentBox from "./(comments)/comment-box";
+import NavigationLinks from "./navigation-links";
 import { getStory } from "@/lib/getStory";
 import Article from "./article";
 
