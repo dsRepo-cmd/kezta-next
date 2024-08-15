@@ -1,8 +1,8 @@
 "use client";
 import { useState, useMemo } from "react";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import ImagesContent from "./imagesContent";
-import ViewSelector from "./viewSelector";
+import ImagesContent from "./images-content";
+import ViewSelector from "./view-selector";
 import Tabs from "./tabs";
 import { portfolioContent, PortfolioType, PortfolioView } from "./const";
 

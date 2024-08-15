@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Model, Types } from "mongoose";
 import { IComment } from "./Comment";
-import { SocialLink } from "@/types/types";
+import { SocialLink, SroriesBlockType, StoriesBlock } from "@/types/types";
 
 export interface IStory extends Document {
   _id: Types.ObjectId;
@@ -11,7 +11,33 @@ export interface IStory extends Document {
   image: string;
   comments?: (Types.ObjectId | IComment)[];
   socialLinks?: SocialLink[];
+  userName: string;
+  blocks: StoriesBlock[];
 }
+
+const StoriesBlockSchema = new Schema<StoriesBlock>({
+  id: { type: String, required: true },
+  type: {
+    type: String,
+    enum: Object.values(SroriesBlockType),
+    required: true,
+  },
+  title: { type: String },
+  text: { type: String },
+  texts: [
+    {
+      id: { type: String, required: true },
+      text: { type: String, required: true },
+    },
+  ],
+  checkList: [
+    {
+      id: { type: String, required: true },
+      text: { type: String, required: true },
+    },
+  ],
+  image: { type: String },
+});
 
 const StorySchema = new Schema<IStory>(
   {
@@ -20,6 +46,7 @@ const StorySchema = new Schema<IStory>(
     type: { type: "String", required: true },
     image: { type: String, required: true },
     date: { type: String, required: true },
+    userName: { type: String, required: true },
 
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     socialLinks: [
@@ -31,7 +58,9 @@ const StorySchema = new Schema<IStory>(
         link: { type: String },
       },
     ],
+    blocks: [StoriesBlockSchema],
   },
+
   {
     timestamps: true,
   }

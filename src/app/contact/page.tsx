@@ -1,6 +1,6 @@
 import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import GoogleMap from "./googleMap";
+import GoogleMap from "./google-map";
 import Form from "./form";
 import Info from "./info";
 import { contactContent } from "./const";
