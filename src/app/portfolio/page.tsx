@@ -11,7 +11,7 @@ import { getClassFromPortfolioType } from "@/lib/utils";
 
 function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);
-  const [view, setView] = useState(PortfolioView.GRID);
+  const [view, setView] = useState(PortfolioView.LIST);
   const isoRef = useRef<Isotope | null>(null);
 
   useEffect(() => {
