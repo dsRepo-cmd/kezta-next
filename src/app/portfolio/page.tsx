@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import Isotope from "isotope-layout";
+import dynamic from "next/dynamic";
 import TitleBox from "@/components/TitleBox/TitleBox";
-import ImagesContent from "./images-content";
 import ViewSelector from "./view-selector";
 import Tabs from "./tabs";
 import { portfolioContent, PortfolioType, PortfolioView } from "./const";
 import { getClassFromPortfolioType } from "@/lib/utils";
+
+const ImagesContent = dynamic(() => import("./images-content"), { ssr: false });
 
 function Portfolio() {
   const [tabValue, setTabValue] = useState(PortfolioType.ALL_WORKS);
