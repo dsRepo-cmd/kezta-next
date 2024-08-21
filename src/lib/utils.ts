@@ -1,3 +1,4 @@
+import { PortfolioType } from "@/app/portfolio/const";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
 export const createUrl = (
@@ -24,3 +25,7 @@ export function formatDateString(dateString: string): string {
 
   return date.toLocaleString("en-US", options).replace(",", " at");
 }
+
+export const getClassFromPortfolioType = (type: PortfolioType) => {
+  return type.toLowerCase().replace(/\s+/g, "_");
+};

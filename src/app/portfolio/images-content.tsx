@@ -1,44 +1,61 @@
-import { PortfolioContent, PortfolioView } from "@/app/portfolio/const";
+"use client";
+import { useEffect, memo } from "react";
+import Isotope from "isotope-layout";
 import Image from "next/image";
-import { memo } from "react";
+import { portfolioContent, PortfolioView } from "@/app/portfolio/const";
+import { getClassFromPortfolioType } from "@/lib/utils";
 
 interface ContentProps {
   view: PortfolioView;
-  filteredContent: PortfolioContent[];
+
+  isoRef: React.MutableRefObject<Isotope | null>;
 }
 
-function ImagesContent({ view, filteredContent }: ContentProps) {
+function ImagesContent({ view, isoRef }: ContentProps) {
+  useEffect(() => {
+    if (!isoRef.current) {
+      isoRef.current = new Isotope(".grid-container", {
+        itemSelector: ".grid-item",
+        layoutMode: view === PortfolioView.GRID ? "fitRows" : "vertical",
+        transitionDuration: "0.6s",
+        containerStyle: {
+          height: "100%",
+          position: "relative",
+        },
+        stagger: "0.05s",
+        percentPosition: true,
+      });
+    }
+
+    return () => {
+      if (isoRef.current) {
+        isoRef.current.destroy();
+        isoRef.current = null;
+      }
+    };
+  }, [view, isoRef]);
+
   return (
     <div
-      className={`duration-500 ${
-        view === PortfolioView.GRID
-          ? "grid grid-cols-3 gap-8"
-          : "flex flex-col gap-10"
+      className={`grid-container ${
+        view === PortfolioView.GRID ? "grid" : "list"
       }`}
     >
-      {filteredContent.map((item) =>
-        view === PortfolioView.GRID ? (
+      {portfolioContent.content.map((item) => (
+        <div
+          key={item.id}
+          className={`grid-item p-2 ${getClassFromPortfolioType(item.type)}`}
+        >
           <Image
-            key={item.id}
-            src={item.imageSquard}
+            src={view === PortfolioView.GRID ? item.imageSquard : item.image}
             alt={item.image}
-            width={920}
-            height={325}
+            width={view === PortfolioView.GRID ? 300 : 920}
+            height={view === PortfolioView.GRID ? 300 : 325}
             className="object-contain"
             priority
           />
-        ) : (
-          <Image
-            key={item.id}
-            src={item.image}
-            alt={item.image}
-            width={920}
-            height={325}
-            className="object-contain"
-            priority
-          />
-        )
-      )}
+        </div>
+      ))}
     </div>
   );
 }

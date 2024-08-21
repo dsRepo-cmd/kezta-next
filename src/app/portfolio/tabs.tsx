@@ -1,13 +1,13 @@
+"use client";
 import { memo, useCallback } from "react";
-import { PortfolioTab, PortfolioType } from "./const";
+import { portfolioContent, PortfolioType } from "./const";
 
 interface TabsProps {
   tabValue: PortfolioType;
   setTabValue: (value: PortfolioType) => void;
-  typeTabs: PortfolioTab[];
 }
 
-function Tabs({ typeTabs, setTabValue, tabValue }: TabsProps) {
+function Tabs({ setTabValue, tabValue }: TabsProps) {
   const handleTabClick = useCallback(
     (newTab: PortfolioType) => setTabValue(newTab),
     [setTabValue]
@@ -15,7 +15,7 @@ function Tabs({ typeTabs, setTabValue, tabValue }: TabsProps) {
 
   return (
     <div className="flex flex-wrap gap-10">
-      {typeTabs.map((tab) => (
+      {portfolioContent.typeTabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => handleTabClick(tab.value)}
