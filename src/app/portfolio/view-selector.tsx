@@ -1,3 +1,4 @@
+"use client";
 import { memo, useCallback } from "react";
 import GridIcon from "@/assets/grid.svg";
 import ListIcon from "@/assets/list.svg";
