@@ -20,7 +20,7 @@ To get started with the KEZTA App, follow these steps:
 
 2. **Install dependencies**:
     ```bash
-    npm install
+    npm install --legacy-peer-deps
     ```
 
 ## Scripts
