@@ -15,12 +15,12 @@ function Portal(props: PortalProps): ReactPortal | null {
   }, []);
 
   return mounted && ref.current
-    ? createPortal(
-        <div className=" block fixed left-0 top-[70px] overflow-auto bg-opacity-20 z-50">
+    ? (createPortal(
+        <div className="block fixed left-0 top-[70px] overflow-auto bg-opacity-20 z-50">
           {props.children}
         </div>,
         ref.current
-      )
+      ) as React.ReactPortal)
     : null;
 }
 
