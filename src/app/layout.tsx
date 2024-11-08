@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Header from "@/components/Header/Header";
+import Page from "@/components/Page/Page";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -21,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} font-sans`}>
-        {children}
+        <Header />
+        <Page>{children}</Page>
         <div id="portal" />
       </body>
     </html>

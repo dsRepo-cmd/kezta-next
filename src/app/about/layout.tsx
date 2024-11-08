@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Page from "@/components/Page/Page";
-import { NavigationName } from "@/components/Navigation/const";
 
 export const metadata: Metadata = {
   title: "KEZTA about",
@@ -12,5 +10,5 @@ export default function AboutLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <Page navigation={NavigationName.About}>{children}</Page>;
+  return <>{children}</>;
 }
