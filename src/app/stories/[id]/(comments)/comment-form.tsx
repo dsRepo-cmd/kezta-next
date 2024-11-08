@@ -32,11 +32,11 @@ const CommentForm: React.FC<CommentFormProps> = ({
 
   return (
     <>
-      <TitleBox title={isReplyMode ? "Leave a Reply" : "Leave a Comment"} />
+      {!isReplyMode && <TitleBox title={"Leave a Comment"} />}
 
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex flex-col gap-10 w-full"
+        className="mt-10 flex flex-col gap-10 w-full mb-6"
       >
         <div className=" flex  gap-10 md:flex-col">
           <Input

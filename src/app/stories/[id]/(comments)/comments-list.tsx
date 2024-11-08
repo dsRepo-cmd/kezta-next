@@ -1,4 +1,5 @@
-import { Comment } from "@/types/types";
+"use client";
+import { Comment, CommentFormData } from "@/types/types";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
 import CommentItem from "./comment-item";
@@ -6,11 +7,25 @@ import CommentItem from "./comment-item";
 interface CommentsListProps {
   comments: Comment[];
   handleReplyClick: (commentId: string) => void;
+  currentCommentId: string | null;
+  form: CommentFormData;
+  setForm: React.Dispatch<React.SetStateAction<CommentFormData>>;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  resetForm: () => void;
+  errors: Record<string, string>;
+  response: string;
 }
 
 const CommentsList: React.FC<CommentsListProps> = ({
   comments,
   handleReplyClick,
+  currentCommentId,
+  form,
+  setForm,
+  handleSubmit,
+  resetForm,
+  errors,
+  response,
 }) => {
   return (
     <>
@@ -28,6 +43,13 @@ const CommentsList: React.FC<CommentsListProps> = ({
           key={comment._id}
           comment={comment}
           handleReplyClick={handleReplyClick}
+          isReplyFormVisible={currentCommentId === comment._id}
+          form={form}
+          setForm={setForm}
+          handleSubmit={handleSubmit}
+          resetForm={resetForm}
+          errors={errors}
+          response={response}
         />
       ))}
     </>

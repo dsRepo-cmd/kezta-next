@@ -7,17 +7,16 @@ import CommentForm from "./comment-form";
 interface CommentBoxProps {
   storyId: string;
 }
+
 function CommentBox({ storyId }: CommentBoxProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [response, setResponse] = useState("");
-  const [isReplyMode, setIsReplyMode] = useState(false);
   const [currentCommentId, setCurrentCommentId] = useState<string | null>(null);
 
   const formValidate = () => {
     let err: Record<string, string> = {};
     if (!form.message) err.message = "Message is required";
-
     if (!form.userEmail) err.userEmail = "Email is required";
     if (!form.userName) err.userName = "Name is required";
     if (form.userName.length > 20)
@@ -34,7 +33,6 @@ function CommentBox({ storyId }: CommentBoxProps) {
   });
 
   const resetForm = () => {
-    setIsReplyMode(false);
     setCurrentCommentId(null);
     setForm({
       message: "",
@@ -85,7 +83,7 @@ function CommentBox({ storyId }: CommentBoxProps) {
     e.preventDefault();
     const errs = formValidate();
     if (Object.keys(errs).length === 0) {
-      if (isReplyMode && currentCommentId) {
+      if (currentCommentId) {
         await postReply({ ...form, commentId: currentCommentId });
       } else {
         await postComment(form);
@@ -94,6 +92,7 @@ function CommentBox({ storyId }: CommentBoxProps) {
       setErrors(errs);
     }
   };
+
   const fetchComments = async (storyId: string) => {
     try {
       const res = await fetch(`/api/stories/comments?storyId=${storyId}`);
@@ -109,7 +108,6 @@ function CommentBox({ storyId }: CommentBoxProps) {
   }, [storyId]);
 
   const handleReplyClick = (commentId: string) => {
-    setIsReplyMode(true);
     setCurrentCommentId(commentId);
     setForm((prevForm) => ({
       ...prevForm,
@@ -120,16 +118,28 @@ function CommentBox({ storyId }: CommentBoxProps) {
 
   return (
     <div className="flex flex-col gap-10">
-      <CommentsList comments={comments} handleReplyClick={handleReplyClick} />
-      <CommentForm
+      <CommentsList
+        comments={comments}
+        handleReplyClick={handleReplyClick}
+        currentCommentId={currentCommentId}
         form={form}
         setForm={setForm}
         handleSubmit={handleSubmit}
         resetForm={resetForm}
-        isReplyMode={isReplyMode}
         errors={errors}
         response={response}
       />
+      {!currentCommentId && (
+        <CommentForm
+          isReplyMode={false}
+          form={form}
+          setForm={setForm}
+          handleSubmit={handleSubmit}
+          resetForm={resetForm}
+          errors={errors}
+          response={response}
+        />
+      )}
     </div>
   );
 }
