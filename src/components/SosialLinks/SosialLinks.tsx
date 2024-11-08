@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon/Icon";
 import BeIcon from "@/assets/social-be.svg";
@@ -42,4 +41,4 @@ function SosialLinks({ links, horisontal }: SosialLinksProps) {
   );
 }
 
-export default memo(SosialLinks);
+export default SosialLinks;

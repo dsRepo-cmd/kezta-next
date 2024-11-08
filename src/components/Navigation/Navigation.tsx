@@ -1,5 +1,5 @@
 "use client";
-import { memo, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Button from "../Button/Button";
 import Portal from "../Portal/Portal";
@@ -89,4 +89,4 @@ function Navigation() {
   );
 }
 
-export default memo(Navigation);
+export default Navigation;

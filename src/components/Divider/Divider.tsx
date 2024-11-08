@@ -1,9 +1,7 @@
-import { CSSProperties, memo } from "react";
-
 interface DividerProps {
   vertical?: boolean;
   className?: string;
-  style?: CSSProperties | undefined;
+  style?: React.CSSProperties | undefined;
 }
 
 function Divider({ vertical, className, style }: DividerProps) {
@@ -23,4 +21,4 @@ function Divider({ vertical, className, style }: DividerProps) {
   );
 }
 
-export default memo(Divider);
+export default Divider;

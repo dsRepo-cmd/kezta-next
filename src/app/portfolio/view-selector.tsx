@@ -1,5 +1,5 @@
 "use client";
-import { memo, useCallback } from "react";
+import { useCallback } from "react";
 import GridIcon from "@/assets/grid.svg";
 import ListIcon from "@/assets/list.svg";
 import { PortfolioView } from "./const";
@@ -39,4 +39,4 @@ function ViewSelector({ view, setView }: ViewSelectorProps) {
   );
 }
 
-export default memo(ViewSelector);
+export default ViewSelector;

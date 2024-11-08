@@ -1,10 +1,8 @@
-import React, { FC, memo } from "react";
-
 type SvgProps = Omit<React.SVGProps<SVGSVGElement>, "onClick">;
 
 interface IconProps extends SvgProps {
   className?: string;
-  Svg: FC<React.SVGProps<SVGSVGElement>>;
+  Svg: React.FC<React.SVGProps<SVGSVGElement>>;
   title?: string;
   filled?: boolean;
 }
@@ -23,4 +21,4 @@ function Icon(props: IconProps) {
   );
 }
 
-export default memo(Icon);
+export default Icon;

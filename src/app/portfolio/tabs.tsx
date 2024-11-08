@@ -1,5 +1,5 @@
 "use client";
-import { memo, useCallback } from "react";
+import { useCallback } from "react";
 import { portfolioContent, PortfolioType } from "./const";
 
 interface TabsProps {
@@ -30,4 +30,4 @@ function Tabs({ setTabValue, tabValue }: TabsProps) {
   );
 }
 
-export default memo(Tabs);
+export default Tabs;

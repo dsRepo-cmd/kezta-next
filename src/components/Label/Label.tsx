@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 interface LabelProps {
   right?: boolean;
 }
@@ -19,4 +17,4 @@ function Label({ right }: LabelProps) {
     </div>
   );
 }
-export default memo(Label);
+export default Label;

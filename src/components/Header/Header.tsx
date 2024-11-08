@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Navigation from "../Navigation/Navigation";
 import LogoIcon from "@/assets/logo.svg";
 
@@ -11,4 +10,4 @@ function Header() {
   );
 }
 
-export default memo(Header);
+export default Header;

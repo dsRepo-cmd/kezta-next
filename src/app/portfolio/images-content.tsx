@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, memo } from "react";
+import { useEffect } from "react";
 import Isotope from "isotope-layout";
 import Image from "next/image";
 import { portfolioContent, PortfolioView } from "@/app/portfolio/const";
@@ -60,4 +60,4 @@ function ImagesContent({ view, isoRef }: ContentProps) {
   );
 }
 
-export default memo(ImagesContent);
+export default ImagesContent;

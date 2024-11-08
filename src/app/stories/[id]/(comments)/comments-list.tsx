@@ -1,4 +1,3 @@
-import React, { memo } from "react";
 import { Comment } from "@/types/types";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
@@ -35,4 +34,4 @@ const CommentsList: React.FC<CommentsListProps> = ({
   );
 };
 
-export default memo(CommentsList);
+export default CommentsList;

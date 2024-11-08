@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 type TextColor = "text-grayPrimary" | "text-white" | "text-orange";
 type FontSize =
   | "text-sm"
@@ -70,4 +68,4 @@ function Text({
   );
 }
 
-export default memo(Text);
+export default Text;
