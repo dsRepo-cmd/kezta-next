@@ -9,10 +9,11 @@ import { getStory } from "@/lib/getStory";
 import Article from "./article";
 
 interface StoryProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-async function Story({ params }: StoryProps) {
+async function Story(props: StoryProps) {
+  const params = await props.params;
   const fetchData = await getStory(params.id);
 
   const backToMainLink = (
