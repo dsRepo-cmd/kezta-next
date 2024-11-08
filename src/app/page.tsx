@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Text from "@/components/Text/Text";
-import Page from "@/components/Page/Page";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
-import { NavigationName } from "@/components/Navigation/const";
 import { socialLinks } from "@/components/SosialLinks/const";
 
 function Home() {
   return (
-    <Page isHome navigation={NavigationName.Home}>
+    <>
       {/* SosialLinks */}
       <div className=" ms-10   items-center justify-center p-10 xl:ms-0">
         <SosialLinks links={socialLinks} />
@@ -31,7 +29,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </Page>
+    </>
   );
 }
 

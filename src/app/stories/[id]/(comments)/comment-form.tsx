@@ -1,4 +1,3 @@
-import React, { memo } from "react";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import Textarea from "@/components/Textarea/Textarea";
@@ -84,4 +83,4 @@ const CommentForm: React.FC<CommentFormProps> = ({
   );
 };
 
-export default memo(CommentForm);
+export default CommentForm;

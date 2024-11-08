@@ -1,25 +1,16 @@
-import { ReactNode, memo } from "react";
+"use client";
 import Label from "@/components/Label/Label";
 import FollowLink from "@/components/FollowLink/FollowLink";
 import Divider from "@/components/Divider/Divider";
-import LogoIcon from "@/assets/logo.svg";
-import Header from "../Header/Header";
-import Navigation from "../Navigation/Navigation";
-import { NavigationName } from "../Navigation/const";
+import { usePathname } from "next/navigation";
 
 interface PageProps {
-  children: ReactNode;
-  navigation?: NavigationName;
-  isHome?: boolean;
+  children: React.ReactNode;
 }
-function Page({ children, navigation, isHome }: PageProps) {
+function Page({ children }: PageProps) {
+  const isHome = usePathname() === "/";
   return (
-    <div className=" min-h-screen relative">
-      <Header>
-        <LogoIcon />
-        <Navigation path={navigation} />
-      </Header>
-
+    <div className=" relative">
       {isHome ? (
         <>
           <Label right />
@@ -47,4 +38,4 @@ function Page({ children, navigation, isHome }: PageProps) {
   );
 }
 
-export default memo(Page);
+export default Page;

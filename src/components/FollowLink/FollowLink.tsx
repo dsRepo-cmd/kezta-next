@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Link from "next/link";
 import FollowIcon from "@/assets/follow-us.svg";
 
@@ -19,4 +18,4 @@ function FollowLink() {
   );
 }
 
-export default memo(FollowLink);
+export default FollowLink;

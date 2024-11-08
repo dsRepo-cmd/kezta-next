@@ -1,17 +1,15 @@
 "use client";
-import { memo, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Button from "../Button/Button";
 import Portal from "../Portal/Portal";
-import { navigation, NavigationName } from "./const";
+import { navigation } from "./const";
+import { usePathname } from "next/navigation";
 
-interface NavigationProps {
-  path?: NavigationName;
-}
-
-function Navigation({ path }: NavigationProps) {
+function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isBigScreen, setIsBigScreen] = useState(false);
+  const pathname = usePathname();
 
   const toggleNav = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -33,7 +31,7 @@ function Navigation({ path }: NavigationProps) {
   const navigationLinks = navigation.map((link) => (
     <Link
       className={`text-lg hover:text-orange duration-300 ${
-        path === link.name ? "text-orange" : ""
+        pathname === link.path ? "text-orange" : ""
       }`}
       key={link.id}
       href={link.path}
@@ -53,20 +51,20 @@ function Navigation({ path }: NavigationProps) {
         className="p-1 hidden md:block"
       >
         <div
-          className={`relative w-[30px] h-[22.5px] mx-auto cursor-pointer transition-transform duration-200 ease-in-out  `}
+          className={`relative w-[30px] h-[22.5px] mx-auto cursor-pointer transition-transform duration-200 ease-in-out`}
         >
           <span
-            className={`block absolute   h-[3px] w-full bg-white rounded-md transition-transform duration-[0.225s] ease-in-out ${
+            className={`block absolute h-[3px] w-full bg-white rounded-md transition-transform duration-[0.225s] ease-in-out ${
               isOpen ? "top-[9px] rotate-[135deg]" : "top-0 left-0"
             }`}
           ></span>
           <span
-            className={`block transition-all  absolute h-[3px] w-full bg-white rounded-md  duration-[0.225s] ease-in-out ${
-              isOpen ? " opacity-0 left-[-30px] top-[9px]" : "top-[9px] left-0"
+            className={`block transition-all absolute h-[3px] w-full bg-white rounded-md duration-[0.225s] ease-in-out ${
+              isOpen ? "opacity-0 left-[-30px] top-[9px]" : "top-[9px] left-0"
             }`}
           ></span>
           <span
-            className={`block  absolute h-[3px] w-full bg-white rounded-md transition-transform duration-[0.225s] ease-in-out ${
+            className={`block absolute h-[3px] w-full bg-white rounded-md transition-transform duration-[0.225s] ease-in-out ${
               isOpen ? "top-[9px] rotate-[-135deg]" : "top-[18px] left-0"
             }`}
           ></span>
@@ -91,4 +89,4 @@ function Navigation({ path }: NavigationProps) {
   );
 }
 
-export default memo(Navigation);
+export default Navigation;

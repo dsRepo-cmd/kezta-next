@@ -1,7 +1,6 @@
-import React, { InputHTMLAttributes, memo } from "react";
 import Divider from "../Divider/Divider";
 
-interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   name: string;
   htmlFor?: string;
@@ -37,4 +36,4 @@ function Textarea({
   );
 }
 
-export default memo(Textarea);
+export default Textarea;

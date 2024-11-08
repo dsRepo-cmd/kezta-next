@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, memo } from "react";
+import { ButtonHTMLAttributes } from "react";
 
 type ButtonVariant = "clear" | "clearSecondary" | "filled";
 
@@ -35,4 +35,4 @@ function Button({
   );
 }
 
-export default memo(Button);
+export default Button;

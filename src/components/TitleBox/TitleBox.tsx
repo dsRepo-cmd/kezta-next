@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Text from "../Text/Text";
 
 interface TitleBoxProps {
@@ -13,4 +12,4 @@ function TitleBox({ title }: TitleBoxProps) {
   );
 }
 
-export default memo(TitleBox);
+export default TitleBox;

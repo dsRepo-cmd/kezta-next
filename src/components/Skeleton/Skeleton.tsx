@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes, memo } from "react";
+import { CSSProperties, HTMLAttributes } from "react";
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -20,4 +20,4 @@ function Skeleton(props: SkeletonProps) {
   );
 }
 
-export default memo(Skeleton);
+export default Skeleton;
