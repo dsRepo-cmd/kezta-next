@@ -7,7 +7,6 @@ import CommentBox from "./(comments)/comment-box";
 import NavigationLinks from "./navigation-links";
 import { getStory } from "@/lib/getStory";
 import Article from "./article";
-import Test from "./(comments)/test";
 
 interface StoryProps {
   params: Promise<{ id: string }>;
@@ -67,7 +66,6 @@ async function Story(props: StoryProps) {
       <NavigationLinks nextStory={nextStory} prevStory={prevStory} />
 
       <CommentBox storyId={params.id} />
-      <Test storyId={params.id} />
     </>
   );
 }
