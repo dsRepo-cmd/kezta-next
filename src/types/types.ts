@@ -81,3 +81,9 @@ export interface SocialLink {
   name: SocialLinkName;
   link: string;
 }
+
+export interface PopulateConfig {
+  path: string;
+  model: string;
+  populate: PopulateConfig[];
+}
