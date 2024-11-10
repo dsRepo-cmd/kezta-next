@@ -61,8 +61,8 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
           loading="lazy"
         />
         <div className="flex flex-col gap-10 w-full">
-          <div className="flex gap-5">
-            <Text fontSize="text-xl" text={comment.userName} />
+          <div className="flex gap-5 justify-between sm:flex-col">
+            <Text className=" " fontSize="text-xl" text={comment.userName} />
             <Text
               color="text-grayPrimary"
               text={formatDateString(comment.createdAt)}
@@ -93,7 +93,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
         />
       )}
       {comment.replies?.map((reply) => (
-        <div key={reply._id} className="ml-10">
+        <div key={reply._id} className="ml-4 relative">
           <CommentItem comment={reply} />
         </div>
       ))}
