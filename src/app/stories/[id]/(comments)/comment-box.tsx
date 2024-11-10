@@ -33,7 +33,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
 
   const postComment = async (formData: CommentFormData, isReply = false) => {
     try {
-      const res = await fetch("/api/stories/comments", {
+      await fetch("/api/stories/comments", {
         method: isReply ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -58,6 +58,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
           src={comment.avatarLink}
           width={100}
           height={100}
+          loading="lazy"
         />
         <div className="flex flex-col gap-10 w-full">
           <div className="flex gap-5">
