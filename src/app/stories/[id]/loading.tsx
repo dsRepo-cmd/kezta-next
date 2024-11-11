@@ -1,10 +1,11 @@
 import Divider from "@/components/Divider/Divider";
 import Skeleton from "@/components/Skeleton/Skeleton";
+import { backToMainLink } from "./page";
 
 export default function LoadingStory() {
   return (
     <>
-      <Skeleton className=" w-1/2 h-[28px]" />
+      {backToMainLink}
 
       <div className="flex aspect-[912/446] max-w-[912px]">
         <Skeleton className=" w-full h-full" />
