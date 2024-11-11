@@ -1,24 +1,14 @@
-import Link from "next/link";
 import Divider from "@/components/Divider/Divider";
 import SosialLinks from "@/components/SosialLinks/SosialLinks";
 import CommentBox from "./(comments)/comment-box";
 import NavigationLinks from "./navigation-links";
 import { getStory } from "@/lib/getStory";
 import Article from "./article";
+import BackLink from "./back-link";
 
 interface StoryProps {
   params: Promise<{ id: string }>;
 }
-export const backToMainLink = (
-  <Link
-    className="flex gap-4 items-center duration-300 text-orange hover:text-white"
-    href="/stories"
-  >
-    <Divider style={{ width: "3rem", paddingTop: "1px" }} />
-
-    <span className=" text-xl md:text-lg ">Back to main</span>
-  </Link>
-);
 
 async function Story(props: StoryProps) {
   const params = await props.params;
@@ -32,7 +22,7 @@ async function Story(props: StoryProps) {
 
   return (
     <>
-      {backToMainLink}
+      <BackLink />
 
       <Article story={story} />
 
