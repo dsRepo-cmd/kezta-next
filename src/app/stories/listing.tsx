@@ -35,7 +35,7 @@ async function Listing({ page }: Props) {
               />
             </Link>
 
-            <Text fontSize="text-[32px]" className="mt-2" text={card.title} />
+            <Text fontSize="text-[28px]" className="mt-2" text={card.title} />
             <Divider style={{ width: "10rem" }} />
             <div className="flex flex-col gap-1">
               <Text fontSize="text-lg" text={card.date} />

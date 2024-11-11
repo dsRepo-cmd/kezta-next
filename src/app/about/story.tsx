@@ -10,7 +10,7 @@ function OurStory() {
     <section className="flex flex-col gap-10 justify-center">
       <TitleBox title={outStory.title} />
       <Text
-        fontSize="text-[32px]"
+        fontSize="text-2xl"
         color="text-white"
         subtitle={outStory.subtitle}
       />

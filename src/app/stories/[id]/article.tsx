@@ -24,7 +24,7 @@ function Article({ story }: Props) {
       </div>
       <div className="flex flex-col gap-2">
         <Text
-          fontSize="text-[44px]"
+          fontSize="text-[32px]"
           className="mb-3 capitalize"
           title={story.title}
         />
@@ -36,31 +36,31 @@ function Article({ story }: Props) {
         </div>
         <Text fontSize="text-lg" color="text-orange" text={story.type} />
       </div>
-      <article className="flex flex-col gap-10">
+      <article className="flex flex-col gap-6">
         {story.blocks.map((block) => (
           <div key={block.id}>
             {block.type === SroriesBlockType.TEXT && (
               <Text
-                fontSize="text-lg"
+                fontSize="text-base"
                 color="text-grayPrimary"
                 text={block.text}
               />
             )}
             {block.type === SroriesBlockType.TITLE && (
               <Text
-                fontSize="text-[44px]"
-                className="text-[2rem] capitalize"
+                fontSize="text-2xl"
+                className=" capitalize"
                 title={block.title}
               />
             )}
             {block.type === SroriesBlockType.CHECK_LIST && (
-              <ul className="flex flex-col gap-5">
+              <ul className="flex flex-col gap-5 mb-4">
                 {block.checkList?.map((item) => (
                   <li className="flex gap-5" key={item.id}>
                     <Icon Svg={CheckIcon} />
                     <Text
                       className=" w-full"
-                      fontSize="text-lg"
+                      fontSize="text-base"
                       text={item.text}
                     />
                   </li>
@@ -70,7 +70,7 @@ function Article({ story }: Props) {
             {block.type === SroriesBlockType.IMAGE_TEXT && (
               <span>
                 {block.image && (
-                  <div className="relative float-right ml-4 xl:ml-0 lg:ml-4 ">
+                  <div className="relative float-right ml-4 xl:ml-0 lg:ml-4 mb-4 md:ml-0 ">
                     <Image
                       src={block.image}
                       alt={block.image}
@@ -82,7 +82,7 @@ function Article({ story }: Props) {
                 )}
                 {block.texts?.map((text) => (
                   <Text
-                    fontSize="text-lg"
+                    fontSize="text-base"
                     key={text.id}
                     className="mb-10"
                     color="text-grayPrimary"
