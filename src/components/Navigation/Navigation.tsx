@@ -30,6 +30,7 @@ function Navigation() {
 
   const navigationLinks = navigation.map((link) => (
     <Link
+      onClick={() => setIsOpen(false)}
       className={`text-lg hover:text-orange duration-300 ${
         pathname === link.path ? "text-orange" : ""
       }`}
