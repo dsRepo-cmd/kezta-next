@@ -33,7 +33,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
 
   const postComment = async (formData: CommentFormData, isReply = false) => {
     try {
-      const res = await fetch("/api/stories/comments", {
+      await fetch("/api/stories/comments", {
         method: isReply ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -58,10 +58,11 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
           src={comment.avatarLink}
           width={100}
           height={100}
+          loading="lazy"
         />
         <div className="flex flex-col gap-10 w-full">
-          <div className="flex gap-5">
-            <Text fontSize="text-xl" text={comment.userName} />
+          <div className="flex gap-5 justify-between sm:flex-col">
+            <Text className=" " fontSize="text-xl" text={comment.userName} />
             <Text
               color="text-grayPrimary"
               text={formatDateString(comment.createdAt)}
@@ -92,7 +93,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
         />
       )}
       {comment.replies?.map((reply) => (
-        <div key={reply._id} className="ml-10">
+        <div key={reply._id} className="ml-4 relative">
           <CommentItem comment={reply} />
         </div>
       ))}

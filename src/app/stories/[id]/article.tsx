@@ -70,7 +70,7 @@ function Article({ story }: Props) {
             {block.type === SroriesBlockType.IMAGE_TEXT && (
               <span>
                 {block.image && (
-                  <div className="relative flex-shrink-0 float-right">
+                  <div className="relative float-right ml-4 xl:ml-0 lg:ml-4 ">
                     <Image
                       src={block.image}
                       alt={block.image}
