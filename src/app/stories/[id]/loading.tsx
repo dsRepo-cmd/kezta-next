@@ -12,7 +12,7 @@ export default function LoadingStory() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Skeleton className=" w-1/5 h-[78px] md:h-[60px]" />
+        <Skeleton className=" w-1/5 h-[44px] md:h-[32px]" />
         <Divider style={{ width: "10rem" }} />
 
         <Skeleton className=" w-1/3 h-[28px] md:h-[24px]" />
