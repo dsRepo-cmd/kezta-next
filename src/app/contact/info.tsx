@@ -1,5 +1,6 @@
 import Text from "@/components/Text/Text";
 import { contactContent } from "./const";
+const { info } = contactContent;
 
 function Info() {
   const renderInfoBlock = (title: string, text: string | string[]) => (
@@ -18,22 +19,10 @@ function Info() {
   );
   return (
     <div className="flex flex-col w-full gap-8">
-      {renderInfoBlock(
-        contactContent.info.address.title,
-        contactContent.info.address.text
-      )}
-      {renderInfoBlock(
-        contactContent.info.phone.title,
-        contactContent.info.phone.text
-      )}
-      {renderInfoBlock(
-        contactContent.info.email.title,
-        contactContent.info.email.text
-      )}
-      {renderInfoBlock(
-        contactContent.info.workingHours.title,
-        contactContent.info.workingHours.text
-      )}
+      {renderInfoBlock(info.address.title, info.address.text)}
+      {renderInfoBlock(info.phone.title, info.phone.text)}
+      {renderInfoBlock(info.email.title, info.email.text)}
+      {renderInfoBlock(info.workingHours.title, info.workingHours.text)}
     </div>
   );
 }

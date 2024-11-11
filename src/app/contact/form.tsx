@@ -4,6 +4,7 @@ import Input from "@/components/Input/Input";
 import Textarea from "@/components/Textarea/Textarea";
 import { contactContent } from "./const";
 import { useContactForm } from "@/lib/actions";
+const { form } = contactContent;
 
 function ContactForm() {
   return (
@@ -11,16 +12,12 @@ function ContactForm() {
       action={useContactForm}
       className="flex flex-col gap-10 w-1/2 items-start md:w-full"
     >
-      <Input label={contactContent.form.name} name={"name"} type={"text"} />
-      <Input label={contactContent.form.email} name={"email"} type={"text"} />
-      <Textarea
-        label={contactContent.form.message}
-        name={"message"}
-        type={"text"}
-      />
+      <Input label={form.name} name={"name"} type={"text"} />
+      <Input label={form.email} name={"email"} type={"text"} />
+      <Textarea label={form.message} name={"message"} type={"text"} />
 
       <Button className="text-lg px-12 py-3 bg-orange uppercase">
-        {contactContent.form.button}
+        {form.button}
       </Button>
     </Form>
   );

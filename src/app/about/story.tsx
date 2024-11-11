@@ -4,15 +4,15 @@ import Text from "@/components/Text/Text";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Divider from "@/components/Divider/Divider";
 import { aboutContent } from "./const";
-
+const { outStory } = aboutContent;
 function OurStory() {
   return (
     <section className="flex flex-col gap-10 justify-center">
-      <TitleBox title={aboutContent.section1.title} />
+      <TitleBox title={outStory.title} />
       <Text
         fontSize="text-[32px]"
         color="text-white"
-        subtitle={aboutContent.section1.subtitle}
+        subtitle={outStory.subtitle}
       />
       <div className="flex gap-20 md:flex-col items-center">
         <div className="relative w-1/2 max-w-[400px] min-h-20 flex flex-col md:w-full">
@@ -28,7 +28,7 @@ function OurStory() {
           <div className="w-full h-48 bg-orange" />
         </div>
         <div className="flex flex-col gap-6 w-1/2 md:w-full">
-          {aboutContent.section1.text.map((text) => (
+          {outStory.text.map((text) => (
             <Text
               fontSize="text-lg"
               color="text-grayPrimary"
@@ -38,12 +38,12 @@ function OurStory() {
           ))}
           <div className="flex items-center gap-4">
             <Divider style={{ width: "5rem", paddingTop: "1px" }} />
-            <Link href={aboutContent.section1.link.href}>
+            <Link href={outStory.link.href}>
               <Text
                 fontSize="text-lg"
                 color="text-orange"
                 className="duration-300 underline hover:text-white"
-                text={aboutContent.section1.link.text}
+                text={outStory.link.text}
               />
             </Link>
           </div>
@@ -51,7 +51,7 @@ function OurStory() {
       </div>
       <div className="m-auto">
         <ul className="flex flex-wrap gap-10 w-full mt-20">
-          {aboutContent.section1.cards.map((card) => (
+          {outStory.cards.map((card) => (
             <li className="flex flex-col gap-4 self-center" key={card.id}>
               <Text
                 fontSize="text-lg"
