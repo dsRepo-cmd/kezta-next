@@ -3,7 +3,7 @@
 import StoryModel from "@/models/Story";
 import { Comment, type PopulateConfig } from "@/types/types";
 import dbConnect from "./dbConnect";
-import CommentModel, { IComment } from "@/models/Comment";
+import CommentModel from "@/models/Comment";
 
 export async function useContactForm(formData: FormData) {
   console.log(formData);
