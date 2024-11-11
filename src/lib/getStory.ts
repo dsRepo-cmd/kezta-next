@@ -2,7 +2,7 @@
 
 import StoryModel, { IStory } from "@/models/Story";
 import dbConnect from "@/lib/dbConnect";
-import { FetchStory, Story, AdjacentLink, StoryBase } from "@/types/types";
+import { FetchStory, Story, AdjacentLink } from "@/types/types";
 import { FlattenMaps } from "mongoose";
 
 function transformStory(
@@ -69,4 +69,3 @@ export async function getStory(
 
   return dataStory;
 }
-

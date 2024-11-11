@@ -17,11 +17,7 @@ const NavigationLinks: React.FC<NavigationLinksProps> = ({
       <div className="flex gap-4 items-baseline">
         {nextStory && (
           <>
-            <Text
-              fontSize="text-[28px]"
-              color="text-grayPrimary"
-              text="Next:"
-            />
+            <Text fontSize="text-xl" color="text-grayPrimary" text="Next:" />
             <Link
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -37,14 +33,11 @@ const NavigationLinks: React.FC<NavigationLinksProps> = ({
           </>
         )}
       </div>
+
       <div className="flex gap-4 items-baseline">
         {prevStory && (
           <>
-            <Text
-              fontSize="text-[28px]"
-              color="text-grayPrimary"
-              text="Prev:"
-            />
+            <Text fontSize="text-xl" color="text-grayPrimary" text="Prev:" />
             <Link
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });

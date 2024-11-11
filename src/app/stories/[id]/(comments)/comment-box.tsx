@@ -50,8 +50,8 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
   };
 
   const CommentItem = ({ comment }: { comment: Comment }) => (
-    <div className="mb-10">
-      <div className="flex w-full gap-10 mb-10">
+    <div className="mb-4">
+      <div className="flex w-full gap-10 mb-4">
         <Image
           style={{ objectFit: "contain" }}
           alt="avatar"
@@ -60,7 +60,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ storyId }) => {
           height={100}
           loading="lazy"
         />
-        <div className="flex flex-col gap-10 w-full">
+        <div className="flex flex-col gap-4 w-full">
           <div className="flex gap-5 justify-between sm:flex-col">
             <Text className=" " fontSize="text-xl" text={comment.userName} />
             <Text

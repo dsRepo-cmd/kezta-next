@@ -1,5 +1,5 @@
 export const aboutContent = {
-  section1: {
+  outStory: {
     title: "Our Story",
     subtitle:
       "A world-class agency with defined excellence & passionate approach towards creative and digital services for all platforms.",
@@ -25,7 +25,7 @@ export const aboutContent = {
     ],
   },
 
-  section2: {
+  whatWeDo: {
     title: "What We Do",
     cards: [
       {
@@ -67,7 +67,7 @@ export const aboutContent = {
     ],
   },
 
-  section3: {
+  ourExpertise: {
     title: "Our Expertise",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum posuere massa quis eleifend sed aliquam fames dolor sollicitudin.",
     image: "/assets/hands-teamwork.png",
@@ -79,7 +79,7 @@ export const aboutContent = {
     ],
   },
 
-  section4: {
+  clients: {
     title: "Clients",
   },
 };

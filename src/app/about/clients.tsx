@@ -10,11 +10,12 @@ import ClientLogoIcon6 from "@/assets/client-logo6.svg";
 import ClientLogoIcon7 from "@/assets/client-logo7.svg";
 import ClientLogoIcon8 from "@/assets/client-logo8.svg";
 import { aboutContent } from "./const";
+const { clients } = aboutContent;
 
 function Clients() {
   return (
     <section className="flex flex-col gap-10">
-      <TitleBox title={aboutContent.section4.title} />
+      <TitleBox title={clients.title} />
       <div className=" grid grid-cols-4 justify-center  gap-20 md:gap-10 max-w-[600px] ">
         <Button
           title="ClientLogoIcon1"

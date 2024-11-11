@@ -2,13 +2,13 @@ import Image from "next/image";
 import TitleBox from "@/components/TitleBox/TitleBox";
 import Text from "@/components/Text/Text";
 import { aboutContent } from "./const";
-
+const { whatWeDo } = aboutContent;
 function WhatWeDo() {
   return (
     <section className="flex flex-col gap-10">
-      <TitleBox title={aboutContent.section2.title} />
+      <TitleBox title={whatWeDo.title} />
       <ul className="flex flex-wrap gap-20 md:gap-5 md:grid md:grid-cols-2">
-        {aboutContent.section2.cards.map((card) => (
+        {whatWeDo.cards.map((card) => (
           <li className="flex flex-col gap-4 w-1/4  md:w-full " key={card.id}>
             <div className=" w-[55px] h-[55px]">
               <Image
