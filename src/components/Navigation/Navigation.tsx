@@ -30,6 +30,7 @@ function Navigation() {
 
   const navigationLinks = navigation.map((link) => (
     <Link
+      onClick={() => setIsOpen(false)}
       className={`text-lg hover:text-orange duration-300 ${
         pathname === link.path ? "text-orange" : ""
       }`}
@@ -76,10 +77,12 @@ function Navigation() {
         {navigationLinks}
       </div>
 
-      {!isBigScreen && isOpen && (
+      {!isBigScreen && (
         <Portal>
           <div
-            className={`w-full h-screen duration-300 flex flex-col justify-start items-center gap-5 bg-black fixed z-50 right-0`}
+            className={`  w-full h-screen duration-300 flex flex-col justify-start items-center gap-5 bg-black fixed z-50 right-0 ${
+              isOpen ? "right-0" : "right-[-100%]"
+            }`}
           >
             {navigationLinks}
           </div>
